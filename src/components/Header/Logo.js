@@ -1,10 +1,6 @@
-import {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    useQuery,
-    gql
-  } from "@apollo/client";
+import {useQuery, gql} from "@apollo/client";
+
+import './Header.css';
 
   const LOGOQUERY = gql`
   {
@@ -22,7 +18,11 @@ import {
     console.log(data.logo.title)
     
     return(
-        <h1>{data.logo.title}</h1>
+      <div id="Logo">
+        <div id="logo-container">
+          <h1>{data.logo.title}</h1>
+        </div>
+      </div>
     )
   }
 

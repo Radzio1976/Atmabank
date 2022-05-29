@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+#Logo {
+    background-color: #27292c;
+}
+
+#logo-container {
+    width: 20%;
+    margin: 0 auto;
+    border-bottom: 1px solid #3f3e41;
+}
+
+#Logo h1 {
+    font-family: 'Courgette', cursive;
+    font-size: 38px;
+    letter-spacing: 2px;
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#Navigation {
+    background-color: #27292c;
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+#nav-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#nav-container ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#nav-container li {
+    padding: 15px 25px;
+    color: #fff;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+#nav-container li:hover {
+    background-color: #ecdd62;
+    color: black;
+}

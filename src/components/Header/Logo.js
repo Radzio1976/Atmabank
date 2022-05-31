@@ -15,7 +15,7 @@ import './Header.css';
     const {data, error, loading} = useQuery(LOGOQUERY);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
-    console.log(data.logo.title)
+    //console.log(data.logo.title)
     
     return(
       <div id="Logo">

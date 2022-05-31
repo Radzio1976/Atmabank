@@ -1,28 +1,41 @@
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
-} from "@apollo/client";
+import {withRouter} from 'react-router-dom';
 
-const DANE = gql`
-{
-  homePage(where: {id: "cl3mx115w4wgy0cuimveo6jni"}) {
-    id
-    slug
-    homePageText
-    sliderID
-  }
-}
-`
+import './Blog.css';
 
-const Blog = () => {
-  const {data, error, loading} = useQuery(DANE);
-  console.log(data)
+const Blog = withRouter(props => {
+  const posts = props.posts;
+
   return(
-    <h1>Blog</h1>
-  )
- }
+    <div id="Blog">
+      <div className="blog-container">
+        <div className="blog-container-left-column">
+          {
+            posts.slice(0).reverse().map((value) => {
+              return(
+                <div className="blog-post-container" key={value.id}>
+                <div className="blog-post-title">
+                  <h1>{value.title}</h1>
+                </div>
+                <div className="blog-post-image">
+                  <img src={value.image[0].url}></img>
+                </div>
+                <div className="blog-post-text">
+                  <p>{value.text.text.substring(0, 300)} ...</p>
+                </div>
+                <div className="blog-post-read-more">
+                  <p onClick={() => props.history.push(`/${value.slug}`)}>Read more</p>
+                </div>
+              </div>
+              )
+            })
+          }
+        </div>
+        <div className="blog-container-right-column">
 
-export default Blog;
+        </div>
+      </div>
+    </div>
+  )
+})
+
+export default withRouter(Blog);

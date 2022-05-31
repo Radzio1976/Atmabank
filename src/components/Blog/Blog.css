@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@100&display=swap');
+
+
+#Blog {
+    font-family: 'Courgette', cursive;
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0e0df;
+    padding-top: 70px;
+}
+
+.blog-container {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-container-left-column {
+ width: 66%;
+}
+
+.blog-post-container {
+    padding-bottom: 50px;
+}
+
+.blog-post-title {
+    padding: 0 0 40px 10px;
+}
+
+.blog-post-title h1 {
+    font-size: 75px;
+    font-weight: 100;
+}
+
+.blog-post-image {
+    height: 390px;
+    overflow: hidden;
+}
+
+.blog-post-image img {
+    width: 100%;
+}
+
+.blog-post-text {
+    font-weight: 600;
+    padding: 20px 0 20px 0;
+}
+
+.blog-post-text p {
+    line-height: 22px;
+    letter-spacing: 2px;
+}
+
+.blog-post-read-more p {
+    background-color: #302e33;
+    color: #e0e0df;
+    text-transform: uppercase;
+    width: 197px;
+    padding: 17px 0;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.blog-post-read-more p:hover {
+    background-color: #ecdd62;
+    color: black;
+}
+
+.blog-container-right-column {
+    width: 33%;
+}

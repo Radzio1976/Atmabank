@@ -1,6 +1,5 @@
 import {useQuery, gql} from "@apollo/client";
-  import {withRouter} from 'react-router-dom';
-  import React from "react";
+import {withRouter} from 'react-router-dom';
 
   const NAVQUERY = gql`
   query Navigation {
@@ -23,7 +22,6 @@ import {useQuery, gql} from "@apollo/client";
     if (error) return <p>Error :(</p>;
 
     const navigationData = data.navigation;
-    console.log(navigationData)
 
     return(
       <div id="Navigation">
@@ -40,27 +38,5 @@ import {useQuery, gql} from "@apollo/client";
     </div>
     )
   })
-
-  /*
-  const Navigation = (props) => {
-    const {data, error, loading} = useQuery(NAVQUERY);
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-    console.log(data.navigation.homeTitle)
-
-    return(
-      <div id="Navigation">
-        <nav>
-          <ul>
-            <li onClick={() => history.pushState("/")}>Home</li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </nav>
-      </div>
-    )
-  }
-  */
 
   export default withRouter(Navigation);

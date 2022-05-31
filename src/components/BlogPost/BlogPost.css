@@ -1,0 +1,45 @@
+#BlogPost {
+    font-family: 'Courgette', cursive;
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0e0df;
+    padding-top: 70px;
+}
+
+.blogpost-container {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.blogpost-container-left-column {
+    width: 66%;
+}
+
+.blogpost-post-container {
+    padding-bottom: 50px;
+}
+
+.blogpost-post-image {
+    height: 390px;
+    overflow: hidden;
+}
+
+.blogpost-post-image img {
+    width: 100%;
+}
+
+.blogpost-post-text {
+    font-weight: 600;
+    padding: 20px 0 20px 0;
+}
+
+
+
+
+
+
+
+
+.blogpost-container-right-column {
+    width: 33%;
+}

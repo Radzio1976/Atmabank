@@ -19,14 +19,17 @@ query MyQuery {
     image {
       id
       url
+      fileName
     }
     text {
       text
+      html
     }
   }
 }`
 
-const App = () => {
+const App = (props) => {
+  console.log(props)
   const {data, error, loading} = useQuery(BLOGQUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;

@@ -1,3 +1,53 @@
 {
-    "comments": []
+  "comments": [
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "1 komentarz 4 posta",
+      "commentTime": "18:0:28 | 1.6.2022",
+      "id": 1
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "2 komentarz 4 posta",
+      "commentTime": "18:0:43 | 1.6.2022",
+      "id": 2
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "3 komentarz 4 posta",
+      "commentTime": "18:0:49 | 1.6.2022",
+      "id": 3
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "1 komentarz 1 posta",
+      "commentTime": "18:1:34 | 1.6.2022",
+      "id": 4
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "2 komentarz 1 posta",
+      "commentTime": "18:1:41 | 1.6.2022",
+      "id": 5
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "3 komentarz 1 posta",
+      "commentTime": "18:1:52 | 1.6.2022",
+      "id": 6
+    }
+  ],
+  "answers": []
 }

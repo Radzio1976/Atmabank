@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import BlogpostPostContainer from "./BlogpostPostContainer";
+import BlogpostCommentsContainer from "./BlogpostCommentsContainer";
 
 import "./BlogPost.css";
 
@@ -21,6 +22,7 @@ const BlogPost = (props) => {
       <div className="blogpost-container">
       <div className="blogpost-container-left-column">
         <BlogpostPostContainer currentPost={currentPost} />
+        <BlogpostCommentsContainer currentPost={currentPost} />
       </div>
       <div className="blogpost-container-right-column">
 

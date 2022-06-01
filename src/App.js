@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from "@apollo/client";
+import {useQuery, gql } from "@apollo/client";
 import './index.css';
 
 import Header from './components/Header';
@@ -29,12 +29,19 @@ query MyQuery {
 }`
 
 const App = (props) => {
-  console.log(props)
   const {data, error, loading} = useQuery(BLOGQUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   const posts = data.blogPosts;
+
+  const getCurrentPost = (slug) => {
+    const currentPost = posts.filter(post => {
+      return post.slug === slug;
+    });
+    return currentPost[0];
+  }
+ 
 
     return(
       <div id="App">
@@ -45,7 +52,7 @@ const App = (props) => {
                 <Route path="/o-mnie" component={() => <About />} />
                 <Route path="/blog" component={() => <Blog posts={posts} />} />
                 <Route path="/kontakt" component={Contact} />
-                <Route path="/:slug" component={() => <BlogPost posts={posts} />} />
+                <Route path="/:slug" component={() => <BlogPost getCurrentPost={getCurrentPost} />} />
             </Switch>
         </BrowserRouter>
       </div>

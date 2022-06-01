@@ -1,15 +1,18 @@
 import { useParams } from "react-router-dom";
 
+import BlogpostPostContainer from "./BlogpostPostContainer";
+
 import "./BlogPost.css";
 
 const BlogPost = (props) => {
   let { slug } = useParams();
 
-  const posts = props.posts;
+  const sendSlug = () => {
+    props.getCurrentPost(slug)
+  }
+  sendSlug();
 
-  const currentPost = posts.filter(post => {
-    return post.slug === slug;
-  })
+  const currentPost = props.getCurrentPost(slug);
 
   console.log(currentPost)
 
@@ -17,14 +20,7 @@ const BlogPost = (props) => {
     <div id="BlogPost">
       <div className="blogpost-container">
       <div className="blogpost-container-left-column">
-      <div className="blogpost-post-container">
-        <div className="blogpost-post-image">
-          <img src={currentPost[0].image[0].url} alt={currentPost[0].image[0].fileName} ></img>
-        </div>
-        <div className="blogpost-post-text">
-          <div dangerouslySetInnerHTML={{__html: currentPost[0].text.html}} />
-        </div>
-      </div>
+        <BlogpostPostContainer currentPost={currentPost} />
       </div>
       <div className="blogpost-container-right-column">
 

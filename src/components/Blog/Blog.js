@@ -1,9 +1,31 @@
 import {withRouter} from 'react-router-dom';
+import {useQuery, gql } from "@apollo/client";
 
 import './Blog.css';
 
+const ALLPOSTSQUERY = gql`
+query MyQuery {
+  blogPosts {
+    id
+    title
+    slug
+    image {
+      id
+      url
+      fileName
+    }
+    text {
+      text
+      html
+    }
+  }
+}`
+
 const Blog = withRouter(props => {
-  const posts = props.posts;
+  const {data, error, loading} = useQuery(ALLPOSTSQUERY);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  const posts = data.blogPosts;
 
   return(
     <div id="Blog">

@@ -11,69 +11,70 @@ const BlogpostCommentsContainer = (props) => {
 
     const date = new Date();
     const commentTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} | ${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`
-    console.log(typeof commentTime)
+    //console.log(typeof commentTime)
 
 
     const [comments, setComments]= useState([]);
     const [currentPostComments, setCurrentPostComments] = useState([]);
 
     const [commentsAnswers, setCommentsAnswers] = useState([]);
-    const [currentCommentsAnswers, setCurrentCommentsAnswers] = useState([]);
+    //const [currentCommentsAnswers, setCurrentCommentsAnswers] = useState([]);
+
+    //console.log(typeof commentTime)
+
 
     useEffect(() => {
         Axios.get("http://localhost:3000/comments").
         then(res => {
-            setComments(res.data)
-
             const currentComments = res.data.filter(comment => {
                 return comment.postID === postID
-            });
-        
+            });        
             setCurrentPostComments(currentComments);
-            //console.log(currentPostComments);
-
+            console.log(currentPostComments);
         }).
         catch(err => {
             console.log("Nie udało się pobrać komentarzy")
         })
     }, []);
 
-    console.log(comments);
-
     const nameChange = (nameValue) => {
         setName(nameValue);
-    };
-
-    const emailChange = (emailValue) => {
+      };
+  
+      const emailChange = (emailValue) => {
         setEmail(emailValue);
-    };
-
-    const textChange = (textValue) => {
-        setText(textValue);
-    };
+      };
+  
+      const textChange = (textValue) => {
+          setText(textValue);
+      };
 
     const sendComment = (e) => {
         e.preventDefault();
+        console.log(currentPostComments)
         console.log(postID, name, email, text)
+        let comment = {
+            postID, 
+            name, 
+            email, 
+            text, 
+            commentTime, 
+            isCommentAnswerOn: false,
+            commentAnswers: []
+        }
 
-        Axios.post("http://localhost:3000/comments", {postID, name, email, text, commentTime, isCommentAnswerOn: false}).
+        Axios.post("http://localhost:3000/comments", comment).
         then(res => {
             console.log("Wysłane dane", res.data);
             Axios.get("http://localhost:3000/comments").
-            then(res => {
-                setComments(res.data)
-    
+            then(res => {    
                 const currentComments = res.data.filter(comment => {
                     return comment.postID === postID
-                });
-            
+                });           
                 setCurrentPostComments(currentComments);
-                console.log(currentPostComments);
-
                 setName("");
                 setEmail("");
-                setText("");
-    
+                setText("");    
             }).
             catch(err => {
                 console.log("Nie udało się pobrać komentarzy")
@@ -97,7 +98,6 @@ const BlogpostCommentsContainer = (props) => {
 
         setmainCommentsFormVisibility(false);
         setCurrentPostComments(currentComments);
-        console.log(currentComments)
     }
 
     const showCommentButton = () => {
@@ -110,20 +110,51 @@ const BlogpostCommentsContainer = (props) => {
 
     const sendCommentsAnswer = (parentCommentID) => {
         console.log(parentCommentID);
-
-        Axios.post("http://localhost:3000/answers", {parentCommentID, name, email, text, commentTime}).
+        console.log(currentPostComments);
+        let mainComment = currentPostComments.filter(mainComment => {
+            return mainComment.id === parentCommentID;
+        })
+        let commentAnswer = {
+            parentCommentID,
+            postID, 
+            name, 
+            email, 
+            text, 
+            commentTime, 
+            isCommentAnswerOn: false,
+        }
+        mainComment[0].commentAnswers.push(commentAnswer);
+            let commentsData = {
+            postID: currentPostComments[0].postID,
+            name: currentPostComments[0].name, 
+            email: currentPostComments[0].email,
+            text: currentPostComments[0].text,
+            commentTime: currentPostComments[0].commentTime, 
+            isCommentAnswerOn: false
+        }
+              
+        Axios.put(`http://localhost:3000/comments/${parentCommentID}`, {...commentsData, commentAnswers: mainComment[0].commentAnswers}).
         then(res => {
             console.log("Wysłana odpowiedź do komentarza :", res.data)
-
-            setCommentsAnswers(res.data);
-
+            Axios.get("http://localhost:3000/comments").
+            then(res => {    
+                const currentComments = res.data.filter(comment => {
+                    return comment.postID === postID
+                });           
+                setCurrentPostComments(currentComments);
+                setName("");
+                setEmail("");
+                setText("");    
+            }).
+            catch(err => {
+                console.log("Nie udało się pobrać komentarzy")
+            })        
         }).
         catch(err => {
             console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
         })
-    }
 
-    console.log(commentsAnswers);
+    }
 
     return(
         <div className="blogpost-comments-container">
@@ -178,6 +209,31 @@ const BlogpostCommentsContainer = (props) => {
                                     <button onClick={() => sendCommentsAnswer(comment.id)}>Wyślij</button>
                                 </div>
                             </div> : ""}
+
+                            <div className="blogpost-comments-answer-container" style={{paddingLeft: "25px"}}>
+                                {
+                                    comment.commentAnswers.map(answer => {
+                                        return(
+                                        <div className="blogpost-comments-answer-wrapper" key={answer.id} style={{display: answer.parentCommentID === comment.id ? "block" : "none"}}>
+                                            <div className="blogpost-comment-name-and-text-wrapper">
+                                                <div className="blogpost-comment-name">
+                                                    <p>{answer.name} {answer.parentCommentID} {comment.id}</p>
+                                                </div>
+                                                <div className="blogpost-comment-text">
+                                                    <p>{answer.text}</p>
+                                                </div>
+                                            </div>
+                
+                                            <div className="blogpost-comment-date-wrapper">
+                                                <div className="blogpost-comment-date">
+                                                    <p>{answer.commentTime}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     )
                 })

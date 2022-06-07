@@ -25,6 +25,15 @@
           "text": "2 odp 1 komentarza 4 posta",
           "commentTime": "7:40:13 | 7.6.2022",
           "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 1,
+          "postID": "cl3srs7qxnot20cuinl2f0qp1",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "3 odp 1 komentarza 4 posta",
+          "commentTime": "8:9:45 | 7.6.2022",
+          "isCommentAnswerOn": false
         }
       ],
       "id": 1
@@ -53,6 +62,15 @@
           "email": "r.tomaszewski@gmail.com",
           "text": "2 odp 2 komentarza 4 posta",
           "commentTime": "7:39:31 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 2,
+          "postID": "cl3srs7qxnot20cuinl2f0qp1",
+          "name": "Radosław",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "3 odp 2 komentarza 4 posta",
+          "commentTime": "8:10:8 | 7.6.2022",
           "isCommentAnswerOn": false
         }
       ],
@@ -121,9 +139,297 @@
           "text": "3 odp 2 komentarza 1 posta",
           "commentTime": "7:42:15 | 7.6.2022",
           "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 4,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "4 odp 2 komentarza 1 posta",
+          "commentTime": "7:52:38 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 4,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "5 odp 2 komentarza 1 posta",
+          "commentTime": "7:55:21 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 4,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "6 odp 2 komentarza 1 posta",
+          "commentTime": "15:12:26 | 7.6.2022",
+          "isCommentAnswerOn": false
         }
       ],
       "id": 4
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "3 komentarz 1 posta",
+      "commentTime": "7:47:33 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 5,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "1 odp 3 komentarza 1 posta",
+          "commentTime": "7:47:56 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 5,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "2 odp 3 komentarza 1 posta",
+          "commentTime": "7:48:22 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 5,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Radosław",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "3 odp 3 komentarza 1 posta",
+          "commentTime": "7:52:58 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 5,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "4 odp 3 komentarza 1 posta",
+          "commentTime": "7:55:2 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 5,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "5 odp 3 komentarza 1 posta",
+          "commentTime": "7:56:47 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 5,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "6 odp 3 komentarza 1 posta",
+          "commentTime": "15:11:49 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 5
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "3 komentarz 4 posta",
+      "commentTime": "8:39:44 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 6
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "4 komentarz 4 posta",
+      "commentTime": "8:44:22 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 7,
+          "postID": "cl3srs7qxnot20cuinl2f0qp1",
+          "name": "Radosław",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "1 odp 4 komentarza 4 posta",
+          "commentTime": "8:45:12 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 7
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "5 komentarz 4 posta",
+      "commentTime": "13:33:12 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 8,
+          "postID": "cl3srs7qxnot20cuinl2f0qp1",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "1 odp 5 komentarza 4 posta",
+          "commentTime": "13:34:22 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 8
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "6 komentarz 4 posta",
+      "commentTime": "13:40:4 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 9
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "7 komentarz 4 posta",
+      "commentTime": "14:53:1 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 10
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "8 komentarz 4 posta",
+      "commentTime": "14:55:53 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 11
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "9 komentarz 4 posta",
+      "commentTime": "14:58:7 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 12,
+          "postID": "cl3srs7qxnot20cuinl2f0qp1",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "1 odp 9 komentarza 4 posta",
+          "commentTime": "15:10:52 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 12,
+          "postID": "cl3srs7qxnot20cuinl2f0qp1",
+          "name": "Radosław",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "2 odp 5 komentarza 4 posta",
+          "commentTime": "15:11:9 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 12
+    },
+    {
+      "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+      "name": "Radosław",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "1 komentarz 3 posta",
+      "commentTime": "15:16:24 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 13,
+          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+          "name": "Radosław",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "1 odpowiedz 1 komentarza 3 posta",
+          "commentTime": "15:17:39 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 13,
+          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "2 odpowiedz 1 komentarza 3 posta",
+          "commentTime": "15:17:56 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 13
+    },
+    {
+      "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "2 komentarz 3 posta",
+      "commentTime": "15:16:44 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 14,
+          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "1 odpowiedz 2 komentarza 3 posta",
+          "commentTime": "15:18:14 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 14,
+          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+          "name": "Radosław",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "2 odpowiedz 2 komentarza 3 posta",
+          "commentTime": "15:18:34 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 14
+    },
+    {
+      "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+      "name": "Radosław",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "3 komentarz 3 posta",
+      "commentTime": "15:17:0 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 15,
+          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "1 odpowiedz 3 komentarza 3 posta",
+          "commentTime": "15:18:49 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 15,
+          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "2 odpowiedz 3 komentarza 3 posta",
+          "commentTime": "15:19:5 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 15
     }
   ]
 }

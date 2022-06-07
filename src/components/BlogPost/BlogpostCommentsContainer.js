@@ -114,6 +114,7 @@ const BlogpostCommentsContainer = (props) => {
         let mainComment = currentPostComments.filter(mainComment => {
             return mainComment.id === parentCommentID;
         })
+        console.log(mainComment);
         let commentAnswer = {
             parentCommentID,
             postID, 
@@ -125,15 +126,16 @@ const BlogpostCommentsContainer = (props) => {
         }
         mainComment[0].commentAnswers.push(commentAnswer);
             let commentsData = {
-            postID: currentPostComments[0].postID,
-            name: currentPostComments[0].name, 
-            email: currentPostComments[0].email,
-            text: currentPostComments[0].text,
-            commentTime: currentPostComments[0].commentTime, 
-            isCommentAnswerOn: false
+            postID: mainComment[0].postID,
+            name: mainComment[0].name, 
+            email: mainComment[0].email,
+            text: mainComment[0].text,
+            commentTime: mainComment[0].commentTime, 
+            isCommentAnswerOn: false,
+            commentAnswers: mainComment[0].commentAnswers
         }
               
-        Axios.put(`http://localhost:3000/comments/${parentCommentID}`, {...commentsData, commentAnswers: mainComment[0].commentAnswers}).
+        Axios.put(`http://localhost:3000/comments/${parentCommentID}`, commentsData).
         then(res => {
             console.log("Wysłana odpowiedź do komentarza :", res.data)
             Axios.get("http://localhost:3000/comments").

@@ -116,6 +116,7 @@ const showSendAnswerForm = (id) => {
 
   setmainCommentsFormVisibility(false);
   setCurrentPostComments(currentComments);
+  resetForm();
 }
 
 const showCommentButton = () => {
@@ -124,6 +125,7 @@ const showCommentButton = () => {
   })
   setmainCommentsFormVisibility(true);
   setCurrentPostComments(currentComments);
+  resetForm();
 }
 
 const sendCommentsAnswer = (parentCommentID) => {
@@ -195,7 +197,7 @@ const sendCommentsAnswer = (parentCommentID) => {
           <div className="blogpost-container">
           <div className="blogpost-container-left-column">
             <BlogpostPostContainer currentPost={currentPost} />
-            <BlogpostCommentsContainer currentPost={currentPost} />
+            <BlogpostCommentsContainer />
           </div>
           <div className="blogpost-container-right-column">
 

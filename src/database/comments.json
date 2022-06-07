@@ -450,6 +450,74 @@
         }
       ],
       "id": 16
+    },
+    {
+      "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "5 komentarz 3 posta",
+      "commentTime": "16:1:36 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 17
+    },
+    {
+      "postID": "cl3sd1vfp95hf0eujg4b6s9d2",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "1 komentarz 2 posta",
+      "commentTime": "17:43:41 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 18,
+          "postID": "cl3sd1vfp95hf0eujg4b6s9d2",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "1 odpowiedz 1 komentarza 2 posta",
+          "commentTime": "18:23:36 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 18
+    },
+    {
+      "postID": "cl3sd1vfp95hf0eujg4b6s9d2",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "2 komentarz 2 posta",
+      "commentTime": "17:43:56 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 19,
+          "postID": "cl3sd1vfp95hf0eujg4b6s9d2",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "1 odpowiedz 2 komentarza 2 posta",
+          "commentTime": "17:44:19 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 19,
+          "postID": "cl3sd1vfp95hf0eujg4b6s9d2",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "2 odpowiedz 2 komentarza 2 posta",
+          "commentTime": "17:44:39 | 7.6.2022",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 19,
+          "postID": "cl3sd1vfp95hf0eujg4b6s9d2",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "3 odpowiedz 2 komentarza 2 posta",
+          "commentTime": "18:1:34 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 19
     }
   ]
 }

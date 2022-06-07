@@ -430,6 +430,26 @@
         }
       ],
       "id": 15
+    },
+    {
+      "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+      "name": "Radosław",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "4 komentarz 3 posta",
+      "commentTime": "15:43:12 | 7.6.2022",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 16,
+          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+          "name": "Radosław",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "1 odpowiedz 4 komentarza 3 posta",
+          "commentTime": "15:43:34 | 7.6.2022",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 16
     }
   ]
 }

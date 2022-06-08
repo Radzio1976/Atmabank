@@ -1,6 +1,7 @@
 const BlogpostCommentsAnswerWrapper = (props) => {
     const answer = props.answer;
     const index = props.index;
+    
     return(
         <div className="blogpost-comments-answer-wrapper" key={index}>
         <div className="blogpost-comment-name-and-text-wrapper">

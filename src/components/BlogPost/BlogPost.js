@@ -38,6 +38,7 @@ const BlogPost = () => {
   const date = new Date();
   const commentTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} | ${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`
   const [currentPostComments, setCurrentPostComments] = useState([]);
+  const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
 
   let {data, error, loading} = useQuery(ALLPOSTSQUERY);
   if (loading) return <p>Loading...</p>;
@@ -54,6 +55,18 @@ const BlogPost = () => {
 
   const currentPost = getCurrentPost(slug);
   const postID = currentPost.id;
+
+
+
+  const getCurrentPostCommentsQty = (currentComments) => {
+    let result = 0;
+    let parentCommentsQty = currentComments.length;
+    currentComments.forEach(value => {
+      result = value.commentAnswers.length + result;
+    })
+    setCurrentPostCommentsQty(result + parentCommentsQty);
+  
+  };
 
   const nameChange = (nameValue) => {
     console.log(nameValue)
@@ -94,6 +107,7 @@ const sendComment = (e) => {
           });           
           setCurrentPostComments(currentComments);
           resetForm();
+          getCurrentPostCommentsQty(currentComments);
       }).
       catch(err => {
           console.log("Nie udało się pobrać komentarzy")
@@ -165,6 +179,7 @@ const sendCommentsAnswer = (parentCommentID) => {
           });           
           setCurrentPostComments(currentComments);
           resetForm();  
+          getCurrentPostCommentsQty(currentComments);
       }).
       catch(err => {
           console.log("Nie udało się pobrać komentarzy")
@@ -179,6 +194,8 @@ const sendCommentsAnswer = (parentCommentID) => {
   return(
     <BlogPostContext.Provider value={{
       postID,
+      getCurrentPostCommentsQty,
+      currentPostCommentsQty,
       nameChange,
       name,
       emailChange,

@@ -33,7 +33,11 @@
     padding: 20px 0 20px 0;
 }
 
-
+.blogpost-comments-quantity-container h3 {
+    font-size: 75px;
+    font-weight: 100;
+    text-align: center;
+}
 
 
 

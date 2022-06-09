@@ -4,7 +4,6 @@ const AddCommentForm = (props) => {
 
     return(
         <div className="add-comment-form">
-            <h3>Formularz testowy</h3>
         <form>
             <input type="text" name="name" value={BlogPostCtx.name} onChange={(e) => BlogPostCtx.nameChange(e.target.value)} placeholder="Imię"/>
             <input type="text" name="email" value={BlogPostCtx.email} onChange={(e) => BlogPostCtx.emailChange(e.target.value)} placeholder="Email" />

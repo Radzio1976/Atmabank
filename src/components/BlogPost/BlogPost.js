@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext } from 'react';
+import { useState, createContext } from 'react';
 import { useParams } from "react-router-dom";
 import {useQuery, gql } from "@apollo/client";
 import Axios from 'axios';
@@ -96,23 +96,23 @@ const sendComment = () => {
       commentAnswers: []
   }
 
-  Axios.post("http://localhost:3000/comments", comment).
-  then(res => {
+  Axios.post("http://localhost:3000/comments", comment)
+  .then(res => {
       console.log("Wysłany komentarz", res.data);
-      Axios.get("http://localhost:3000/comments").
-      then(res => {    
+      Axios.get("http://localhost:3000/comments")
+      .then(res => {    
           const currentComments = res.data.filter(comment => {
               return comment.postID === postID
           });           
           setCurrentPostComments(currentComments);
           resetForm();
           getCurrentPostCommentsQty(currentComments);
-      }).
-      catch(err => {
+      })
+      .catch(err => {
           console.log("Nie udało się pobrać komentarzy")
       })
-  }).
-  catch(err => {
+  })
+  .catch(err => {
       console.log("Nie udało się wysłać komentarza");
   })
 }
@@ -168,23 +168,23 @@ const sendCommentsAnswer = (parentCommentID) => {
       commentAnswers: mainComment[0].commentAnswers
   }
         
-  Axios.put(`http://localhost:3000/comments/${parentCommentID}`, commentsData).
-  then(res => {
+  Axios.put(`http://localhost:3000/comments/${parentCommentID}`, commentsData)
+  .then(res => {
       console.log("Wysłana odpowiedź do komentarza :", res.data)
-      Axios.get("http://localhost:3000/comments").
-      then(res => {    
+      Axios.get("http://localhost:3000/comments")
+      .then(res => {    
           const currentComments = res.data.filter(comment => {
               return comment.postID === postID
           });           
           setCurrentPostComments(currentComments);
           resetForm();  
           getCurrentPostCommentsQty(currentComments);
-      }).
-      catch(err => {
+      })
+      .catch(err => {
           console.log("Nie udało się pobrać komentarzy")
       })        
-  }).
-  catch(err => {
+  })
+  .catch(err => {
       console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
   })
 

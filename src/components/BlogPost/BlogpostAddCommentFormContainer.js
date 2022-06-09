@@ -1,5 +1,7 @@
 import { useContext } from "react";
 
+import AddCommentForm from './AddCommentForm';
+
 import {BlogPostContext} from './BlogPost';
 
 const BlogpostAddCommentFormContainer= () => {
@@ -11,14 +13,9 @@ const BlogpostAddCommentFormContainer= () => {
                 <h1>Zostaw komentarz</h1>
                 {BlogPostCtx.mainCommentsFormVisibility === false ? <button onClick={BlogPostCtx.showCommentButton}>Zostaw komentarz</button> : ""}
             </div>
-            {BlogPostCtx.mainCommentsFormVisibility === true ? <div className="blogpost-add-comment-form-wrapper comment-form">
-                <form>
-                    <input type="text" name="name" value={BlogPostCtx.name} onChange={(e) => BlogPostCtx.nameChange(e.target.value)} placeholder="Imię"/>
-                    <input type="text" name="email" value={BlogPostCtx.email} onChange={(e) => BlogPostCtx.emailChange(e.target.value)} placeholder="Email" />
-                    <textarea name="text" value={BlogPostCtx.text} onChange={(e) => BlogPostCtx.textChange(e.target.value)} placeholder="Twój komentarz" />
-                    <button onClick={BlogPostCtx.sendComment}>Wyślij</button>
-                </form>
-            </div> : ""}
+            {BlogPostCtx.mainCommentsFormVisibility === true ? 
+            <AddCommentForm BlogPostCtx={BlogPostCtx} sendComment={BlogPostCtx.sendComment} />
+            : ""}
         </div>
     )
 };

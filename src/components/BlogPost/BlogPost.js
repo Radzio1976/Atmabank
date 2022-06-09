@@ -85,8 +85,7 @@ const BlogPost = () => {
     setText("");  
 }  
 
-const sendComment = (e) => {
-  e.preventDefault();
+const sendComment = () => {
   let comment = {
       postID, 
       name, 

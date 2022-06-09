@@ -2,28 +2,37 @@
   "comments": [
     {
       "postID": "cl3srs7qxnot20cuinl2f0qp1",
-      "name": "Radosław",
-      "email": "r.tomaszewski@gmail.com",
-      "text": "1 komentarz 4 posta",
-      "commentTime": "14:13:0 | 9.6.2022",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "commentTime": "9 czerwca 2022 o 17:13",
       "isCommentAnswerOn": false,
       "commentAnswers": [
         {
           "parentCommentID": 1,
           "postID": "cl3srs7qxnot20cuinl2f0qp1",
-          "name": "Radosław",
-          "email": "r.tomaszewski@gmail.com",
-          "text": "1 odpowiedz 1 komentarza 4 posta",
-          "commentTime": "14:13:25 | 9.6.2022",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "commentTime": "9 czerwca 2022 o 17:13",
           "isCommentAnswerOn": false
         },
         {
           "parentCommentID": 1,
           "postID": "cl3srs7qxnot20cuinl2f0qp1",
-          "name": "Radosław",
+          "name": "Radosław Tomaszewski",
           "email": "r.tomaszewski@gmail.com",
-          "text": "2 odpowiedz 1 komentarza 4 posta",
-          "commentTime": "14:13:59 | 9.6.2022",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "commentTime": "9 czerwca 2022 o 17:13",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 1,
+          "postID": "cl3srs7qxnot20cuinl2f0qp1",
+          "name": "Radosław Tomaszewski",
+          "email": "r.tomaszewski@gmail.com",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "commentTime": "9 czerwca 2022 o 18:19",
           "isCommentAnswerOn": false
         }
       ],
@@ -31,90 +40,33 @@
     },
     {
       "postID": "cl3srs7qxnot20cuinl2f0qp1",
-      "name": "Marzena Rosiak",
-      "email": "rosiak.marzena@tlen.pl",
-      "text": "2 komentarz 4 posta",
-      "commentTime": "14:13:44 | 9.6.2022",
+      "name": "Radosław",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "commentTime": "9 czerwca 2022 o 17:14",
       "isCommentAnswerOn": false,
       "commentAnswers": [
         {
           "parentCommentID": 2,
           "postID": "cl3srs7qxnot20cuinl2f0qp1",
-          "name": "Radosław",
-          "email": "r.tomaszewski@gmail.com",
-          "text": "1 odpowiedz 2 komentarza 4 posta",
-          "commentTime": "14:14:16 | 9.6.2022",
-          "isCommentAnswerOn": false
-        },
-        {
-          "parentCommentID": 2,
-          "postID": "cl3srs7qxnot20cuinl2f0qp1",
-          "name": "Radosław",
-          "email": "r.tomaszewski@gmail.com",
-          "text": "2 odpowiedz 2 komentarza 4 posta",
-          "commentTime": "14:14:32 | 9.6.2022",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "commentTime": "9 czerwca 2022 o 17:14",
           "isCommentAnswerOn": false
         }
       ],
       "id": 2
     },
     {
-      "postID": "cl3sd2y5m9hjd0bulywtssnn5",
-      "name": "Marzena Rosiak",
-      "email": "rosiak.marzena@tlen.pl",
-      "text": "1 komentarz 3 posta",
-      "commentTime": "14:14:59 | 9.6.2022",
-      "isCommentAnswerOn": false,
-      "commentAnswers": [
-        {
-          "parentCommentID": 3,
-          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
-          "name": "Radosław",
-          "email": "r.tomaszewski@gmail.com",
-          "text": "1 odpowiedz 1 komentarza 3 posta",
-          "commentTime": "14:16:5 | 9.6.2022",
-          "isCommentAnswerOn": false
-        },
-        {
-          "parentCommentID": 3,
-          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
-          "name": "Radosław",
-          "email": "r.tomaszewski@gmail.com",
-          "text": "2 odpowiedz 1 komentarza 3 posta",
-          "commentTime": "14:16:18 | 9.6.2022",
-          "isCommentAnswerOn": false
-        }
-      ],
-      "id": 3
-    },
-    {
-      "postID": "cl3sd2y5m9hjd0bulywtssnn5",
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
       "name": "Radosław",
       "email": "r.tomaszewski@gmail.com",
-      "text": "2 komentarz 3 posta",
-      "commentTime": "14:15:14 | 9.6.2022",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "commentTime": "9 czerwca 2022 o 17:15",
       "isCommentAnswerOn": false,
-      "commentAnswers": [
-        {
-          "parentCommentID": 4,
-          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
-          "name": "Radosław",
-          "email": "r.tomaszewski@gmail.com",
-          "text": "1 odpowiedz 2 komentarza 3 posta",
-          "commentTime": "14:15:33 | 9.6.2022",
-          "isCommentAnswerOn": false
-        },
-        {
-          "parentCommentID": 4,
-          "postID": "cl3sd2y5m9hjd0bulywtssnn5",
-          "name": "Radosław",
-          "email": "r.tomaszewski@gmail.com",
-          "text": "2 odpowiedz 2 komentarza 3 posta",
-          "commentTime": "14:15:49 | 9.6.2022",
-          "isCommentAnswerOn": false
-        }
-      ],
-      "id": 4
+      "commentAnswers": [],
+      "id": 3
     }
   ]
 }

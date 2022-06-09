@@ -35,8 +35,23 @@ const BlogPost = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
-  const date = new Date();
+  /*
+  const time = new Date();
   const commentTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} | ${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`
+  */
+  const time = new Date();
+  const currentTime = `${time.getHours()}:${time.getMinutes()}` /// tutaj dokończyć
+
+  let dateInPolish = new Intl.DateTimeFormat( 'pl', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  } );
+  dateInPolish.format( new Date() );
+
+  const commentTime = `${dateInPolish.format( new Date() )} o ${currentTime}`;
+  console.log(commentTime)
+
   const [currentPostComments, setCurrentPostComments] = useState([]);
   const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
 

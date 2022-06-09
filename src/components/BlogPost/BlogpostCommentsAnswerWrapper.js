@@ -1,3 +1,5 @@
+import CommentatorAvatar from '../../images/commentatorAvatar.png';
+
 const BlogpostCommentsAnswerWrapper = (props) => {
     const answer = props.answer;
     const index = props.index;
@@ -6,6 +8,7 @@ const BlogpostCommentsAnswerWrapper = (props) => {
         <div className="blogpost-comments-answer-wrapper" key={index}>
         <div className="blogpost-comment-name-and-text-wrapper">
             <div className="blogpost-comment-name">
+                <img src={CommentatorAvatar}></img>
                 <p>{answer.name} {answer.parentCommentID}</p>
             </div>
             <div className="blogpost-comment-text">

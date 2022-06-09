@@ -3,6 +3,7 @@
     font-family: 'Roboto', sans-serif;
     background-color: #e0e0df;
     padding-top: 70px;
+    letter-spacing: 2px;
 }
 
 .blogpost-container {
@@ -37,6 +38,109 @@
     font-size: 75px;
     font-weight: 100;
     text-align: center;
+    padding-bottom: 35px;
+}
+
+/*  Poniżej znajdują się style do komentarzy postów */
+
+
+
+.blogpost-comment-name-and-text-wrapper {
+    padding-top: 15px;
+}
+
+.blogpost-comment-name {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.blogpost-comment-name img {
+    height: 60px;
+    margin-right: 7px;
+}
+
+.blogpost-comment-name p {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.blogpost-comment-text {
+    margin-bottom: 25px;
+}
+
+.blogpost-comment-date-and-button-wrapper, .blogpost-comment-date-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.blogpost-comment-date {
+    padding: 15px;
+}
+
+.blogpost-add-comment-form-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.add-comment-form-button {
+    background-color: #302e33;
+    color: #e0e0df;
+    text-transform: uppercase;
+    width: 157px;
+    padding: 8px 0;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.add-comment-form-button:hover {
+    background-color: #ecdd62;
+    color: black;
+}
+
+.blogpost-comment-date-and-button-wrapper {
+    border-bottom: 1px solid #cdcdcc;
+    padding: 15px;
+}
+
+.blogpost-comments-answer-container {
+    padding-left: 35px;
+}
+
+.blogpost-comments-answer-wrapper {
+    border-bottom: 1px solid #cdcdcc;
+}
+
+.blogpost-add-comments-answer-form-container {
+    font-size: 27px;
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.add-comment-form input {
+    width: 100%;
+    padding: 7px 12px;
+    background-color: #e0e0df;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.add-comment-form textarea {
+    width: 100%;
+    height: 185px;
+    padding: 7px 12px;
+    background-color: #e0e0df;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 

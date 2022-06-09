@@ -7,11 +7,12 @@ import {BlogPostContext} from './BlogPost';
 const BlogpostAddCommentsAnswerFormContainer = (props) => {
     const BlogPostCtx = useContext(BlogPostContext);
     const comment = props.comment;
+
     return(
         <>
         {comment.isCommentAnswerOn === true ? <div className="blogpost-add-comments-answer-form-container">
         <div className="blogpost-add-comments-answer-form">
-            <h1>Zostaw komentarz</h1>
+            <h4>Odpowiedz użytkownikowi {comment.name}</h4>
         </div>
         <AddCommentForm BlogPostCtx={BlogPostCtx} sendComment={() => BlogPostCtx.sendCommentsAnswer(comment.id)} />
     </div> : ""}

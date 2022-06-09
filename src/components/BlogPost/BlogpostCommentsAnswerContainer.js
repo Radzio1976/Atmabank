@@ -4,7 +4,7 @@ const BlogpostCommentsAnswerContainer = (props) => {
     const comment = props.comment;
 
     return(
-        <div className="blogpost-comments-answer-container" style={{paddingLeft: "25px"}}>
+        <div className="blogpost-comments-answer-container">
         {
             comment.commentAnswers.map((answer, index) => {
                 return(

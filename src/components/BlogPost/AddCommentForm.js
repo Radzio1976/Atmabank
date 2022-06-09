@@ -9,7 +9,7 @@ const AddCommentForm = (props) => {
             <input type="text" name="email" value={BlogPostCtx.email} onChange={(e) => BlogPostCtx.emailChange(e.target.value)} placeholder="Email" />
             <textarea name="text" value={BlogPostCtx.text} onChange={(e) => BlogPostCtx.textChange(e.target.value)} placeholder="Twój komentarz" />
         </form>
-        <button onClick={sendComment}>Wyślij</button>
+        <p className="add-comment-form-button" onClick={sendComment}>Wyślij</p>
     </div>
     )
 };

@@ -12,7 +12,7 @@ const BlogpostCommentDateAndButtonWrapper = (props) => {
             <p>{comment.commentTime}</p>
         </div>
         <div className="blogpost-comment-button">
-            <button onClick={(e) => BlogPostCtx.showSendAnswerForm(comment.id)}>Odpowiedz</button>
+            <p className="add-comment-form-button" onClick={(e) => BlogPostCtx.showSendAnswerForm(comment.id)}>Odpowiedz</p>
         </div>
     </div>
     )

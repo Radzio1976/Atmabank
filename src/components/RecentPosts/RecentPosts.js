@@ -1,20 +1,9 @@
+import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
-import {useQuery, gql } from "@apollo/client";
-
-const RECENTPOSTSQUERY = gql`
-query MyQuery {
-  blogPosts {
-    id
-    title
-    slug
-  }
-}`
+import { AppContext } from '../../App';
 
 const RecentPosts = (props) => {
-    const {data, error, loading} = useQuery(RECENTPOSTSQUERY);
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-    const posts = data.blogPosts;
+    const AppCtx = useContext(AppContext);
 
     return(
         <div id="RecentPosts">
@@ -24,7 +13,7 @@ const RecentPosts = (props) => {
                 </div>
                 <nav>
                     <ul>
-                        {posts.slice(0).reverse().map(post => {
+                        {AppCtx.allPosts.slice(0).reverse().map(post => {
                             return(
                                 <li onClick={() => props.history.push(`${post.slug}`)} key={post.id}>{post.title}</li>
                             )

@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import {useQuery, gql} from "@apollo/client";
 import {withRouter} from 'react-router-dom';
+import { AppContext } from "../../App";
 
   const NAVQUERY = gql`
   query Navigation {
@@ -17,6 +19,8 @@ import {withRouter} from 'react-router-dom';
   `
 
   const Navigation = withRouter(props => {
+    const AppCtx = useContext(AppContext);
+
     const {data, error, loading} = useQuery(NAVQUERY);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
@@ -30,7 +34,10 @@ import {withRouter} from 'react-router-dom';
             <ul>
               <li onClick={() => props.history.push('/')}>{navigationData.homeTitle}</li>
               <li onClick={() => props.history.push(`/${navigationData.aboutSlug}`)}>{navigationData.aboutTitle}</li>
-              <li onClick={() => props.history.push(`/${navigationData.blogSlug}`)}>{navigationData.blogTitle}</li>
+              <li onClick={() => {
+                props.history.push(`/${navigationData.blogSlug}`)
+                AppCtx.setPosts(AppCtx.allPosts)
+                }}>{navigationData.blogTitle}</li>
               <li onClick={() => props.history.push(`/${navigationData.contactSlug}`)}>{navigationData.contactTitle}</li>
             </ul>
           </nav>

@@ -5,6 +5,8 @@ import Axios from 'axios';
 
 import BlogpostPostContainer from "./BlogpostPostContainer";
 import BlogpostCommentsContainer from "./BlogpostCommentsContainer";
+import RecentPosts from '../RecentPosts/RecentPosts';
+import PostsCategories from '../PostsCategories/PostsCategories';
 
 import "./BlogPost.css";
 
@@ -14,6 +16,10 @@ query MyQuery {
     id
     title
     slug
+    categories {
+      id
+      name
+}
     image {
       id
       url
@@ -31,6 +37,7 @@ const BlogPostContext = createContext();
 const BlogPost = () => {
   let { slug } = useParams();
 
+  let allPosts = [];
   const [mainCommentsFormVisibility, setmainCommentsFormVisibility] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -59,6 +66,7 @@ const BlogPost = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
+  allPosts = data.blogPosts;
   const posts = data.blogPosts;
 
   const getCurrentPost = (slug) => {
@@ -231,7 +239,8 @@ const sendCommentsAnswer = (parentCommentID) => {
             <BlogpostCommentsContainer />
           </div>
           <div className="blogpost-container-right-column">
-
+            <RecentPosts />
+            <PostsCategories allPosts={allPosts} />
           </div>
           </div>
       </div>

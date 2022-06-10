@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import {withRouter} from 'react-router-dom';
 import {useQuery, gql } from "@apollo/client";
 
 import './Blog.css';
+
+import RecentPosts from '../RecentPosts/RecentPosts';
+import PostsCategories from '../PostsCategories/PostsCategories';
 
 const ALLPOSTSQUERY = gql`
 query MyQuery {
@@ -9,6 +13,10 @@ query MyQuery {
     id
     title
     slug
+    categories {
+      id
+      name
+}
     image {
       id
       url
@@ -22,11 +30,16 @@ query MyQuery {
 }`
 
 const Blog = withRouter(props => {
-  const {data, error, loading} = useQuery(ALLPOSTSQUERY);
+  let allPosts = [];
+  const [posts, setPosts] = useState([]);
+  const {error, loading, data} = useQuery(ALLPOSTSQUERY, {onCompleted: (data) => {
+
+    setPosts(data.blogPosts);
+  }})
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  const posts = data.blogPosts;
 
+  allPosts = data.blogPosts;
   return(
     <div id="Blog">
       <div className="blog-container">
@@ -53,7 +66,8 @@ const Blog = withRouter(props => {
           }
         </div>
         <div className="blog-container-right-column">
-
+          <RecentPosts />
+          <PostsCategories allPosts={allPosts} posts={posts} setPosts={setPosts} />
         </div>
       </div>
     </div>

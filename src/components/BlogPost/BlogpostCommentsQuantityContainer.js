@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import { useContext,  } from "react";
 
-import {BlogPostContext} from './BlogPost';
+import { BlogPostContext } from "./BlogPost";
 
 const BlogpostCommentsQuantityContainer = () => {
     const BlogPostCtx = useContext(BlogPostContext);

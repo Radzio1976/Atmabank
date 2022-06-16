@@ -1,6 +1,7 @@
-import React, {useState, createContext} from 'react';
+import React, {useState, createContext, useEffect} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {useQuery, gql } from "@apollo/client";
+import Axios from 'axios';
 import './index.css';
 
 import Header from './components/Header';
@@ -36,7 +37,21 @@ const AppContext = createContext();
 
 const App = (props) => {
   let allPosts = [];
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]); // ta zmienna musi być w App.js
+  const [allComments, setAllComments] = useState([]);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3000/comments")
+    .then(res => {
+      console.log(res.data)
+        setAllComments(res.data);   
+    })
+
+    .catch(err => {
+        console.log("Nie udało się pobrać komentarzy")
+    })
+  }, [])
+
   const {error, loading, data} = useQuery(ALLPOSTSQUERY, {onCompleted: (data) => {
     setPosts(data.blogPosts);
   }})
@@ -45,46 +60,22 @@ const App = (props) => {
 
   allPosts = data.blogPosts;
 
-  // Funkcja poniżej jest wywoływana w komponencie PostsCategories i sortuje posty pod kątem kategorii w komponencie Blog
-  const getPostsByCategory = (categoryName) => {
-    //props.history.push("/blog");
-
-    let postsByCategory = allPosts.filter(post => {
-        return post.categories[0].name === categoryName;
-    })
-    setPosts(postsByCategory);
-  }
-
-  // Funkcja poniżej dotyczy komponentu PostsCategories i wyszukuje unikalne kategorie ze wszystkich obiektów z postami (prawa kolumna Kategorie)
-  const uniqueCategories = () => {
-    const mainBaseOfCategories = allPosts;
-    let categoriesNames = [];
-
-    mainBaseOfCategories.forEach(category => {
-        categoriesNames.push(category.categories[0].name)
-    })
-
-    const uniqueCategories = [...new Set(categoriesNames)]
-    return uniqueCategories.sort();
-  }
-
     return(
       <AppContext.Provider value={{
         allPosts,
         posts,
+        setAllComments,
         setPosts,
-        getPostsByCategory,
-        uniqueCategories
         }}>
         <div id="App">
           <BrowserRouter>
             <Header />
               <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/o-mnie" component={() => <About />} />
-                  <Route path="/blog" component={() => <Blog />} />
-                  <Route path="/kontakt" component={Contact} />
-                  <Route path="/:slug" component={() => <BlogPost />} />
+                <Route path="/" exact component={Home} />
+                <Route path="/o-mnie" component={About} />
+                <Route path="/blog" component={Blog} />
+                <Route path="/kontakt" component={Contact} />
+                <Route path="/:slug" component={BlogPost}v />
               </Switch>
           </BrowserRouter>
         </div>

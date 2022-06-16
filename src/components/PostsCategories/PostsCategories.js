@@ -1,9 +1,30 @@
 import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
+
 import { AppContext } from '../../App';
 
-const PostsCategories = () => {
+const PostsCategories = (props) => {
     const AppCtx = useContext(AppContext);
+
+    const uniqueCategories = () => {
+        const mainBaseOfCategories = AppCtx.allPosts;
+        let categoriesNames = [];
+    
+        mainBaseOfCategories.forEach(category => {
+            categoriesNames.push(category.categories[0].name)
+        })
+    
+        const uniqueCategories = [...new Set(categoriesNames)]
+        return uniqueCategories.sort();
+      }
+
+      const getPostsByCategory = (categoryName) => {
+        let postsByCategory = AppCtx.allPosts.filter(post => {
+            return post.categories[0].name === categoryName;
+        })
+        AppCtx.setPosts(postsByCategory);
+      }
+
 
     return(
         <div id="PostsCategories">
@@ -13,9 +34,12 @@ const PostsCategories = () => {
             </div>
             <nav>
                 <ul>
-                    {AppCtx.uniqueCategories().map((category, index) => {
+                    {uniqueCategories().map((category, index) => {
                         return(
-                            <li onClick={() => AppCtx.getPostsByCategory(category)} key={index}>{category}</li>
+                            <li onClick={() => {
+                                props.history.push("/blog");
+                                getPostsByCategory(category);
+                            }} key={index}>{category}</li>
                         )
                     })}
                 </ul>

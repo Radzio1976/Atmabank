@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
 import { AppContext } from '../../App';
 
-const RecentPosts = (props) => {
+const RecentPosts = withRouter(props => {
     const AppCtx = useContext(AppContext);
 
     return(
@@ -15,7 +15,7 @@ const RecentPosts = (props) => {
                     <ul>
                         {AppCtx.allPosts.slice(0).reverse().map(post => {
                             return(
-                                <li onClick={() => props.history.push(`${post.slug}`)} key={post.id}>{post.title}</li>
+                                <li onClick={() => props.history.push(`/${post.slug}`)} key={post.id}>{post.title}</li>
                             )
                         })}
                     </ul>
@@ -23,6 +23,6 @@ const RecentPosts = (props) => {
             </div>
         </div>
     )
-};
+});
 
 export default withRouter(RecentPosts);

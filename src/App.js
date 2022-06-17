@@ -35,15 +35,31 @@ query MyQuery {
 
 const AppContext = createContext();
 
-const App = (props) => {
+const App = () => {
   let allPosts = [];
   const [posts, setPosts] = useState([]); // ta zmienna musi być w App.js
   const [allComments, setAllComments] = useState([]);
 
+  const [category, setCategory] = useState("");
+  const [currentPostTitle, setCurrentPostTitle] = useState("");
+  const [currentPostSlug, setCurrentPostSlug] = useState("");
+
+  const [secondHeaderMenu, setSecondHeaderMenu] = useState([]);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
+
+  const [postID, setPostID] = useState("");
+  const [currentPostComments, setCurrentPostComments] = useState([]);
+  const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
+
+  const [mainCommentsFormVisibility, setmainCommentsFormVisibility] = useState(true);
+
   useEffect(() => {
     Axios.get("http://localhost:3000/comments")
     .then(res => {
-      console.log(res.data)
+      //console.log(res.data)
         setAllComments(res.data);   
     })
 
@@ -60,12 +76,207 @@ const App = (props) => {
 
   allPosts = data.blogPosts;
 
+  const getSecondHeaderMenu = (category, currentPostTitle, currentPostSlug) => {
+    setCategory(category);
+    setCurrentPostTitle(currentPostTitle);
+    setCurrentPostSlug(currentPostSlug);
+    
+    /*
+    let secondHeaderMenu = [{title: "Home", slug: ""}];
+    secondHeaderMenu.push({title: category, slug: ""});
+    secondHeaderMenu.push({title: currentPostTitle, slug: currentPostSlug});
+    setSecondHeaderMenu(secondHeaderMenu);    
+    */
+  }
+  console.log(category);
+  console.log(currentPostTitle);
+  console.log(currentPostSlug);
+//console.log(secondHeaderMenu)
+  const nameChange = (nameValue) => {
+    setName(nameValue);
+  };
+
+  const emailChange = (emailValue) => {
+    setEmail(emailValue);
+  };
+
+  const textChange = (textValue) => {
+    setText(textValue);
+};
+
+  const getCurrentPostID = (postID) => {
+    setPostID(postID);
+  }
+
+  const getCurrentPostComments = (currentComments) => {
+    setCurrentPostComments(currentComments);
+  }
+
+  const getCurrentPostCommentsQty = (currentComments) => {
+    //console.log(currentComments)
+    let result = 0;
+    let parentCommentsQty = currentComments.length;
+    currentComments.forEach(value => {
+      result = value.commentAnswers.length + result;
+    })
+    setCurrentPostCommentsQty(result + parentCommentsQty);  
+  };
+
+  
+  const resetForm = () => {
+    setName("");
+    setEmail("");
+    setText("");  
+  } 
+  
+  const showSendAnswerForm = (id) => {
+    const currentComments = currentPostComments.map(el => {
+        if (el.id === id) {
+            return {...el, isCommentAnswerOn: true}
+        } else {
+            return {...el, isCommentAnswerOn: false}
+        }
+        return {...el};
+    })
+  
+    setmainCommentsFormVisibility(false);
+    setCurrentPostComments(currentComments);
+    resetForm();
+  }
+
+  const showCommentButton = () => {
+    const currentComments = currentPostComments.map(el => {
+        return {...el, isCommentAnswerOn: false}
+    })
+    setmainCommentsFormVisibility(true);
+    setCurrentPostComments(currentComments);
+    resetForm();
+  }
+
+  const getCommentTime = () => {
+    const time = new Date();
+    const currentTime = `${time.getHours()}:${time.getMinutes()}` /// tutaj dokończyć
+
+    let dateInPolish = new Intl.DateTimeFormat( 'pl', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    } );
+    dateInPolish.format( new Date() );
+
+    return `${dateInPolish.format( new Date() )} o ${currentTime}`;
+  }
+
+  const sendComment = () => {
+    let comment = {
+        postID, 
+        name, 
+        email, 
+        text, 
+        commentTime: getCommentTime(), 
+        isCommentAnswerOn: false,
+        commentAnswers: []
+    }
+    
+    Axios.post("http://localhost:3000/comments", comment)
+    .then(res => {
+        console.log("Wysłany komentarz", res.data);
+        resetForm();
+        Axios.get("http://localhost:3000/comments")
+        .then(res => {    
+            const currentComments = res.data.filter(comment => {
+                return comment.postID === postID
+            });           
+            setCurrentPostComments(currentComments);
+            getCurrentPostCommentsQty(currentComments);
+        })
+        .catch(err => {
+            console.log("Nie udało się pobrać komentarzy")
+        })
+    })
+    .catch(err => {
+        console.log("Nie udało się wysłać komentarza");
+    })
+  }
+
+  const sendCommentsAnswer = (parentCommentID) => {
+    let mainComment = currentPostComments.filter(comment => {
+        return comment.id === parentCommentID;
+    })
+    let commentAnswer = {
+        parentCommentID,
+        postID, 
+        name, 
+        email, 
+        text, 
+        commentTime: getCommentTime(), 
+        isCommentAnswerOn: false,
+    }
+    mainComment[0].commentAnswers.push(commentAnswer);
+        let commentsData = {
+        postID: mainComment[0].postID,
+        name: mainComment[0].name, 
+        email: mainComment[0].email,
+        text: mainComment[0].text,
+        commentTime: mainComment[0].commentTime, 
+        isCommentAnswerOn: false,
+        commentAnswers: mainComment[0].commentAnswers
+    }
+          
+    Axios.put(`http://localhost:3000/comments/${parentCommentID}`, commentsData)
+    .then(res => {
+        console.log("Wysłana odpowiedź do komentarza :", res.data)
+        resetForm();
+        Axios.get("http://localhost:3000/comments")
+        .then(res => {    
+            const currentComments = res.data.filter(comment => {
+                return comment.postID === postID
+            });           
+            setCurrentPostComments(currentComments);
+            getCurrentPostCommentsQty(currentComments);
+        })
+        .catch(err => {
+            console.log("Nie udało się pobrać komentarzy")
+        })        
+    })
+    .catch(err => {
+        console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
+    })
+  
+  }
+
+//console.log(postID)
+//console.log(currentPostComments)
+//console.log(currentPostCommentsQty)
     return(
       <AppContext.Provider value={{
+        category,
+        currentPostTitle,
+        currentPostSlug,
+        secondHeaderMenu,
+        setSecondHeaderMenu,
+        getSecondHeaderMenu,
         allPosts,
         posts,
         setAllComments,
         setPosts,
+        nameChange,
+        setName,
+        emailChange,
+        setEmail,
+        textChange,
+        setText,
+        getCurrentPostID,
+        currentPostComments,
+        setCurrentPostComments,
+        getCurrentPostComments,
+        currentPostCommentsQty,
+        getCurrentPostCommentsQty,
+        showSendAnswerForm,
+        mainCommentsFormVisibility,
+        showCommentButton,
+        sendComment,
+        sendCommentsAnswer
         }}>
         <div id="App">
           <BrowserRouter>

@@ -1,8 +1,9 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import {useQuery, gql } from "@apollo/client";
 import { AppContext } from '../../App';
 
+import SecondHeader from '../Secondheader';
 import BlogpostContainerLeftColumn from './BlogpostContainerLeftColumn';
 import BlogpostPostContainer from "./BlogpostPostContainer";
 import BlogpostCommentsContainer from "./BlogpostCommentsContainer";
@@ -48,10 +49,6 @@ const BlogPost = () => {
   const AppCtx = useContext(AppContext);
   let { slug } = useParams();
 
-  const [allComments, setAllComments] = useState([]);
-  const [currentPostComments, setCurrentPostComments] = useState([]);
-  const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
-
   const { loading, error, data } = useQuery(GET_CURRENR_POST, {
     variables: { slug },
   });
@@ -59,36 +56,14 @@ const BlogPost = () => {
   if (error) return `Error! ${error}`;
 
   const currentPost = data.blogPosts[0];
-
-  const getPostComments = () => {
-    const postComments = allComments.filter(comment => {
-      return comment.postID === currentPost.id;
-    });
-    setCurrentPostComments(postComments);
-  }
-
-  const getCurrentPostCommentsQty = (currentComments) => {
-    let result = 0;
-    let parentCommentsQty = currentComments.length;
-    currentComments.forEach(value => {
-      result = value.commentAnswers.length + result;
-    })
-    setCurrentPostCommentsQty(result + parentCommentsQty);  
-  };
-
-
+  console.log(currentPost)
   return(
     <BlogPostContext.Provider value={{
       currentPost,
-      postID: currentPost.id,
-      getPostComments,
-      setCurrentPostComments,
-      currentPostComments,
-      setCurrentPostCommentsQty,
-      getCurrentPostCommentsQty,
-      currentPostCommentsQty
+      postID: currentPost.id
     }}>
       <div id="BlogPost">
+        <SecondHeader category={AppCtx.category} currentPostTitle={AppCtx.currentPostTitle} currentPostSlug={AppCtx.currentPostSlug} />
         <div className="blogpost-container">
           <BlogpostContainerLeftColumn>
             <BlogpostPostContainer />
@@ -96,7 +71,7 @@ const BlogPost = () => {
               <BlogpostCommentsQuantityContainer />
               <BlogpostCommentsWrapper>
                 {
-                  currentPostComments.map(comment => {
+                  AppCtx.currentPostComments.map(comment => {
                       return(
                           <div className="blogpost-comment-wrapper" key={comment.id}>
                               <BlogpostCommentNameAndTextWrapper comment={comment} />

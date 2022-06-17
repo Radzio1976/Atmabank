@@ -1,14 +1,15 @@
 import { useContext,  } from "react";
 
+import { AppContext } from "../../App";
 import { BlogPostContext } from "./BlogPost";
 
 const BlogpostCommentsQuantityContainer = () => {
-    const BlogPostCtx = useContext(BlogPostContext);
+    const AppCtx = useContext(AppContext);
 
     return(
         <div className="blogpost-comments-quantity-container">
         <div className="blogpost-comments-quantity-text">
-            <h3>{`${BlogPostCtx.currentPostCommentsQty} komentarz${BlogPostCtx.currentPostCommentsQty < 2 ? "" : BlogPostCtx.currentPostCommentsQty <= 4 ? "e" : "y"}`}</h3>
+            <h3>{`${AppCtx.currentPostCommentsQty} komentarz${AppCtx.currentPostCommentsQty < 2 ? "" : AppCtx.currentPostCommentsQty <= 4 ? "e" : "y"}`}</h3>
         </div>
     </div>
     )

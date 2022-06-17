@@ -208,6 +208,65 @@
       "isCommentAnswerOn": false,
       "commentAnswers": [],
       "id": 8
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "6 komentarz 1 posta",
+      "commentTime": "17 czerwca 2022 o 12:2",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 9
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "7 komentarz 1 posta",
+      "commentTime": "17 czerwca 2022 o 12:4",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [
+        {
+          "parentCommentID": 10,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "1 odp 7 komentarza 1 posta",
+          "commentTime": "17 czerwca 2022 o 12:16",
+          "isCommentAnswerOn": false
+        },
+        {
+          "parentCommentID": 10,
+          "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+          "name": "Marzena Rosiak",
+          "email": "rosiak.marzena@tlen.pl",
+          "text": "2 odp 7 komentarza 1 posta",
+          "commentTime": "17 czerwca 2022 o 12:24",
+          "isCommentAnswerOn": false
+        }
+      ],
+      "id": 10
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "8 komentarz 1 posta",
+      "commentTime": "17 czerwca 2022 o 12:23",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 11
+    },
+    {
+      "postID": "cl3sd0do69fzr0bulkmbqvq2e",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "9 komentarz 1 posta",
+      "commentTime": "17 czerwca 2022 o 12:27",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 12
     }
   ]
 }

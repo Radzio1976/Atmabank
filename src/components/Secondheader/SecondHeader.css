@@ -1,0 +1,14 @@
+#SecondHeader {
+    display: flex;
+    justify-content: center;
+}
+
+#SecondHeader ul {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#SecondHeader li {
+    list-style-type: none;
+}

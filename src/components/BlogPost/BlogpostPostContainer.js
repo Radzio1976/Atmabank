@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
+import { AppContext } from "../../App";
 import { BlogPostContext } from "./BlogPost";
 
 const BlogpostPostContainer = (props) => {

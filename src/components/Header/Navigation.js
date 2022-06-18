@@ -35,8 +35,8 @@ import { AppContext } from "../../App";
               <li onClick={() => props.history.push('/')}>{navigationData.homeTitle}</li>
               <li onClick={() => props.history.push(`/${navigationData.aboutSlug}`)}>{navigationData.aboutTitle}</li>
               <li onClick={() => {
-                props.history.push(`/${navigationData.blogSlug}`)
-                AppCtx.setPosts(AppCtx.allPosts)
+                props.history.push(`/${navigationData.blogSlug}`);
+                AppCtx.setPosts(AppCtx.allPosts);
                 }}>{navigationData.blogTitle}</li>
               <li onClick={() => props.history.push(`/${navigationData.contactSlug}`)}>{navigationData.contactTitle}</li>
             </ul>

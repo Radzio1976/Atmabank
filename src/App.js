@@ -80,18 +80,12 @@ const App = () => {
     setCategory(category);
     setCurrentPostTitle(currentPostTitle);
     setCurrentPostSlug(currentPostSlug);
-    
-    /*
-    let secondHeaderMenu = [{title: "Home", slug: ""}];
-    secondHeaderMenu.push({title: category, slug: ""});
-    secondHeaderMenu.push({title: currentPostTitle, slug: currentPostSlug});
-    setSecondHeaderMenu(secondHeaderMenu);    
-    */
   }
-  console.log(category);
-  console.log(currentPostTitle);
-  console.log(currentPostSlug);
-//console.log(secondHeaderMenu)
+
+  const clearCategory = () => {
+    setCategory("");
+  }
+
   const nameChange = (nameValue) => {
     setName(nameValue);
   };
@@ -113,7 +107,6 @@ const App = () => {
   }
 
   const getCurrentPostCommentsQty = (currentComments) => {
-    //console.log(currentComments)
     let result = 0;
     let parentCommentsQty = currentComments.length;
     currentComments.forEach(value => {
@@ -245,17 +238,14 @@ const App = () => {
   
   }
 
-//console.log(postID)
-//console.log(currentPostComments)
-//console.log(currentPostCommentsQty)
     return(
       <AppContext.Provider value={{
         category,
         currentPostTitle,
         currentPostSlug,
         secondHeaderMenu,
-        setSecondHeaderMenu,
         getSecondHeaderMenu,
+        clearCategory,
         allPosts,
         posts,
         setAllComments,

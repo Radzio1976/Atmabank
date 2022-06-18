@@ -39,6 +39,7 @@ const PostsCategories = (props) => {
                             <li onClick={() => {
                                 props.history.push("/blog");
                                 getPostsByCategory(category);
+                                AppCtx.getSecondHeaderMenu(category);
                             }} key={index}>{category}</li>
                         )
                     })}

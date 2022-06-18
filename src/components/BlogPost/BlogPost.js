@@ -56,7 +56,7 @@ const BlogPost = () => {
   if (error) return `Error! ${error}`;
 
   const currentPost = data.blogPosts[0];
-  console.log(currentPost)
+
   return(
     <BlogPostContext.Provider value={{
       currentPost,

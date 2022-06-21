@@ -17,7 +17,6 @@ const BlogpostCommentsContainer = ({children}) => {
             const currentComments = res.data.filter(comment => {
                 return comment.postID === postID
             }); 
-            //console.log(currentComments)   
             AppCtx.getSecondHeaderMenu(BlogPostCtx.currentPost.categories[0].name, BlogPostCtx.currentPost.title, BlogPostCtx.currentPost.slug)
             AppCtx.getCurrentPostID(postID);    
             AppCtx.getCurrentPostComments(currentComments);  
@@ -35,5 +34,3 @@ const BlogpostCommentsContainer = ({children}) => {
 
 export {BlogpostCommentsContainerContext};
 export default BlogpostCommentsContainer;
-
-//    }, [BlogPostCtx.setCurrentPostComments, postID]);

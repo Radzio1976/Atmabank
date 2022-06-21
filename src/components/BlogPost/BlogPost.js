@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import {useQuery, gql } from "@apollo/client";
 import { AppContext } from '../../App';

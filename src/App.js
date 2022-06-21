@@ -39,6 +39,7 @@ const App = () => {
   let allPosts = [];
   const [posts, setPosts] = useState([]); // ta zmienna musi być w App.js
   const [allComments, setAllComments] = useState([]);
+  const [lastFiveComments, setLastFiveComments] = useState([]);
 
   const [category, setCategory] = useState("");
   const [currentPostTitle, setCurrentPostTitle] = useState("");
@@ -50,6 +51,7 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
 
+  //const [currentPostSlug, setCurrentPostSlug] = useState("");
   const [postID, setPostID] = useState("");
   const [currentPostComments, setCurrentPostComments] = useState([]);
   const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
@@ -84,6 +86,42 @@ const App = () => {
 
   const clearCategory = () => {
     setCategory("");
+  }
+
+  // Tutaj tworzę funkcję aktualizującą 5 oststnich komentarzy
+  const getLastFiveComments = (allComments) => {
+    let comments = [];
+    let slugs = [];
+    let arrayOfCommentsSortedBySlug = [];
+    
+    allComments.forEach(comment => {
+        slugs.push(comment.currentPostSlug)
+    })
+
+    const uniqueSlugs = [...new Set(slugs)]
+
+    uniqueSlugs.forEach(slug => {
+      let postComments = allComments.filter(comment => {
+        return comment.currentPostSlug === slug
+      });
+      arrayOfCommentsSortedBySlug.push(postComments)
+    })
+
+    for (let i=0; i<arrayOfCommentsSortedBySlug.length; i++) {
+      for (let j=0; j<arrayOfCommentsSortedBySlug[i].length; j++) {
+        arrayOfCommentsSortedBySlug[i][j].scrollID = `${arrayOfCommentsSortedBySlug[i][j].currentPostSlug}-${j + 1}-comment`;
+        comments.push(arrayOfCommentsSortedBySlug[i][j]);
+        for (let k=0; k<arrayOfCommentsSortedBySlug[i][j].commentAnswers.length; k++) {
+          arrayOfCommentsSortedBySlug[i][j].commentAnswers[k].scrollID = `${arrayOfCommentsSortedBySlug[i][j].commentAnswers[k].currentPostSlug}-${k + 1}-answer-of-${j + 1}-comment`;
+          comments.push(arrayOfCommentsSortedBySlug[i][j].commentAnswers[k]);
+        }
+      }
+    }
+
+    let sortedByDateComments = comments.sort(function(a,b){
+      return new Date(b.commentTimeEng) - new Date(a.commentTimeEng);
+    }).slice(0, 5)
+    setLastFiveComments(sortedByDateComments);
   }
 
   const nameChange = (nameValue) => {
@@ -166,6 +204,8 @@ const App = () => {
         name, 
         email, 
         text, 
+        currentPostSlug,
+        commentTimeEng: new Date(),
         commentTime: getCommentTime(), 
         isCommentAnswerOn: false,
         commentAnswers: []
@@ -182,6 +222,7 @@ const App = () => {
             });           
             setCurrentPostComments(currentComments);
             getCurrentPostCommentsQty(currentComments);
+            getLastFiveComments(res.data);
         })
         .catch(err => {
             console.log("Nie udało się pobrać komentarzy")
@@ -202,6 +243,8 @@ const App = () => {
         name, 
         email, 
         text, 
+        currentPostSlug,
+        commentTimeEng: new Date(),
         commentTime: getCommentTime(), 
         isCommentAnswerOn: false,
     }
@@ -211,6 +254,8 @@ const App = () => {
         name: mainComment[0].name, 
         email: mainComment[0].email,
         text: mainComment[0].text,
+        currentPostSlug: mainComment[0].currentPostSlug,
+        commentTimeEng: mainComment[0].commentTimeEng,
         commentTime: mainComment[0].commentTime, 
         isCommentAnswerOn: false,
         commentAnswers: mainComment[0].commentAnswers
@@ -227,6 +272,7 @@ const App = () => {
             });           
             setCurrentPostComments(currentComments);
             getCurrentPostCommentsQty(currentComments);
+            getLastFiveComments(res.data);
         })
         .catch(err => {
             console.log("Nie udało się pobrać komentarzy")
@@ -238,8 +284,13 @@ const App = () => {
   
   }
 
+  //console.log(currentPostSlug)
+
     return(
       <AppContext.Provider value={{
+        lastFiveComments,
+        setLastFiveComments,
+        getLastFiveComments,
         category,
         currentPostTitle,
         currentPostSlug,
@@ -248,6 +299,7 @@ const App = () => {
         clearCategory,
         allPosts,
         posts,
+        allComments,
         setAllComments,
         setPosts,
         nameChange,
@@ -256,6 +308,8 @@ const App = () => {
         setEmail,
         textChange,
         setText,
+        //setCurrentPostSlug,
+        //getCurrentPostSlug,
         getCurrentPostID,
         currentPostComments,
         setCurrentPostComments,
@@ -272,11 +326,21 @@ const App = () => {
           <BrowserRouter>
             <Header />
               <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/o-mnie" component={About} />
-                <Route path="/blog" component={Blog} />
-                <Route path="/kontakt" component={Contact} />
-                <Route path="/:slug" component={BlogPost}v />
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/o-mnie">
+                  <About />
+                </Route>
+                <Route path="/blog">
+                    <Blog />
+                </Route>
+                <Route path="/kontakt">
+                  <Contact />
+                  </Route>
+                <Route path="/:slug">
+                    <BlogPost />
+                </Route>
               </Switch>
           </BrowserRouter>
         </div>
@@ -286,3 +350,50 @@ const App = () => {
 
 export {AppContext};
 export default App;
+
+/*
+                <Route path="/" exact component={Home} />
+                <Route path="/o-mnie" component={About} />
+                <Route path="/blog" component={Blog} />
+                <Route path="/kontakt" component={Contact} />
+                <Route path="/:slug" component={BlogPost}v />
+                */
+
+                /*
+
+  // Tutaj tworzę funkcję aktualizującą 5 oststnich komentarzy
+  const getLastFiveComments = (allComments) => {
+    let comments = [];
+    console.log(allComments)
+    allComments.forEach(comment => {
+      comments.push(comment)
+      comment.commentAnswers.forEach(comment => {
+        comments.push(comment)
+      })
+    });
+
+    let sortedByDateComments = comments.sort(function(a,b){
+      return new Date(b.commentTimeEng) - new Date(a.commentTimeEng);
+    }).slice(0, 5)
+    setLastFiveComments(sortedByDateComments);
+  }
+  */
+
+  /*
+      for (let i=0; i<arrayOfCommentsSortedBySlug.length; i++) {
+      for (let j=0; j<arrayOfCommentsSortedBySlug[i].length; j++) {
+        //console.log(arrayOfCommentsSortedBySlug[i][j]);
+        arrayOfCommentsSortedBySlug[i][j].scrollID = `${arrayOfCommentsSortedBySlug[i][j].currentPostSlug}-${j + 1}-comment`;
+        comments.push(arrayOfCommentsSortedBySlug[i][j]);
+        console.log(arrayOfCommentsSortedBySlug[i][j])
+        for (let k=0; k<arrayOfCommentsSortedBySlug[i][j].commentAnswers.length; k++) {
+          console.log(arrayOfCommentsSortedBySlug[i][j].commentAnswers)
+          for (let l=0; l<arrayOfCommentsSortedBySlug[i][j].commentAnswers.length; l++) {
+            arrayOfCommentsSortedBySlug[i][j].commentAnswers[l].scrollID = `${arrayOfCommentsSortedBySlug[i][j].commentAnswers[l].currentPostSlug}-${l + 1}-answer-of-${j + 1}-comment`
+            //comments.push(arrayOfCommentsSortedBySlug[i][j].commentAnswers[l]);
+            //console.log(arrayOfCommentsSortedBySlug[i][j].commentAnswers[l])
+          }
+        }
+      }
+    }
+    */

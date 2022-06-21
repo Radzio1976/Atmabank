@@ -7,6 +7,7 @@ import BlogContainerLeftColumn from './BlogContainerLeftColumn';
 import BlogContainerRightColumn from './BlogContainerRightColumn';
 import RecentPosts from '../RecentPosts/RecentPosts';
 import PostsCategories from '../PostsCategories/PostsCategories';
+import RecentComments from '../RecentComments';
 
 import { AppContext } from '../../App';
 
@@ -25,6 +26,7 @@ const Blog = () => {
           <BlogContainerRightColumn>
             <RecentPosts />
             <PostsCategories />
+            <RecentComments />
           </BlogContainerRightColumn>
         </div>
       </div>

@@ -17,6 +17,7 @@ import BlogpostCommentDateAndButtonWrapper from './BlogpostCommentDateAndButtonW
 import BlogpostContainerRightColumn from './BlogpostContainerRightColumn';
 import RecentPosts from '../RecentPosts/RecentPosts';
 import PostsCategories from '../PostsCategories/PostsCategories';
+import RecentComments from '../RecentComments';
 
 import "./BlogPost.css";
 
@@ -71,13 +72,13 @@ const BlogPost = () => {
               <BlogpostCommentsQuantityContainer />
               <BlogpostCommentsWrapper>
                 {
-                  AppCtx.currentPostComments.map(comment => {
+                  AppCtx.currentPostComments.map((comment, index) => {
                       return(
-                          <div className="blogpost-comment-wrapper" key={comment.id}>
+                          <div id={`${currentPost.slug}-${index + 1}-comment`} className="blogpost-comment-wrapper" key={comment.id}>
                               <BlogpostCommentNameAndTextWrapper comment={comment} />
                               <BlogpostCommentDateAndButtonWrapper comment={comment} />
                               <BlogpostAddCommentsAnswerFormContainer comment={comment} />
-                              <BlogpostCommentsAnswerContainer comment={comment} />
+                              <BlogpostCommentsAnswerContainer comment={comment} parentCommentIndex={index} currentPostSlug={currentPost.slug} />
                           </div>
                       )
                   })
@@ -89,6 +90,7 @@ const BlogPost = () => {
           <BlogpostContainerRightColumn>
             <RecentPosts />
             <PostsCategories posts={AppCtx.posts} />
+            <RecentComments />
           </BlogpostContainerRightColumn>
         </div>
     </div>

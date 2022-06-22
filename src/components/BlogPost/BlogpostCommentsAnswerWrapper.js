@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import CommentatorAvatar from '../../images/commentatorAvatar.png';
 
+import { AppContext } from '../../App';
+
 const BlogpostCommentsAnswerWrapper = (props) => {
+    const AppCtx = useContext(AppContext);
     const answer = props.answer;
     const index = props.index;
     const parentCommentIndex = props.parentCommentIndex;
@@ -20,7 +24,7 @@ const BlogpostCommentsAnswerWrapper = (props) => {
 
         <div className="blogpost-comment-date-wrapper">
             <div className="blogpost-comment-date">
-                <p>{answer.commentTime}</p>
+                <p>{AppCtx.getCommentTimeInPolish(new Date(answer.commentTime))}</p>
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ const RecentComments = withRouter(props => {
                                 <div className="recent-comments-user-avatar"></div>
                                 <div className="recent-comments-user-name-and-date">
                                     <p>{comment.name}</p>
-                                    <p>{comment.commentTime}</p>
+                                    <p>{AppCtx.getCommentTimeInPolish(new Date(comment.commentTime))}</p>
                                 </div>
                             </div>
                             <div className="recent-comments-user-comment">

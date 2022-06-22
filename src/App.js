@@ -106,7 +106,7 @@ const App = () => {
     }
 
     let sortedByDateComments = comments.sort(function(a,b){
-      return new Date(b.commentTimeEng) - new Date(a.commentTimeEng);
+      return new Date(b.commentTime) - new Date(a.commentTime);
     }).slice(0, 5)
     setLastFiveComments(sortedByDateComments);
   }
@@ -176,18 +176,10 @@ const App = () => {
   }
 
   // This function return current time used to add comments
-  const getCommentTime = () => {
-    const time = new Date();
+  const getCommentTimeInPolish = (time) => {
     const currentTime = `${time.getHours()}:${time.getMinutes()}` /// tutaj dokończyć
-
-    let dateInPolish = new Intl.DateTimeFormat( 'pl', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    } );
-    dateInPolish.format( new Date() );
-
-    return `${dateInPolish.format( new Date() )} o ${currentTime}`;
+    let dateInPolish = new Intl.DateTimeFormat( 'pl-PL', { dateStyle: 'full' }).format(time);    
+    return `${dateInPolish} o ${currentTime}`;
   }
 
   // This function supports send parent comments
@@ -198,8 +190,7 @@ const App = () => {
         email, 
         text, 
         currentPostSlug,
-        commentTimeEng: new Date(),
-        commentTime: getCommentTime(), 
+        commentTime: new Date(), 
         isCommentAnswerOn: false,
         commentAnswers: []
     }
@@ -238,8 +229,7 @@ const App = () => {
         email, 
         text, 
         currentPostSlug,
-        commentTimeEng: new Date(),
-        commentTime: getCommentTime(), 
+        commentTime: new Date(), 
         isCommentAnswerOn: false,
     }
     mainComment[0].commentAnswers.push(commentAnswer);
@@ -249,7 +239,6 @@ const App = () => {
         email: mainComment[0].email,
         text: mainComment[0].text,
         currentPostSlug: mainComment[0].currentPostSlug,
-        commentTimeEng: mainComment[0].commentTimeEng,
         commentTime: mainComment[0].commentTime, 
         isCommentAnswerOn: false,
         commentAnswers: mainComment[0].commentAnswers
@@ -312,6 +301,7 @@ const App = () => {
         showSendAnswerForm,
         mainCommentsFormVisibility,
         showCommentButton,
+        getCommentTimeInPolish,
         sendComment,
         sendCommentsAnswer
         }}>

@@ -6,8 +6,7 @@
       "email": "",
       "text": "1 komentarz 2 posta",
       "currentPostSlug": "drugi-post",
-      "commentTimeEng": "2022-06-20T14:28:33.927Z",
-      "commentTime": "20 czerwca 2022 o 16:28",
+      "commentTime": "2022-06-20T14:28:33.927Z",
       "isCommentAnswerOn": false,
       "commentAnswers": [
         {
@@ -17,8 +16,7 @@
           "email": "rosiak.marzena@tlen.pl",
           "text": "1 odpowiedź 1 komentarza 2 posta",
           "currentPostSlug": "drugi-post",
-          "commentTimeEng": "2022-06-20T14:30:18.725Z",
-          "commentTime": "20 czerwca 2022 o 16:30",
+          "commentTime": "2022-06-20T14:30:18.725Z",
           "isCommentAnswerOn": false
         },
         {
@@ -28,8 +26,7 @@
           "email": "rosiak.marzena@tlen.pl",
           "text": "2 odpowiedź 1 komentarza 2 posta",
           "currentPostSlug": "drugi-post",
-          "commentTimeEng": "2022-06-20T14:40:18.725Z",
-          "commentTime": "20 czerwca 2022 o 16:40",
+          "commentTime": "2022-06-20T14:40:18.725Z",
           "isCommentAnswerOn": false
         }
       ],
@@ -41,8 +38,7 @@
       "email": "r.tomaszewski@gmail.com",
       "text": "1 komentarz 1 posta",
       "currentPostSlug": "pierwszy-post",
-      "commentTimeEng": "2022-06-20T14:30:52.403Z",
-      "commentTime": "20 czerwca 2022 o 16:30",
+      "commentTime": "2022-06-20T14:30:52.403Z",
       "isCommentAnswerOn": false,
       "commentAnswers": [
         {
@@ -52,8 +48,7 @@
           "email": "rosiak.marzena@tlen.pl",
           "text": "1 odpowiedź 1 komentarza 1 posta",
           "currentPostSlug": "pierwszy-post",
-          "commentTimeEng": "2022-06-21T05:37:22.131Z",
-          "commentTime": "21 czerwca 2022 o 7:37",
+          "commentTime": "2022-06-21T05:37:22.131Z",
           "isCommentAnswerOn": false
         },
         {
@@ -63,8 +58,7 @@
           "email": "rosiak.marzena@tlen.pl",
           "text": "2 odpowiedź 1 komentarza 1 posta",
           "currentPostSlug": "pierwszy-post",
-          "commentTimeEng": "2022-06-21T14:30:38.432Z",
-          "commentTime": "21 czerwca 2022 o 16:30",
+          "commentTime": "2022-06-21T14:30:38.432Z",
           "isCommentAnswerOn": false
         }
       ],
@@ -76,8 +70,7 @@
       "email": "rosiak.marzena@tlen.pl",
       "text": "2 komentarz 2 posta",
       "currentPostSlug": "drugi-post",
-      "commentTimeEng": "2022-06-21T05:11:24.119Z",
-      "commentTime": "21 czerwca 2022 o 7:11",
+      "commentTime": "2022-06-21T05:11:24.119Z",
       "isCommentAnswerOn": false,
       "commentAnswers": [],
       "id": 3
@@ -88,8 +81,7 @@
       "email": "r.tomaszewski@gmail.com",
       "text": "1 komentarz 3 posta",
       "currentPostSlug": "trzeci-post",
-      "commentTimeEng": "2022-06-21T10:51:08.148Z",
-      "commentTime": "21 czerwca 2022 o 12:51",
+      "commentTime": "2022-06-21T10:51:08.148Z",
       "isCommentAnswerOn": false,
       "commentAnswers": [
         {
@@ -99,8 +91,7 @@
           "email": "rosiak.marzena@tlen.pl",
           "text": "1 odpowiedź 1 komentarza 3 posta",
           "currentPostSlug": "trzeci-post",
-          "commentTimeEng": "2022-06-21T14:34:30.161Z",
-          "commentTime": "21 czerwca 2022 o 16:34",
+          "commentTime": "2022-06-21T14:34:30.161Z",
           "isCommentAnswerOn": false
         }
       ],
@@ -112,8 +103,7 @@
       "email": "r.tomaszewski@gmail.com",
       "text": "2 komentarz 3 posta",
       "currentPostSlug": "trzeci-post",
-      "commentTimeEng": "2022-06-21T14:35:07.432Z",
-      "commentTime": "21 czerwca 2022 o 16:35",
+      "commentTime": "2022-06-21T14:35:07.432Z",
       "isCommentAnswerOn": false,
       "commentAnswers": [],
       "id": 5
@@ -124,8 +114,7 @@
       "email": "rosiak.marzena@tlen.pl",
       "text": "3 komentarz 3 posta",
       "currentPostSlug": "trzeci-post",
-      "commentTimeEng": "2022-06-21T14:37:01.192Z",
-      "commentTime": "21 czerwca 2022 o 16:37",
+      "commentTime": "2022-06-21T14:37:01.192Z",
       "isCommentAnswerOn": false,
       "commentAnswers": [],
       "id": 6
@@ -136,11 +125,21 @@
       "email": "r.tomaszewski@gmail.com",
       "text": "4 komentarz 3 posta",
       "currentPostSlug": "trzeci-post",
-      "commentTimeEng": "2022-06-21T14:39:46.263Z",
-      "commentTime": "21 czerwca 2022 o 16:39",
+      "commentTime": "2022-06-21T14:39:46.263Z",
       "isCommentAnswerOn": false,
       "commentAnswers": [],
       "id": 7
+    },
+    {
+      "postID": "cl3sd1vfp95hf0eujg4b6s9d2",
+      "name": "Radosław",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "3 komentarz 2 posta",
+      "currentPostSlug": "drugi-post",
+      "commentTime": "2022-06-22T11:03:08.656Z",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 8
     }
   ]
 }

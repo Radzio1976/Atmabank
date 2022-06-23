@@ -27,16 +27,17 @@ const PostsCategories = (props) => {
 
 
     return(
-        <div id="PostsCategories">
-        <div className="posts-categories-container">
-            <div className="posts-categories-title">
+        <div id="PostsCategories" className="right-column-box">
+        <div className="posts-categories-container right-column-box-container">
+            <div className="posts-categories-title right-column-box-title">
                 <h3>Kategorie</h3>
             </div>
             <nav>
                 <ul>
                     {uniqueCategories().map((category, index) => {
                         return(
-                            <li onClick={() => {
+                            <li onClick={
+                                () => {
                                 props.history.push("/blog");
                                 getPostsByCategory(category);
                                 AppCtx.getSecondHeaderMenu(category);

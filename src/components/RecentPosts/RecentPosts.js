@@ -6,9 +6,9 @@ const RecentPosts = withRouter(props => {
     const AppCtx = useContext(AppContext);
 
     return(
-        <div id="RecentPosts">
-            <div className="recent-posts-container">
-                <div className="recent-posts-title">
+        <div id="RecentPosts"  className="right-column-box">
+            <div className="recent-posts-container right-column-box-container">
+                <div className="recent-posts-title right-column-box-title">
                     <h3>Aktualne posty</h3>
                 </div>
                 <nav>

@@ -1,4 +1,5 @@
 import {useQuery, gql} from "@apollo/client";
+import {withRouter} from 'react-router-dom';
 
 import './Header.css';
 
@@ -11,7 +12,7 @@ import './Header.css';
   }
   `
 
-  const Logo = () => {
+  const Logo = withRouter(props => {
     const {data, error, loading} = useQuery(LOGOQUERY);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
@@ -20,10 +21,10 @@ import './Header.css';
     return(
       <div id="Logo">
         <div id="logo-container">
-          <h1>{data.logo.title}</h1>
+          <h1 onClick={() => props.history.push("/")}>{data.logo.title}</h1>
         </div>
       </div>
     )
-  }
+  })
 
-  export default Logo;
+  export default withRouter(Logo);

@@ -7,6 +7,7 @@ import { AppContext } from '../../App';
 
 const SecondHeader = withRouter(props => {
     const AppCtx = useContext(AppContext);
+    console.log(typeof AppCtx.category)
 
     const getPostsByCategory = (categoryName) => {
         let postsByCategory = AppCtx.allPosts.filter(post => {
@@ -20,16 +21,32 @@ const SecondHeader = withRouter(props => {
             <div className="second-header-container">
                 <nav>
                     <ul>
-                        <li onClick={() => props.history.push("/")}>Home</li>
-                        <li onClick={() => {
+                        <li onClick={
+                            () => props.history.push("/")
+                            }>Home</li>
+                        <li style={{
+                            paddingLeft: "25px", 
+                            marginLeft: "25px", 
+                            borderLeft: "1px solid white"}}
+                            onClick={() => {
                             props.history.push("/blog");
                             AppCtx.clearCategory()
                             }}>Blog</li>
-                        <li onClick={() => {
+                        <li style={{
+                            display: AppCtx.category === "" ? "none" : "block", 
+                            paddingLeft: "25px", 
+                            marginLeft: "25px", 
+                            borderLeft: "1px solid white"}} 
+                            onClick={() => {
                             props.history.push("/blog")
                             getPostsByCategory(AppCtx.category)
                             }}>{AppCtx.category}</li>
-                        <li>{AppCtx.currentPostTitle}</li>
+                        <li style={{
+                            display: AppCtx.currentPostTitle === undefined ? "none" : "block", 
+                            paddingLeft: "25px", 
+                            marginLeft: "25px", 
+                            borderLeft: "1px solid white"
+                            }}>{AppCtx.currentPostTitle}</li>
                     </ul>
                 </nav>
             </div>

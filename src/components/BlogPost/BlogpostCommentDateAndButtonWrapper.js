@@ -5,7 +5,6 @@ import { AppContext } from "../../App";
 const BlogpostCommentDateAndButtonWrapper = (props) => {
     const AppCtx = useContext(AppContext);
     const comment = props.comment;
-    //console.log(AppCtx.getCommentTimeInPolish(new Date(comment.commentTime)));
 
     return(
         <div className="blogpost-comment-date-and-button-wrapper">

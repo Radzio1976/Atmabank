@@ -2,14 +2,15 @@
     font-family: 'Courgette', cursive;
     font-family: 'Roboto', sans-serif;
     background-color: #e0e0df;
-    padding-top: 70px;
     letter-spacing: 2px;
 }
 
 .blogpost-container {
     display: flex;
+    justify-content: space-between;
     width: 1200px;
     margin: 0 auto;
+    padding-top: 100px;
 }
 
 .blogpost-container-left-column {

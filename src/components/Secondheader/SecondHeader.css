@@ -1,14 +1,30 @@
 #SecondHeader {
     display: flex;
     justify-content: center;
+    font-family: 'Courgette', cursive;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    font-size: 24px;
+    text-transform: uppercase;
+    background-image: url('../../images/second_header.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    background-size: 100% 100%;
 }
 
 #SecondHeader ul {
-    width: 500px;
     display: flex;
     justify-content: space-between;
 }
 
 #SecondHeader li {
     list-style-type: none;
+    cursor: pointer;
+}
+
+#SecondHeader li:hover {
+    color: #ecdd62;
 }

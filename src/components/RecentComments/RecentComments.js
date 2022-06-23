@@ -34,9 +34,9 @@ const RecentComments = withRouter(props => {
 };
 
   return(
-    <div id="RecentComments">
-        <div className="recent-comments-container">
-        <div className="recent-comments-title">
+    <div id="RecentComments"  className="right-column-box">
+        <div className="recent-comments-container right-column-box-container">
+        <div className="recent-comments-title right-column-box-title">
             <h3>Aktualne posty</h3>
         </div>
         <nav>
@@ -53,7 +53,7 @@ const RecentComments = withRouter(props => {
                                 </div>
                             </div>
                             <div className="recent-comments-user-comment">
-                                <p>{comment.text}</p>
+                                <p>{comment.text.substring(0, 80)} ...</p>
                             </div>
                         </li>
                         )

@@ -162,6 +162,39 @@
         }
       ],
       "id": 9
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "2 komentarz 4 posta",
+      "currentPostSlug": "czwarty-post",
+      "commentTime": "2022-06-24T10:40:01.590Z",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 10
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Marzena Rosiak",
+      "email": "rosiak.marzena@tlen.pl",
+      "text": "3 komentarz 4 posta",
+      "currentPostSlug": "czwarty-post",
+      "commentTime": "2022-06-24T10:40:55.966Z",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 11
+    },
+    {
+      "postID": "cl3srs7qxnot20cuinl2f0qp1",
+      "name": "Radosław Tomaszewski",
+      "email": "r.tomaszewski@gmail.com",
+      "text": "4 komentarz 4 posta",
+      "currentPostSlug": "czwarty-post",
+      "commentTime": "2022-06-24T14:17:21.516Z",
+      "isCommentAnswerOn": false,
+      "commentAnswers": [],
+      "id": 12
     }
   ]
 }

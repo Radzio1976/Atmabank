@@ -14,11 +14,12 @@ import { AppContext } from '../../App';
 
 const Blog = () => {
   const AppCtx = useContext(AppContext);
+  console.log(AppCtx)
 
   useEffect(() => {
-    Axios.get("http://localhost:3000/comments")
+    Axios.post("/getComments")
     .then(res => {
-      AppCtx.getLastFiveComments(res.data)  
+      AppCtx.getLastFiveComments(res.data.comments)  
     })
     .catch(err => {
         console.log("Nie udało się pobrać komentarzy")

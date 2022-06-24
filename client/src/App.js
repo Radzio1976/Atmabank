@@ -37,6 +37,7 @@ const AppContext = createContext();
 
 const App = () => {
   let allPosts = [];
+  const API_URL = "http://localhost:3002"
 
   const [posts, setPosts] = useState([]); 
   const [lastFiveComments, setLastFiveComments] = useState([]);
@@ -195,22 +196,18 @@ const App = () => {
         commentAnswers: []
     }
     
-    Axios.post("http://localhost:3000/comments", comment)
+    Axios.post("/addComment", comment)
     .then(res => {
-        console.log("Wysłany komentarz", res.data);
-        Axios.get("http://localhost:3000/comments")
-        .then(res => {    
-            const currentComments = res.data.filter(comment => {
-                return comment.postID === postID
-            });           
-            setCurrentPostComments(currentComments);
-            getCurrentPostCommentsQty(currentComments);
-            getLastFiveComments(res.data);
-            resetForm();
-        })
-        .catch(err => {
-            console.log("Nie udało się pobrać komentarzy")
-        })
+        console.log("Wysłany komentarz", res.data.comments);
+
+        const currentComments = res.data.comments.filter(comment => {
+          return comment.postID === postID
+      });           
+      setCurrentPostComments(currentComments);
+      getCurrentPostCommentsQty(currentComments);
+      getLastFiveComments(res.data.comments);
+      resetForm();
+      
     })
     .catch(err => {
         console.log("Nie udało się wysłać komentarza");
@@ -244,10 +241,10 @@ const App = () => {
         commentAnswers: mainComment[0].commentAnswers
     }
           
-    Axios.put(`http://localhost:3000/comments/${parentCommentID}`, commentsData)
+    Axios.put(`${API_URL}/comments/${parentCommentID}`, commentsData)
     .then(res => {
         console.log("Wysłana odpowiedź do komentarza :", res.data)
-        Axios.get("http://localhost:3000/comments")
+        Axios.get(`${API_URL}/comments`)
         .then(res => {    
             const currentComments = res.data.filter(comment => {
                 return comment.postID === postID
@@ -269,6 +266,7 @@ const App = () => {
 
     return(
       <AppContext.Provider value={{
+        API_URL,
         lastFiveComments,
         setLastFiveComments,
         getLastFiveComments,
@@ -313,7 +311,7 @@ const App = () => {
                 <Route path="/o-mnie" component={About} />
                 <Route path="/blog" component={Blog} />
                 <Route path="/kontakt" component={Contact} />
-                <Route path="/:slug" component={BlogPost}v />
+                <Route path="/:slug" component={BlogPost} />
               </Switch>
           </BrowserRouter>
         </div>
@@ -322,4 +320,4 @@ const App = () => {
 }
 
 export {AppContext};
-export default App;
+export default App;             

@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.6.5",
     "@testing-library/jest-dom": "^5.16.4",
@@ -22,6 +23,7 @@
     "react-location": "^3.3.4",
     "react-router": "^6.3.0",
     "react-router-dom": "^5.2.0",
+    "react-router-link": "^2.0.2",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.7",
     "use-dynamic-refs": "^1.0.0",

@@ -12,16 +12,16 @@ const BlogpostCommentsContainer = ({children}) => {
     const postID = BlogPostCtx.postID;
 
     useEffect(() => {
-        Axios.get("http://localhost:3000/comments")
+        Axios.post("/getComments")
         .then(res => {
-            const currentComments = res.data.filter(comment => {
+            const currentComments = res.data.comments.filter(comment => {
                 return comment.postID === postID
             }); 
             AppCtx.getSecondHeaderMenu(BlogPostCtx.currentPost.categories[0].name, BlogPostCtx.currentPost.title, BlogPostCtx.currentPost.slug)
             AppCtx.getCurrentPostID(postID);    
             AppCtx.getCurrentPostComments(currentComments);  
             AppCtx.getCurrentPostCommentsQty(currentComments);     
-            AppCtx.getLastFiveComments(res.data);   
+            AppCtx.getLastFiveComments(res.data.comments);   
         })
         .catch(err => {
             console.log("Nie udało się pobrać komentarzy")

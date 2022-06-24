@@ -23,7 +23,7 @@ import "./BlogPost.css";
 
 const BlogPostContext = createContext();
 
-const GET_CURRENR_POST = gql`
+const GET_CURRENT_POST = gql`
   query BlogPost($slug: String!) {
     blogPosts(where: {slug: $slug}) {
       id
@@ -50,7 +50,7 @@ const BlogPost = () => {
   const AppCtx = useContext(AppContext);
   let { slug } = useParams();
 
-  const { loading, error, data } = useQuery(GET_CURRENR_POST, {
+  const { loading, error, data } = useQuery(GET_CURRENT_POST, {
     variables: { slug },
   });
   if (loading) return null;
@@ -74,7 +74,7 @@ const BlogPost = () => {
                 {
                   AppCtx.currentPostComments.map((comment, index) => {
                       return(
-                          <div id={`${currentPost.slug}-${index + 1}-comment`} className="blogpost-comment-wrapper" key={comment.id}>
+                          <div id={`${currentPost.slug}-${index + 1}-comment`} className="blogpost-comment-wrapper" key={comment._id}>
                               <BlogpostCommentNameAndTextWrapper comment={comment} />
                               <BlogpostCommentDateAndButtonWrapper comment={comment} />
                               <BlogpostAddCommentsAnswerFormContainer comment={comment} />

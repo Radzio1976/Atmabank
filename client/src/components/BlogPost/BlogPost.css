@@ -1,6 +1,4 @@
 #BlogPost {
-    font-family: 'Courgette', cursive;
-    font-family: 'Roboto', sans-serif;
     background-color: #e0e0df;
     letter-spacing: 2px;
 }
@@ -33,6 +31,7 @@
 .blogpost-post-text {
     font-weight: 600;
     padding: 20px 0 20px 0;
+    line-height: 24px;
 }
 
 .blogpost-comments-quantity-container h3 {

@@ -20,7 +20,8 @@ const BlogpostCommentsContainer = ({children}) => {
             AppCtx.getSecondHeaderMenu(BlogPostCtx.currentPost.categories[0].name, BlogPostCtx.currentPost.title, BlogPostCtx.currentPost.slug)
             AppCtx.getCurrentPostID(postID);    
             AppCtx.getCurrentPostComments(currentComments);  
-            AppCtx.getCurrentPostCommentsQty(currentComments);        
+            AppCtx.getCurrentPostCommentsQty(currentComments);     
+            AppCtx.getLastFiveComments(res.data);   
         })
         .catch(err => {
             console.log("Nie udało się pobrać komentarzy")

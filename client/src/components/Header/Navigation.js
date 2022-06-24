@@ -37,6 +37,7 @@ const Navigation = withRouter(props => {
             <li onClick={() => {
               props.history.push(`/${navigationData.blogSlug}`);
               AppCtx.setPosts(AppCtx.allPosts);
+              AppCtx.clearCategory();
               }}>{navigationData.blogTitle}</li>
             <li onClick={() => props.history.push(`/${navigationData.contactSlug}`)}>{navigationData.contactTitle}</li>
           </ul>

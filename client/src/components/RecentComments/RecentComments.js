@@ -1,22 +1,10 @@
-import React, { useEffect } from 'react';
 import { useContext } from "react";
-import Axios from 'axios';
 import { scroller } from 'react-scroll'
 import {withRouter, useHistory} from 'react-router-dom';
 import { AppContext } from "../../App";
 
 const RecentComments = withRouter(props => {
   const AppCtx = useContext(AppContext);
-
-  useEffect(() => {
-    Axios.get("http://localhost:3000/comments")
-    .then(res => {
-      AppCtx.getLastFiveComments(res.data)  
-    })
-    .catch(err => {
-        console.log("Nie udało się pobrać komentarzy")
-    });
-  }, [AppCtx.setAllComments])
 
   const history = useHistory();
   const scrollTarget = (target) => scroller.scrollTo(target, {smooth: true, duration: 700});

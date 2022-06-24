@@ -72,7 +72,7 @@ const App = () => {
   }
 
   const clearCategory = () => {
-    setCategory("");
+    setCategory();
   }
 
 

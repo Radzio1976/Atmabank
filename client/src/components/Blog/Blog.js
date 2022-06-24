@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import Axios from 'axios';
 
 import './Blog.css';
 
@@ -15,6 +16,13 @@ const Blog = () => {
   const AppCtx = useContext(AppContext);
 
   useEffect(() => {
+    Axios.get("http://localhost:3000/comments")
+    .then(res => {
+      AppCtx.getLastFiveComments(res.data)  
+    })
+    .catch(err => {
+        console.log("Nie udało się pobrać komentarzy")
+    });
     AppCtx.getSecondHeaderMenu(AppCtx.category)
   }, [])
 

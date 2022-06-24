@@ -2,8 +2,6 @@
 
 
 #Blog {
-    font-family: 'Courgette', cursive;
-    font-family: 'Roboto', sans-serif;
     background-color: #e0e0df;
 }
 
@@ -28,7 +26,7 @@
 }
 
 .blog-post-title h1 {
-    font-size: 75px;
+    font-size: 56px;
     font-weight: 100;
 }
 
@@ -56,8 +54,9 @@
     color: #e0e0df;
     text-transform: uppercase;
     width: 197px;
-    padding: 17px 0;
-    font-size: 22px;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: 100;
     text-align: center;
     cursor: pointer;
 }

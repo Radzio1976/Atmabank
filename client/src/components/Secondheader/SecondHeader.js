@@ -7,7 +7,6 @@ import { AppContext } from '../../App';
 
 const SecondHeader = withRouter(props => {
     const AppCtx = useContext(AppContext);
-    console.log(typeof AppCtx.category)
 
     const getPostsByCategory = (categoryName) => {
         let postsByCategory = AppCtx.allPosts.filter(post => {
@@ -33,7 +32,7 @@ const SecondHeader = withRouter(props => {
                             AppCtx.clearCategory()
                             }}>Blog</li>
                         <li style={{
-                            display: AppCtx.category === "" ? "none" : "block", 
+                            display: AppCtx.category === undefined ? "none" : "block", 
                             paddingLeft: "25px", 
                             marginLeft: "25px", 
                             borderLeft: "1px solid white"}} 

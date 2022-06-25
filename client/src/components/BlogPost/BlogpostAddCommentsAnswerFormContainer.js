@@ -14,7 +14,7 @@ const BlogpostAddCommentsAnswerFormContainer = (props) => {
         <div className="blogpost-add-comments-answer-form">
             <h4>Odpowiedz użytkownikowi {comment.name}</h4>
         </div>
-            <AddCommentForm sendComment={() => AppCtx.sendCommentsAnswer(comment.id)} />
+            <AddCommentForm sendComment={() => AppCtx.sendCommentsAnswer(comment._id)} />
         </div> : ""}
     </>
     )

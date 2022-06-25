@@ -216,52 +216,37 @@ const App = () => {
 
     // This function supports send parent comments answers
   const sendCommentsAnswer = (parentCommentID) => {
+    console.log(parentCommentID)
     let mainComment = currentPostComments.filter(comment => {
-        return comment.id === parentCommentID;
-    })
-    let commentAnswer = {
-        parentCommentID,
-        postID, 
-        name, 
-        email, 
-        text, 
-        currentPostSlug,
-        commentTime: new Date(), 
-        isCommentAnswerOn: false,
-    }
-    mainComment[0].commentAnswers.push(commentAnswer);
-        let commentsData = {
-        postID: mainComment[0].postID,
-        name: mainComment[0].name, 
-        email: mainComment[0].email,
-        text: mainComment[0].text,
-        currentPostSlug: mainComment[0].currentPostSlug,
-        commentTime: mainComment[0].commentTime, 
-        isCommentAnswerOn: false,
-        commentAnswers: mainComment[0].commentAnswers
-    }
-          
-    Axios.put(`${API_URL}/comments/${parentCommentID}`, commentsData)
+      return comment._id === parentCommentID;
+  })
+  console.log(mainComment[0]._id)
+  let commentAnswer = {
+      parentCommentID,
+      postID, 
+      name, 
+      email, 
+      text, 
+      currentPostSlug,
+      commentTime: new Date(), 
+      isCommentAnswerOn: false,
+  }
+
+    Axios.post("/addCommentsAnswer", commentAnswer)
     .then(res => {
-        console.log("Wysłana odpowiedź do komentarza :", res.data)
-        Axios.get(`${API_URL}/comments`)
-        .then(res => {    
-            const currentComments = res.data.filter(comment => {
-                return comment.postID === postID
-            });           
-            setCurrentPostComments(currentComments);
-            getCurrentPostCommentsQty(currentComments);
-            getLastFiveComments(res.data);
-            resetForm();
-        })
-        .catch(err => {
-            console.log("Nie udało się pobrać komentarzy")
-        })        
+        console.log("Wysłana odpowiedź do komentarza :", res.data.comments);
+        const currentComments = res.data.comments.filter(comment => {
+          return comment.postID === postID
+      });           
+      setCurrentPostComments(currentComments);
+      getCurrentPostCommentsQty(currentComments);
+      getLastFiveComments(res.data.comments);
+      resetForm();   
     })
     .catch(err => {
         console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
     })
-  
+
   }
 
     return(

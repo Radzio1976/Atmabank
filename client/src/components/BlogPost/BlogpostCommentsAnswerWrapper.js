@@ -15,7 +15,7 @@ const BlogpostCommentsAnswerWrapper = (props) => {
         <div className="blogpost-comment-name-and-text-wrapper">
             <div className="blogpost-comment-name">
                 <img src={CommentatorAvatar}></img>
-                <p>{answer.name} {answer.parentCommentID}</p>
+                <p>{answer.name}</p>
             </div>
             <div className="blogpost-comment-text">
                 <p>{answer.text}</p>

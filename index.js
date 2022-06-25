@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const path = require("path")
+const path = require("path");
+const  ObjectID = require('mongodb').ObjectId;
 require("dotenv/config");
 
 
@@ -52,6 +53,27 @@ mongoClient.connect(url, {}, (error, client) => {
       })
   });
 
+  app.post("/addCommentsAnswer", (req, res) => {
+    const commentAnswer = req.body;
+    
+    db.collection("comments").updateOne({_id: new ObjectID(commentAnswer.parentCommentID)}, { $addToSet: { commentAnswers: commentAnswer }}, (error, result) => {
+      if (error) {
+        console.log("Nie udało się dodać odpowiedzi na komentarz", error)
+      } else {
+        db.collection("comments").find({}).toArray((error, results) => {
+          if (error) {s
+            console.log(error)
+          } else {
+            res.send({ info: "Odpowiedź na komentarz dodano pomyślnie", comments: results });
+            console.log(result.ops)
+          }
+        });
+
+      }
+    })
+    
+  })
+
   app.post("/getComments", (req, res) => {
     db.collection("comments").find({}).toArray((error, results) => {
       if (error) {
@@ -61,6 +83,18 @@ mongoClient.connect(url, {}, (error, client) => {
       }
     })
   })
+
+  
+  db.collection("comments").find({}).toArray((error, results) => {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log({ info: "Wszystkie komentarze", comments: results});
+    }
+  })
+  
+    db.collection("comments").remove();
+
 
 
 
@@ -76,10 +110,14 @@ mongoClient.connect(url, {}, (error, client) => {
 
 
   
-
-  //app.use((req, res, next) => {
-  //  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
-  //});
+  /*
+  app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  */
 
 const PORT = process.env.PORT || 3001;
 
@@ -87,3 +125,10 @@ app.listen(PORT,()=>{
     console.log(`server listening at port ${PORT}`);
     
 })
+
+/*
+db.alphabet.updateOne(
+   { _id: 1 },
+   { $addToSet: { letters: [ "c", "d" ] } }
+)
+*/

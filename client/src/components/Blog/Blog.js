@@ -14,7 +14,6 @@ import { AppContext } from '../../App';
 
 const Blog = () => {
   const AppCtx = useContext(AppContext);
-  console.log(AppCtx)
 
   useEffect(() => {
     Axios.post("/getComments")

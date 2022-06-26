@@ -15,7 +15,7 @@ const RecentPosts = withRouter(props => {
                     <ul>
                         {AppCtx.allPosts.slice(0).reverse().map(post => {
                             return(
-                                <li onClick={() => props.history.push(`/${post.slug}`)} key={post.id}>{post.title}</li>
+                                <li onClick={() => props.history.push(`/blog/${post.slug}`)} key={post.id}>{post.title}</li>
                             )
                         })}
                     </ul>

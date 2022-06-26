@@ -21,7 +21,7 @@ const BlogContainerLeftColumn = withRouter(props => {
                   <p>{value.text.text.substring(0, 300)} ...</p>
                 </div>
                 <div className="blog-post-read-more">
-                  <p onClick={() => props.history.push(`/${value.slug}`)}>Read more</p>
+                  <p onClick={() => props.history.push(`/blog/${value.slug}`)}>Read more</p>
                 </div>
               </div>
               )

@@ -73,9 +73,9 @@ const App = () => {
   }
 
   const clearCategory = () => {
-    setCategory();
+    setPosts(allPosts);
+    //setCategory();
   }
-
 
   const getLastFiveComments = (allComments) => {
     let comments = [];
@@ -294,9 +294,9 @@ const App = () => {
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/o-mnie" component={About} />
-                <Route path="/blog" component={Blog} />
+                <Route path="/blog" exact component={Blog} />
                 <Route path="/kontakt" component={Contact} />
-                <Route path="/:slug" component={BlogPost} />
+                <Route path="/blog/:slug" component={BlogPost} />
               </Switch>
           </BrowserRouter>
         </div>

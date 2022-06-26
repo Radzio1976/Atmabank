@@ -10,8 +10,8 @@ const RecentComments = withRouter(props => {
   const scrollTarget = (target) => scroller.scrollTo(target, {smooth: true, duration: 700});
 
   const scrollToComment = async (target, slug) => {
-    if (history.location.pathname !==`/${slug}`) {
-      await history.push(`/${slug}`);
+    if (history.location.pathname !==`/blog/${slug}`) {
+      await history.push(`/blog/${slug}`);
   }
     const interval = setInterval(() => {
         scrollTarget(target);

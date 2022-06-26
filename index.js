@@ -54,7 +54,8 @@ mongoClient.connect(url, {}, (error, client) => {
   });
 
   app.post("/addCommentsAnswer", (req, res) => {
-    const commentAnswer = req.body;
+    let commentAnswer = req.body;
+    commentAnswer._id = new ObjectID();
     
     db.collection("comments").updateOne({_id: new ObjectID(commentAnswer.parentCommentID)}, { $addToSet: { commentAnswers: commentAnswer }}, (error, result) => {
       if (error) {
@@ -89,11 +90,11 @@ mongoClient.connect(url, {}, (error, client) => {
     if (error) {
       console.log(error)
     } else {
-      console.log({ info: "Wszystkie komentarze", comments: results});
+      console.log({ info: "Wszystkie komentarze", comments: results[0].commentAnswers});
     }
   })
   
-    db.collection("comments").remove();
+    //db.collection("comments").remove();
 
 
 
@@ -118,6 +119,7 @@ mongoClient.connect(url, {}, (error, client) => {
     next();
   });
   */
+  
 
 const PORT = process.env.PORT || 3001;
 

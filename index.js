@@ -57,7 +57,7 @@ main();
 })
 
 
-app.post("/addComment", (req, res) => {
+app.get("/addComment", (req, res) => {
   async function main() {
     try {
       // Connect to the MongoDB cluster

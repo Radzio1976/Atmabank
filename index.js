@@ -15,12 +15,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-if (process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
   })
-}
+
 
 const client = new MongoClient(process.env.MONGODB_URI);
 

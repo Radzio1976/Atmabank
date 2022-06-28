@@ -35,7 +35,7 @@ const client = new MongoClient(uri);
 
 
 app.post("/getComments", (req, res) => {
-  res.send({mongodb_uri: uri})
+  //res.send({mongodb_uri: uri})
   async function main() {
   try {
       // Connect to the MongoDB cluster
@@ -138,9 +138,9 @@ app.post("/addCommentsAnswer", (req, res) => {
   });
   */
 
-  app.use("/", (req, res) => {
-    console.log("Welcome to Atma bank");
-  })
+  //app.use("/", (req, res) => {
+  //  console.log("Welcome to Atma bank");
+  //})
   
 app.listen(PORT,()=>{
     console.log(`server listening at port ${PORT}`);

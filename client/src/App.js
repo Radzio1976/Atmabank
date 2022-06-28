@@ -74,7 +74,7 @@ const App = () => {
 
   const clearCategory = () => {
     setPosts(allPosts);
-    //setCategory();
+    setCategory();
   }
 
   const getLastFiveComments = (allComments) => {

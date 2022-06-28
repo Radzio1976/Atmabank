@@ -14,6 +14,8 @@ const BlogpostCommentsContainer = ({children}) => {
     useEffect(() => {
         Axios.post("/getComments")
         .then(res => {
+            console.log("Wszystkie komentarze:");
+            console.log(res.data.comments);
             const currentComments = res.data.comments.filter(comment => {
                 return comment.postID === postID
             }); 

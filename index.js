@@ -4,111 +4,127 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require("path");
 const  ObjectID = require('mongodb').ObjectId;
+const {MongoClient} = require('mongodb');
 require("dotenv/config");
 
 
 const app=express();
 
-app.use(express.static(path.join(__dirname, './client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-const mongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://127.0.0.1:27017';
-const dbname = 'atma-bank';
+app.get("/api/", (req, res) => {
+  res.send("test");
+})
 
-mongoClient.connect(url, {}, (error, client) => {
-  if (error) {
-    console.log("Nie można połączyć się z bazą danych")
-  } else {
-    const db = client.db(dbname);
+app.use(express.static(path.join(__dirname, './client/build')));
 
-    app.post("/addComment", (req, res) => {
-      const comment = req.body;
-
-      db.collection("comments").insertOne({
-        postID: comment.postID,
-        name: comment.name,
-        email: comment.email,
-        text: comment.text,
-        currentPostSlug: comment.currentPostSlug,
-        commentTime: comment.commentTime,
-        isCommentAnswerOn: comment.isCommentAnswerOn,
-        commentAnswers: comment.commentAnswers
-      }, (error, result) => {
-        if (error) {
-          console.log("Nie udało się dodać komentarza", error)
-        } else {
-          db.collection("comments").find({}).toArray((error, results) => {
-            if (error) {s
-              console.log(error)
-            } else {
-              res.send({ info: "Komentarz dodano pomyślnie", comments: results });
-              console.log(result.ops)
-            }
-          });
-
-        }
-      })
-  });
-
-  app.post("/addCommentsAnswer", (req, res) => {
-    let commentAnswer = req.body;
-    commentAnswer._id = new ObjectID();
-    
-    db.collection("comments").updateOne({_id: new ObjectID(commentAnswer.parentCommentID)}, { $addToSet: { commentAnswers: commentAnswer }}, (error, result) => {
-      if (error) {
-        console.log("Nie udało się dodać odpowiedzi na komentarz", error)
-      } else {
-        db.collection("comments").find({}).toArray((error, results) => {
-          if (error) {s
-            console.log(error)
-          } else {
-            res.send({ info: "Odpowiedź na komentarz dodano pomyślnie", comments: results });
-            console.log(result.ops)
-          }
-        });
-
-      }
-    })
-    
-  })
-
-  app.post("/getComments", (req, res) => {
-    db.collection("comments").find({}).toArray((error, results) => {
-      if (error) {
-        console.log(error)
-      } else {
-        res.send({ info: "Wszystkie komentarze", comments: results });
-      }
-    })
-  })
-
-  
-  db.collection("comments").find({}).toArray((error, results) => {
-    if (error) {
-      console.log(error)
-    } else {
-      console.log({ info: "Wszystkie komentarze", comments: results[0].commentAnswers});
+app.get("*", function (_, res) {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"),
+  function (err) {
+    if (err) {
+      res.status(500), send(err);
     }
-  })
-  
-    //db.collection("comments").remove();
+  }
+  )
+})
+
+const client = new MongoClient(process.env.MONGODB_URI);
 
 
+app.post("/getComments", (req, res) => {
+  async function main() {
+  try {
+      // Connect to the MongoDB cluster
+    await client.connect();
+    await getComments(client);
+  } catch (error) {
+    console.log("Nie udało się uzyskać połączenia z bazą danych", error);
+  }
+}
+main();
 
-
+  async function getComments(client) {
+    const result = await client.db("atma_bank").collection("comments").find({}).toArray();
+    if (result) {
+      res.send({ info: "Wszystkie komentarze", comments: result });
+    } else {
+        res.send(error);
+    }
   }
 })
 
 
+app.post("/addComment", (req, res) => {
+  async function main() {
+    try {
+      // Connect to the MongoDB cluster
+      await client.connect();
+      await addComment(client, req, res);
+    }  catch (error) {
+      console.log("Nie udało się uzyskać połączenia z bazą danych", error);
+    }
+  }
+  main();
+
+  async function addComment(client, req, res) {
+    const comment = req.body;
+    await client.db("atma_bank").collection("comments").insertOne({
+      postID: comment.postID,
+      name: comment.name,
+      email: comment.email,
+      text: comment.text,
+      currentPostSlug: comment.currentPostSlug,
+      commentTime: comment.commentTime,
+      isCommentAnswerOn: comment.isCommentAnswerOn,
+      commentAnswers: comment.commentAnswers
+    }, (error) => {
+      if (error) {
+        console.log("Nie udało się dodać komentarza", error)
+      } else {
+        client.db("atma_bank").collection("comments").find({}).toArray((error, result) => {
+          if (error) {
+            res.send({error})
+          } else {
+            res.send({ info: "Wszystkie komentarze", comments: result })
+          }
+        });
+    }
+    })
+  }
+})
 
 
+app.post("/addCommentsAnswer", (req, res) => {
+  async function main() {
+    try {
+      await client.connect();
+      await addCommentsAnswer(client, req, res);
+    }  catch (error) {
+      console.log("Nie udało się uzyskać połączenia z bazą danych", error);
+    }
+  }
+  main();
 
-
-
-
+  async function addCommentsAnswer(client, req, res) {
+    let commentAnswer = req.body;
+    commentAnswer._id = new ObjectID();  
+    await client.db("atma_bank").collection("comments").updateOne({_id: new ObjectID(commentAnswer.parentCommentID)}, { $addToSet: { commentAnswers: commentAnswer }}, (error, result) => {
+      if (error) {
+        console.log("Nie udało się dodać odpowiedzi na komentarz")
+      } else {
+        client.db("atma_bank").collection("comments").find({}).toArray((error, result) => {
+          if (error) {
+            res.send({error})
+          } else {
+            res.send({ info: "Wszystkie komentarze", comments: result })
+          }
+        });
+      }
+    })
+    }
+  });
 
   
   /*
@@ -119,6 +135,7 @@ mongoClient.connect(url, {}, (error, client) => {
     next();
   });
   */
+  
   
 
 const PORT = process.env.PORT || 3001;

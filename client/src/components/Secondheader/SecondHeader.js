@@ -29,6 +29,7 @@ const SecondHeader = withRouter(props => {
                             borderLeft: "1px solid white"}}
                             onClick={() => {
                             props.history.push("/blog");
+                            //AppCtx.setPosts(AppCtx.allPosts);
                             AppCtx.clearCategory()
                             }}>Blog</li>
                         <li style={{

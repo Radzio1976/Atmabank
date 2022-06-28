@@ -26,6 +26,7 @@ const client = new MongoClient(process.env.MONGODB_URI);
 
 
 app.post("/getComments", (req, res) => {
+  res.send({mongodb_uri: process.env.MONGODB_URI})
   async function main() {
   try {
       // Connect to the MongoDB cluster

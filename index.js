@@ -23,8 +23,8 @@ if (process.env.NODE_ENV === "production") {
   //  next();
   //});
   app.use(express.static("client/build"));
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //res.header("Access-Control-Allow-Origin", "*");
+  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
   })

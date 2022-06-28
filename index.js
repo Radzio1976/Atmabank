@@ -6,6 +6,7 @@ const path = require("path");
 const  ObjectID = require('mongodb').ObjectId;
 const {MongoClient} = require('mongodb');
 require("dotenv/config");
+const PORT = process.env.PORT || 3001;
 
 
 const app=express();
@@ -14,21 +15,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-app.get("/api/", (req, res) => {
-  res.send("test");
-})
-
-app.use(express.static(path.join(__dirname, './client/build')));
-
-app.get("*", function (_, res) {
-  res.sendFile(path.join(__dirname, "./client/build", "index.html"),
-  function (err) {
-    if (err) {
-      res.status(500), send(err);
-    }
-  }
-  )
-})
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("build"));
+  app.get("*", (req, res) => {
+    req.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
+  })
+}
 
 const client = new MongoClient(process.env.MONGODB_URI);
 
@@ -136,18 +128,7 @@ app.post("/addCommentsAnswer", (req, res) => {
   });
   */
   
-  
-
-const PORT = process.env.PORT || 3001;
-
 app.listen(PORT,()=>{
     console.log(`server listening at port ${PORT}`);
     
 })
-
-/*
-db.alphabet.updateOne(
-   { _id: 1 },
-   { $addToSet: { letters: [ "c", "d" ] } }
-)
-*/

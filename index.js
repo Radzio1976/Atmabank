@@ -15,10 +15,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-  app.use(express.static("build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
-  })
+app.get("/api", )
+
+app.use(express.static(path.join(__dirname, './client/build')));
+
+app.get('/', ()=>{
+  res.send('welcome to Atma Bank');
+})
 
 
 const client = new MongoClient(process.env.MONGODB_URI);

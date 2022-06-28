@@ -7,6 +7,7 @@ const  ObjectID = require('mongodb').ObjectId;
 const {MongoClient} = require('mongodb');
 require("dotenv/config");
 const PORT = process.env.PORT || 3001;
+const uri = process.env.MONGODB_URI;
 
 
 const app=express();
@@ -30,11 +31,11 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-const client = new MongoClient(process.env.MONGODB_URI);
+const client = new MongoClient(uri);
 
 
 app.post("/getComments", (req, res) => {
-  res.send({mongodb_uri: process.env.MONGODB_URI})
+  res.send({mongodb_uri: uri})
   async function main() {
   try {
       // Connect to the MongoDB cluster

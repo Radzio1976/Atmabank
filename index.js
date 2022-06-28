@@ -6,9 +6,7 @@ const path = require("path");
 const  ObjectID = require('mongodb').ObjectId;
 const {MongoClient} = require('mongodb');
 require("dotenv/config");
-const PORT = process.env.PORT || 3001;
 const uri = process.env.MONGODB_URI;
-
 
 const app=express();
 
@@ -16,26 +14,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-if (process.env.NODE_ENV === "production") {
-  //app.use((req, res, next) => {
-  //  res.sendFile(path.join(__dirname, "./client/build", "index.html"));
-  //  res.header("Access-Control-Allow-Origin", "*");
-  //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //  next();
-  //});
-  app.use(express.static("client/build"));
-  //res.header("Access-Control-Allow-Origin", "*");
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
-  })
-}
+app.get("/api/", (req, res) => {
+  res.send("test");
+})
+
+app.use(express.static(path.join(__dirname, './client/build')));
+
+app.get("*", function (_, res) {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"),
+  function (err) {
+    if (err) {
+      res.status(500), send(err);
+    }
+  }
+  )
+})
 
 const client = new MongoClient(uri);
 
 
 app.post("/getComments", (req, res) => {
-  //res.send({mongodb_uri: uri})
   async function main() {
   try {
       // Connect to the MongoDB cluster
@@ -58,7 +56,7 @@ main();
 })
 
 
-app.get("/addComment", (req, res) => {
+app.post("/addComment", (req, res) => {
   async function main() {
     try {
       // Connect to the MongoDB cluster
@@ -137,12 +135,19 @@ app.post("/addCommentsAnswer", (req, res) => {
     next();
   });
   */
-
-  //app.use("/", (req, res) => {
-  //  console.log("Welcome to Atma bank");
-  //})
   
+  
+
+const PORT = process.env.PORT || 3001;
+
 app.listen(PORT,()=>{
     console.log(`server listening at port ${PORT}`);
     
 })
+
+/*
+db.alphabet.updateOne(
+   { _id: 1 },
+   { $addToSet: { letters: [ "c", "d" ] } }
+)
+*/

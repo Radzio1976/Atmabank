@@ -136,6 +136,10 @@ app.post("/addCommentsAnswer", (req, res) => {
     next();
   });
   */
+
+  app.use("/api", (req, res) => {
+    console.log("Welcome to Atma bank");
+  })
   
 app.listen(PORT,()=>{
     console.log(`server listening at port ${PORT}`);

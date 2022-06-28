@@ -137,7 +137,7 @@ app.post("/addCommentsAnswer", (req, res) => {
   });
   */
 
-  app.use("/api", (req, res) => {
+  app.use("/", (req, res) => {
     console.log("Welcome to Atma bank");
   })
   

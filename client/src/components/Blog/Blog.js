@@ -16,7 +16,7 @@ const Blog = () => {
   const AppCtx = useContext(AppContext);
 
   useEffect(() => {
-    Axios.post("/api/getComments")
+    Axios.post("/getComments")
     .then(res => {
       console.log(res.data.mongodb_uri)
       console.log("Wszystkie komentarze:");

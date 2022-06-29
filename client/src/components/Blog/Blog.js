@@ -18,10 +18,9 @@ const Blog = () => {
   useEffect(() => {
     Axios.post("/getComments")
     .then(res => {
-      console.log(res.data.mongodb_uri)
       console.log("Wszystkie komentarze:");
       console.log(res.data.comments);
-      AppCtx.getLastFiveComments(res.data.comments)  
+      AppCtx.getLastFiveComments(res.data.comments);
     })
     .catch(err => {
         console.log("Nie udało się pobrać komentarzy")

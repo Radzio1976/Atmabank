@@ -198,7 +198,8 @@ const App = () => {
     
     Axios.post("/addComment", comment)
     .then(res => {
-        console.log("Wysłany komentarz", res.data.comments);
+        console.log(res.data.info);
+        console.log("Wszystkie komentarze", res.data.comments);
 
         const currentComments = res.data.comments.filter(comment => {
           return comment.postID === postID
@@ -234,7 +235,8 @@ const App = () => {
 
     Axios.post("/addCommentsAnswer", commentAnswer)
     .then(res => {
-        console.log("Wysłana odpowiedź do komentarza :", res.data.comments);
+        console.log(res.data.info);
+        console.log("Wszystkie komentarze:", res.data.comments);
         const currentComments = res.data.comments.filter(comment => {
           return comment.postID === postID
       });           

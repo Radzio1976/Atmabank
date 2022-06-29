@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require("path");
 const  ObjectID = require('mongodb').ObjectId;
 const {MongoClient} = require('mongodb');
+const mongoose = require('mongoose');
 require("dotenv/config");
 const uri = process.env.MONGODB_URI;
 
@@ -14,13 +15,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
+app.get("/api/", (req, res) => {
+  res.send("test");
+})
+
+app.use(express.static(path.join(__dirname, './client/build')));
+
+app.get("*", function (_, res) {
+  res.sendFile(path.join(__dirname, "./client/build", "index.html"),
+  function (err) {
+    if (err) {
+      res.status(500), send(err);
+    }
+  }
+  )
+})
+
 const client = new MongoClient(uri);
 
 async function mongoDBConnection() {
   try {
        //Connect to the MongoDB cluster
     client.connect();
-    //getComments(client);
   } catch (error) {
     console.log("Nie udało się uzyskać połączenia z bazą danych", error);
   }
@@ -28,21 +44,17 @@ async function mongoDBConnection() {
 mongoDBConnection();
 
 
-app.post("/getComments", (req, res) => {
-  async function getComments(client) {
+app.post("/getComments", async (req, res) => {
     const result = await client.db("atma_bank").collection("comments").find({}).toArray();
     if (result) {
       res.send({ info: "Wszystkie komentarze", comments: result });
     } else {
         res.send(error);
     }
-  }
-  getComments(client);
 })
 
 
-app.post("/addComment", (req, res) => {
-  async function addComment(client, req, res) {
+app.post("/addComment", async (req, res) => {
     const comment = req.body;
     await client.db("atma_bank").collection("comments").insertOne({
       postID: comment.postID,
@@ -66,13 +78,10 @@ app.post("/addComment", (req, res) => {
         });
     }
     })
-  }
-  addComment(client, req, res);
 })
 
 
-app.post("/addCommentsAnswer", (req, res) => {
-  async function addCommentsAnswer(client, req, res) {
+app.post("/addCommentsAnswer", async (req, res) => {
     let commentAnswer = req.body;
     commentAnswer._id = new ObjectID();  
     await client.db("atma_bank").collection("comments").updateOne({_id: new ObjectID(commentAnswer.parentCommentID)}, { $addToSet: { commentAnswers: commentAnswer }}, (error, result) => {
@@ -88,8 +97,6 @@ app.post("/addCommentsAnswer", (req, res) => {
         });
       }
     })
-    }
-    addCommentsAnswer(client, req, res);
   });
 
   if (process.env.NODE_ENV === 'production') {

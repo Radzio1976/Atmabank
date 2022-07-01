@@ -118,29 +118,17 @@
     margin-bottom: 10px;
 }
 
-.add-comment-form input {
+.add-comment-form input, .add-comment-form textarea {
     width: 100%;
-    padding: 7px 12px;
-    background-color: #e0e0df;
-    margin-bottom: 10px;
-    border: 1px solid black;
-    border-radius: 3px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
     font-size: 15px;
-    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-}
-
-.add-comment-form textarea {
-    width: 100%;
-    height: 185px;
-    padding: 7px 12px;
-    background-color: #e0e0df;
-    margin-bottom: 10px;
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: 15px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+    resize: vertical;
 }
 
 

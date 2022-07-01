@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from "react";
 import {useQuery, gql} from "@apollo/client";
-import {withRouter, useHistory} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import { AppContext } from "../../App";
 
   const NAVQUERY = gql`

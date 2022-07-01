@@ -4,34 +4,14 @@ import {useQuery, gql } from "@apollo/client";
 import Axios from 'axios';
 import './index.css';
 
+import ALLPOSTSQUERY from '../src/queries/AllPostsQuery';
+
 import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
-
-const ALLPOSTSQUERY = gql`
-query MyQuery {
-  blogPosts {
-    id
-    title
-    slug
-    categories {
-      id
-      name
-}
-    image {
-      id
-      url
-      fileName
-    }
-    text {
-      text
-      html
-    }
-  }
-}`
 
 const AppContext = createContext();
 
@@ -153,7 +133,7 @@ const App = () => {
   // This function supports visibility of parent comment form
   const showSendAnswerForm = (id) => {
     const currentComments = currentPostComments.map(el => {
-        if (el.id === id) {
+        if (el._id === id) {
             return {...el, isCommentAnswerOn: true}
         } else {
             return {...el, isCommentAnswerOn: false}
@@ -204,7 +184,7 @@ const App = () => {
         const currentComments = res.data.comments.filter(comment => {
           return comment.postID === postID
       });           
-      setCurrentPostComments(currentComments);
+      getCurrentPostComments(currentComments);
       getCurrentPostCommentsQty(currentComments);
       getLastFiveComments(res.data.comments);
       resetForm();
@@ -240,7 +220,7 @@ const App = () => {
         const currentComments = res.data.comments.filter(comment => {
           return comment.postID === postID
       });           
-      setCurrentPostComments(currentComments);
+      getCurrentPostComments(currentComments);
       getCurrentPostCommentsQty(currentComments);
       getLastFiveComments(res.data.comments);
       resetForm();   
@@ -307,4 +287,4 @@ const App = () => {
 }
 
 export {AppContext};
-export default App;             
+export default App;

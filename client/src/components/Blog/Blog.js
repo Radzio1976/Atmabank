@@ -3,7 +3,6 @@ import Axios from 'axios';
 
 import './Blog.css';
 
-import SecondHeader from '../Secondheader';
 import BlogContainerLeftColumn from './BlogContainerLeftColumn';
 import BlogContainerRightColumn from './BlogContainerRightColumn';
 import RecentPosts from '../RecentPosts/RecentPosts';
@@ -14,7 +13,7 @@ import { AppContext } from '../../App';
 
 const Blog = () => {
   const AppCtx = useContext(AppContext);
-
+ 
   useEffect(() => {
     Axios.post("/getComments")
     .then(res => {
@@ -25,12 +24,12 @@ const Blog = () => {
     .catch(err => {
         console.log("Nie udało się pobrać komentarzy")
     });
+    //secondHeaderMenu(category)
     AppCtx.getSecondHeaderMenu(AppCtx.category)
   }, [])
 
   return(
       <div id="Blog">
-        <SecondHeader category={AppCtx.category} currentPostTitle={AppCtx.currentPostTitle} currentPostSlug={AppCtx.currentPostSlug} />
         <div className="blog-container">
           <BlogContainerLeftColumn />
           <BlogContainerRightColumn>

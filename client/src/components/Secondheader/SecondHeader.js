@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import {withRouter} from 'react-router-dom';
 
 import './SecondHeader.css';
@@ -7,6 +7,7 @@ import { AppContext } from '../../App';
 
 const SecondHeader = withRouter(props => {
     const AppCtx = useContext(AppContext);
+    console.log(props)
 
     const getPostsByCategory = (categoryName) => {
         let postsByCategory = AppCtx.allPosts.filter(post => {
@@ -33,20 +34,20 @@ const SecondHeader = withRouter(props => {
                             AppCtx.clearCategory()
                             }}>Blog</li>
                         <li style={{
-                            display: AppCtx.category === undefined ? "none" : "block", 
+                            display: props.category === undefined ? "none" : "block", 
                             paddingLeft: "25px", 
                             marginLeft: "25px", 
                             borderLeft: "1px solid white"}} 
                             onClick={() => {
                             props.history.push("/blog")
-                            getPostsByCategory(AppCtx.category)
-                            }}>{AppCtx.category}</li>
+                            getPostsByCategory(props.category)
+                            }}>{props.category}</li>
                         <li style={{
-                            display: AppCtx.currentPostTitle === undefined ? "none" : "block", 
+                            display: props.currentPostTitle === undefined ? "none" : "block", 
                             paddingLeft: "25px", 
                             marginLeft: "25px", 
                             borderLeft: "1px solid white"
-                            }}>{AppCtx.currentPostTitle}</li>
+                            }}>{props.currentPostTitle}</li>
                     </ul>
                 </nav>
             </div>

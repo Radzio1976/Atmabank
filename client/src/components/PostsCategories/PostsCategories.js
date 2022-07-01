@@ -52,4 +52,3 @@ const PostsCategories = (props) => {
 };
 
 export default withRouter(PostsCategories);
-

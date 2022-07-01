@@ -28,7 +28,7 @@ const BlogpostCommentsContainer = ({children}) => {
         .catch(err => {
             console.log("Nie udało się pobrać komentarzy")
         })
-    }, [AppCtx.setCurrentPostComments, AppCtx.setSecondHeaderMenu, postID]);
+    }, [AppCtx.setCurrentPostComments, postID]);
 
     return(
         <div className="blogpost-comments-container">{children}</div>

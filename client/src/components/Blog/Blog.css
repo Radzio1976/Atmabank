@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@100&display=swap');
-
-
 #Blog {
     background-color: #e0e0df;
+    letter-spacing: 2px;
 }
 
 .blog-container {

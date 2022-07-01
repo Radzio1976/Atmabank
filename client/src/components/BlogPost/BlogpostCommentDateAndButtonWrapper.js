@@ -12,7 +12,7 @@ const BlogpostCommentDateAndButtonWrapper = (props) => {
             <p>{AppCtx.getCommentTimeInPolish(new Date(comment.commentTime))}</p>
         </div>
         <div className="blogpost-comment-button">
-            <p className="add-comment-form-button" onClick={(e) => AppCtx.showSendAnswerForm(comment.id)}>Odpowiedz</p>
+            <p className="add-comment-form-button" onClick={(e) => AppCtx.showSendAnswerForm(comment._id)}>Odpowiedz</p>
         </div>
     </div>
     )

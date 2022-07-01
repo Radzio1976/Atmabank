@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import {useQuery, gql } from "@apollo/client";
 import { AppContext } from '../../App';
 
-import SecondHeader from '../Secondheader';
+import GET_CURRENT_POST from '../../queries/CurrentPostQuery';
+
 import BlogpostContainerLeftColumn from './BlogpostContainerLeftColumn';
 import BlogpostPostContainer from "./BlogpostPostContainer";
 import BlogpostCommentsContainer from "./BlogpostCommentsContainer";
@@ -23,29 +24,6 @@ import "./BlogPost.css";
 
 const BlogPostContext = createContext();
 
-const GET_CURRENT_POST = gql`
-  query BlogPost($slug: String!) {
-    blogPosts(where: {slug: $slug}) {
-      id
-      title
-      slug
-      categories {
-        id
-        name
-  }
-      image {
-        id
-        url
-        fileName
-      }
-      text {
-        text
-        html
-      }
-    }
-  }
-`;
-
 const BlogPost = () => {
   const AppCtx = useContext(AppContext);
   let { slug } = useParams();
@@ -64,7 +42,6 @@ const BlogPost = () => {
       postID: currentPost.id
     }}>
       <div id="BlogPost">
-        <SecondHeader category={AppCtx.category} currentPostTitle={AppCtx.currentPostTitle} currentPostSlug={AppCtx.currentPostSlug} />
         <div className="blogpost-container">
           <BlogpostContainerLeftColumn>
             <BlogpostPostContainer />
@@ -99,4 +76,4 @@ const BlogPost = () => {
 }
 
 export {BlogPostContext};
-export default BlogPost;  
+export default BlogPost;

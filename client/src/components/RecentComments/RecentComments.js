@@ -3,8 +3,11 @@ import { scroller } from 'react-scroll'
 import {withRouter, useHistory} from 'react-router-dom';
 import { AppContext } from "../../App";
 
+import AppState from "../../utils/AppState";
+
 const RecentComments = withRouter(props => {
   const AppCtx = useContext(AppContext);
+  const {lastFiveComments} = AppState();
 
   const history = useHistory();
   const scrollTarget = (target) => scroller.scrollTo(target, {smooth: true, duration: 700});
@@ -30,7 +33,7 @@ const RecentComments = withRouter(props => {
         <nav>
             <ul>
                 {
-                    AppCtx.lastFiveComments.map((comment, index) => {
+                    lastFiveComments.map((comment, index) => {
                         return(
                             <li onClick={() => scrollToComment(`${comment.scrollID}`, `${comment.currentPostSlug}`)} key={index} style={{marginBottom: "10px"}}>
                             <div className="recent-comments-user-container">

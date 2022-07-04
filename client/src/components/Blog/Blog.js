@@ -12,18 +12,20 @@ import RecentComments from '../RecentComments';
 import { AppContext } from '../../App';
 import AppState from '../../utils/AppState';
 import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
+import useLastFiveComments from '../../utils/GetLastFiveComments';
 
 const Blog = () => {
   const AppCtx = useContext(AppContext);
   const {category} = AppState();
   const {getCategory, getPostTitle} = useCategoryAndPostTitle();
+  const {getLastFiveComments} = useLastFiveComments();
  
   useEffect(() => {
     Axios.post("/getComments")
     .then(res => {
-      console.log("Wszystkie komentarze:");
-      console.log(res.data.comments);
-      AppCtx.getLastFiveComments(res.data.comments);
+      //console.log("Wszystkie komentarze:");
+      //console.log(res.data.comments);
+      getLastFiveComments(res.data.comments);
     })
     .catch(err => {
         console.log("Nie udało się pobrać komentarzy")

@@ -13,20 +13,18 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
 
+import AppState from './utils/AppState';
+import useLastFiveComments from './utils/GetLastFiveComments';
+
 const AppContext = createContext();
 
 const App = () => {
+  const {category, setCategory, postTitle, setPostTitle, postSlug, setPostSlug} = AppState();
+  const {getLastFiveComments} = useLastFiveComments();
+
   let allPosts = [];
-  const API_URL = "http://localhost:3002"
 
   const [posts, setPosts] = useState([]); 
-  const [lastFiveComments, setLastFiveComments] = useState([]);
-
-  const [category, setCategory] = useState("");
-  const [currentPostTitle, setCurrentPostTitle] = useState("");
-  const [currentPostSlug, setCurrentPostSlug] = useState("");
-
-  const [secondHeaderMenu, setSecondHeaderMenu] = useState([]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -45,52 +43,6 @@ const App = () => {
   if (error) return <p>Error :(</p>;
 
   allPosts = data.blogPosts;
-
-  const getSecondHeaderMenu = (category, currentPostTitle, currentPostSlug) => {
-    setCategory(category);
-    setCurrentPostTitle(currentPostTitle);
-    setCurrentPostSlug(currentPostSlug);
-  }
-
-  const clearCategory = () => {
-    setPosts(allPosts);
-    setCategory();
-  }
-
-  const getLastFiveComments = (allComments) => {
-    let comments = [];
-    let slugs = [];
-    let arrayOfCommentsSortedBySlug = [];
-    
-    allComments.forEach(comment => {
-        slugs.push(comment.currentPostSlug)
-    })
-
-    const uniqueSlugs = [...new Set(slugs)]
-
-    uniqueSlugs.forEach(slug => {
-      let postComments = allComments.filter(comment => {
-        return comment.currentPostSlug === slug
-      });
-      arrayOfCommentsSortedBySlug.push(postComments)
-    })
-
-    for (let i=0; i<arrayOfCommentsSortedBySlug.length; i++) {
-      for (let j=0; j<arrayOfCommentsSortedBySlug[i].length; j++) {
-        arrayOfCommentsSortedBySlug[i][j].scrollID = `${arrayOfCommentsSortedBySlug[i][j].currentPostSlug}-${j + 1}-comment`;
-        comments.push(arrayOfCommentsSortedBySlug[i][j]);
-        for (let k=0; k<arrayOfCommentsSortedBySlug[i][j].commentAnswers.length; k++) {
-          arrayOfCommentsSortedBySlug[i][j].commentAnswers[k].scrollID = `${arrayOfCommentsSortedBySlug[i][j].commentAnswers[k].currentPostSlug}-${k + 1}-answer-of-${j + 1}-comment`;
-          comments.push(arrayOfCommentsSortedBySlug[i][j].commentAnswers[k]);
-        }
-      }
-    }
-
-    let sortedByDateComments = comments.sort(function(a,b){
-      return new Date(b.commentTime) - new Date(a.commentTime);
-    }).slice(0, 5)
-    setLastFiveComments(sortedByDateComments);
-  }
 
   const nameChange = (nameValue) => {
     setName(nameValue);
@@ -170,7 +122,7 @@ const App = () => {
         name, 
         email, 
         text, 
-        currentPostSlug,
+        currentPostSlug: postSlug,
         commentTime: new Date(), 
         isCommentAnswerOn: false,
         commentAnswers: []
@@ -208,7 +160,7 @@ const App = () => {
       name, 
       email, 
       text, 
-      currentPostSlug,
+      currentPostSlug: postSlug,
       commentTime: new Date(), 
       isCommentAnswerOn: false,
   }
@@ -233,16 +185,6 @@ const App = () => {
 
     return(
       <AppContext.Provider value={{
-        API_URL,
-        lastFiveComments,
-        setLastFiveComments,
-        getLastFiveComments,
-        category,
-        currentPostTitle,
-        currentPostSlug,
-        secondHeaderMenu,
-        getSecondHeaderMenu,
-        clearCategory,
         allPosts,
         posts,
         setPosts,

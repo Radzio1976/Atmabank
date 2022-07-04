@@ -24,30 +24,34 @@ import RecentComments from '../RecentComments';
 import "./BlogPost.css";
 
 import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
+import usePostSlug from '../../utils/GetPostSlug';
+import useLastFiveComments from '../../utils/GetLastFiveComments';
 
 const BlogPostContext = createContext();
 
 const BlogPost = () => {
   const AppCtx = useContext(AppContext);
-  const {getCategory, getPostTitle} = useCategoryAndPostTitle()
+  const {getCategory, getPostTitle} = useCategoryAndPostTitle();
+  const {getPostSlug} = usePostSlug();
+  const {getLastFiveComments} = useLastFiveComments();
   let { slug } = useParams();
 
 const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) => {
   Axios.post("/getComments")
   .then(res => {
-
-      console.log("Wszystkie komentarze:");
-      console.log(res.data.comments);
+      //console.log("Wszystkie komentarze:");
+      //console.log(res.data.comments);
       const currentComments = res.data.comments.filter(comment => {
           return comment.postID === data.blogPosts[0].id
       }); 
       let currentPost = data.blogPosts[0];
       getCategory(currentPost.categories[0].name);
       getPostTitle(currentPost.title);
+      getPostSlug(currentPost.slug);
       AppCtx.getCurrentPostID(data.blogPosts[0].id);    
       AppCtx.getCurrentPostComments(currentComments);  
       AppCtx.getCurrentPostCommentsQty(currentComments);     
-      AppCtx.getLastFiveComments(res.data.comments);   
+      getLastFiveComments(res.data.comments);   
   })
   .catch(err => {
       console.log("Nie udało się pobrać komentarzy")

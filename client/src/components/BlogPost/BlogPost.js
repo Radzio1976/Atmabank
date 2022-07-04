@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext } from 'react';
 import { useParams } from "react-router-dom";
-import {useQuery, gql } from "@apollo/client";
+import {useQuery } from "@apollo/client";
+import Axios from 'axios';
 import { AppContext } from '../../App';
 
 import GET_CURRENT_POST from '../../queries/CurrentPostQuery';
@@ -22,24 +23,47 @@ import RecentComments from '../RecentComments';
 
 import "./BlogPost.css";
 
+import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
+
 const BlogPostContext = createContext();
 
 const BlogPost = () => {
   const AppCtx = useContext(AppContext);
+  const {getCategory, getPostTitle} = useCategoryAndPostTitle()
   let { slug } = useParams();
 
-  const { loading, error, data } = useQuery(GET_CURRENT_POST, {
-    variables: { slug },
-  });
-  if (loading) return null;
-  if (error) return `Error! ${error}`;
+const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) => {
+  Axios.post("/getComments")
+  .then(res => {
 
-  const currentPost = data.blogPosts[0];
+      console.log("Wszystkie komentarze:");
+      console.log(res.data.comments);
+      const currentComments = res.data.comments.filter(comment => {
+          return comment.postID === data.blogPosts[0].id
+      }); 
+      let currentPost = data.blogPosts[0];
+      getCategory(currentPost.categories[0].name);
+      getPostTitle(currentPost.title);
+      AppCtx.getCurrentPostID(data.blogPosts[0].id);    
+      AppCtx.getCurrentPostComments(currentComments);  
+      AppCtx.getCurrentPostCommentsQty(currentComments);     
+      AppCtx.getLastFiveComments(res.data.comments);   
+  })
+  .catch(err => {
+      console.log("Nie udało się pobrać komentarzy")
+  })
+},
+variables: {slug}})
+if (loading) return <p>Loading...</p>;
+if (error) return <p>Error :(</p>;
+
+let currentPost = data.blogPosts[0];
+let postID = currentPost.id
 
   return(
     <BlogPostContext.Provider value={{
       currentPost,
-      postID: currentPost.id
+      postID
     }}>
       <div id="BlogPost">
         <div className="blogpost-container">

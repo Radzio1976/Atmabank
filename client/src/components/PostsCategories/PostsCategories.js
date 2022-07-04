@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
 
 import { AppContext } from '../../App';
+import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
 
 const PostsCategories = (props) => {
     const AppCtx = useContext(AppContext);
+    const {getCategory} = useCategoryAndPostTitle();
 
     const uniqueCategories = () => {
         const mainBaseOfCategories = AppCtx.allPosts;
@@ -40,7 +42,7 @@ const PostsCategories = (props) => {
                                 () => {
                                 props.history.push("/blog");
                                 getPostsByCategory(category);
-                                AppCtx.getSecondHeaderMenu(category);
+                                getCategory(category);
                             }} key={index}>{category}</li>
                         )
                     })}
@@ -52,3 +54,4 @@ const PostsCategories = (props) => {
 };
 
 export default withRouter(PostsCategories);
+

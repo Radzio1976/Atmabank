@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from "react";
 
-import { AppContext } from "../../App";
 import { BlogPostContext } from "./BlogPost";
 
-const BlogpostPostContainer = (props) => {
+const BlogpostPostContainer = () => {
   const BlogPostCtx = useContext(BlogPostContext);
   const currentPost = BlogPostCtx.currentPost;
 

@@ -255,8 +255,6 @@ const App = () => {
         text,
         textChange,
         setText,
-        //setCurrentPostSlug,
-        //getCurrentPostSlug,
         getCurrentPostID,
         currentPostComments,
         setCurrentPostComments,
@@ -274,7 +272,7 @@ const App = () => {
           <BrowserRouter>
             <Header />
               <Switch>
-                <Route path="/" exact component={Home} />
+              <Route path="/" exact component={Home} />
                 <Route path="/o-mnie" component={About} />
                 <Route path="/blog" exact component={Blog} />
                 <Route path="/kontakt" component={Contact} />

@@ -10,9 +10,13 @@ import PostsCategories from '../PostsCategories/PostsCategories';
 import RecentComments from '../RecentComments';
 
 import { AppContext } from '../../App';
+import AppState from '../../utils/AppState';
+import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
 
 const Blog = () => {
   const AppCtx = useContext(AppContext);
+  const {category} = AppState();
+  const {getCategory, getPostTitle} = useCategoryAndPostTitle();
  
   useEffect(() => {
     Axios.post("/getComments")
@@ -24,8 +28,8 @@ const Blog = () => {
     .catch(err => {
         console.log("Nie udało się pobrać komentarzy")
     });
-    //secondHeaderMenu(category)
-    AppCtx.getSecondHeaderMenu(AppCtx.category)
+    getCategory(category);
+    getPostTitle();
   }, [])
 
   return(

@@ -1,4 +1,4 @@
-import {useQuery, gql } from "@apollo/client";
+import {gql } from "@apollo/client";
 
 const GET_CURRENT_POST = gql`
   query BlogPost($slug: String!) {

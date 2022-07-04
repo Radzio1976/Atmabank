@@ -1,4 +1,4 @@
-import {useQuery, gql } from "@apollo/client";
+import {gql } from "@apollo/client";
 
 const ALLPOSTSQUERY = gql`
 query MyQuery {
@@ -20,7 +20,7 @@ query MyQuery {
       html
     }
   }
-}`
+}`;
 
 export default ALLPOSTSQUERY;
 

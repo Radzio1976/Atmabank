@@ -3,6 +3,7 @@ import { useContext } from "react";
 import {useQuery, gql} from "@apollo/client";
 import {withRouter} from 'react-router-dom';
 import { AppContext } from "../../App";
+import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
 
   const NAVQUERY = gql`
   query Navigation {
@@ -20,6 +21,7 @@ import { AppContext } from "../../App";
   `
 const Navigation = withRouter(props => {
   const AppCtx = useContext(AppContext);
+  const {getCategory} = useCategoryAndPostTitle()
 
   const {data, error, loading} = useQuery(NAVQUERY);
   if (loading) return <p>Loading...</p>;
@@ -36,8 +38,8 @@ const Navigation = withRouter(props => {
             <li onClick={() => props.history.push(`/${navigationData.aboutSlug}`)}>{navigationData.aboutTitle}</li>
             <li onClick={() => {
               props.history.push(`/${navigationData.blogSlug}`);
-              //AppCtx.setPosts(AppCtx.allPosts);
-              AppCtx.clearCategory();
+              AppCtx.setPosts(AppCtx.allPosts);
+              getCategory();
               }}>{navigationData.blogTitle}</li>
             <li onClick={() => props.history.push(`/${navigationData.contactSlug}`)}>{navigationData.contactTitle}</li>
           </ul>

@@ -1,6 +1,6 @@
 import AppState from "./AppState";
 
-const useCurrentPostID = () => {
+const useCurrentPostIDHook = () => {
 const {setPostID} = AppState();
 
 const getCurrentPostID = (postID) => setPostID(postID);
@@ -8,4 +8,4 @@ const getCurrentPostID = (postID) => setPostID(postID);
 return {getCurrentPostID};
 };
 
-export default useCurrentPostID;
+export default useCurrentPostIDHook;

@@ -17,7 +17,7 @@ const useScrollToCommentsHook = () => {
         }, 100);
     };
 
-    return {scrollToComment}
+    return {scrollToComment};
 }
 
 export default useScrollToCommentsHook;

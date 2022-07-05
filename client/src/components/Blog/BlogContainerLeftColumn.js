@@ -1,14 +1,13 @@
-import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
-import { AppContext } from "../../App";
+import AppState from '../../utils/AppState';
 
 const BlogContainerLeftColumn = withRouter(props => {
-  const AppCtx = useContext(AppContext);
+  const {posts} = AppState();
   
     return(
         <div className="blog-container-left-column">
           {
-            AppCtx.posts.slice(0).reverse().map((value) => {
+            posts.slice(0).reverse().map((value) => {
               return(
                 <div className="blog-post-container" key={value.id}>
                 <div className="blog-post-title">

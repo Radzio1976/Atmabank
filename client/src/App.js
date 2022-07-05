@@ -14,7 +14,8 @@ import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
 
 import AppState from './utils/AppState';
-import useLastFiveComments from './utils/GetLastFiveComments';
+import useLastFiveCommentsHook from './utils/GetLastFiveCommentsHook';
+import usePostsHook from './utils/GetPostsHook';
 
 const AppContext = createContext();
 
@@ -30,10 +31,12 @@ const App = () => {
     lastFiveComments, 
     setLastFiveComments} = AppState();
     
-  const {getLastFiveComments} = useLastFiveComments();
+  const {getLastFiveComments} = useLastFiveCommentsHook();
+  const {getPosts} = usePostsHook();
 
   let allPosts = [];
 
+  const [postsMainBase, setPostsMainBase] = useState([]); 
   const [posts, setPosts] = useState([]); 
 
   const [name, setName] = useState("");
@@ -47,8 +50,8 @@ const App = () => {
   const [mainCommentsFormVisibility, setmainCommentsFormVisibility] = useState(true);
 
   const {error, loading, data} = useQuery(ALLPOSTSQUERY, {onCompleted: (data) => {
-    setPosts(data.blogPosts);
-  }})
+    getPosts(data.blogPosts);
+  }});
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
@@ -196,6 +199,7 @@ const App = () => {
     return(
       <AppContext.Provider value={{
         allPosts,
+        postsMainBase,
         posts,
         setPosts,
         name,

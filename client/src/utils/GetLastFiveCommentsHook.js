@@ -1,6 +1,6 @@
 import AppState from "./AppState";
 
-const useLastFiveComments = () => {
+const useLastFiveCommentsHook = () => {
     const {setLastFiveComments} = AppState();
 
     const getLastFiveComments = (allComments) => {
@@ -41,4 +41,4 @@ const useLastFiveComments = () => {
     return {getLastFiveComments};
 };
 
-export default useLastFiveComments;
+export default useLastFiveCommentsHook;

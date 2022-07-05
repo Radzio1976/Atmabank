@@ -1,28 +1,14 @@
 import { useContext } from "react";
-import { scroller } from 'react-scroll'
-import {withRouter, useHistory} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import { AppContext } from "../../App";
 
 import AppState from "../../utils/AppState";
+import useScrollToCommentsHook from "../../utils/ScrollToCommentHook";
 
 const RecentComments = withRouter(props => {
   const AppCtx = useContext(AppContext);
+  const {scrollToComment} = useScrollToCommentsHook();
   const {lastFiveComments} = AppState();
-
-  const history = useHistory();
-  const scrollTarget = (target) => scroller.scrollTo(target, {smooth: true, duration: 700});
-
-  const scrollToComment = async (target, slug) => {
-    if (history.location.pathname !==`/blog/${slug}`) {
-      await history.push(`/blog/${slug}`);
-  }
-    const interval = setInterval(() => {
-        scrollTarget(target);
-        if (document.getElementById(`${target}`) !== null) {
-            clearInterval(interval);
-        }
-    }, 100)
-};
 
   return(
     <div id="RecentComments"  className="right-column-box">

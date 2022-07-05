@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import Axios from 'axios';
 
 import './Blog.css';
@@ -9,16 +9,14 @@ import RecentPosts from '../RecentPosts/RecentPosts';
 import PostsCategories from '../PostsCategories/PostsCategories';
 import RecentComments from '../RecentComments';
 
-import { AppContext } from '../../App';
 import AppState from '../../utils/AppState';
-import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
-import useLastFiveComments from '../../utils/GetLastFiveComments';
+import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
+import useLastFiveCommentsHook from '../../utils/GetLastFiveCommentsHook';
 
 const Blog = () => {
-  const AppCtx = useContext(AppContext);
   const {category} = AppState();
-  const {getCategory, getPostTitle} = useCategoryAndPostTitle();
-  const {getLastFiveComments} = useLastFiveComments();
+  const {getCategory, getPostTitle} = useCategoryAndPostTitleHook();
+  const {getLastFiveComments} = useLastFiveCommentsHook();
  
   useEffect(() => {
     Axios.post("/getComments")

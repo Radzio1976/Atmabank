@@ -23,19 +23,19 @@ import RecentComments from '../RecentComments';
 
 import "./BlogPost.css";
 
-import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
-import useCurrentPostSlug from '../../utils/GetCurrentPostSlug';
-import useLastFiveComments from '../../utils/GetLastFiveComments';
-import useCurrentPostID from '../../utils/GetCurrentPostID';
+import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
+import useCurrentPostSlugHook from '../../utils/GetCurrentPostSlugHook';
+import useLastFiveCommentsHook from '../../utils/GetLastFiveCommentsHook';
+import useCurrentPostIDHook from '../../utils/GetCurrentPostIDHook';
 
 const BlogPostContext = createContext();
 
 const BlogPost = () => {
   const AppCtx = useContext(AppContext);
-  const {getCategory, getPostTitle} = useCategoryAndPostTitle();
-  const {getCurrentPostSlug} = useCurrentPostSlug();
-  const {getLastFiveComments} = useLastFiveComments();
-  const {getCurrentPostID} = useCurrentPostID();
+  const {getCategory, getPostTitle} = useCategoryAndPostTitleHook();
+  const {getCurrentPostSlug} = useCurrentPostSlugHook();
+  const {getLastFiveComments} = useLastFiveCommentsHook();
+  const {getCurrentPostID} = useCurrentPostIDHook();
   let { slug } = useParams();
 
 const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) => {

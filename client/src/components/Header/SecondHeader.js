@@ -4,17 +4,19 @@ import {withRouter} from 'react-router-dom';
 import './SecondHeader.css';
 
 import { AppContext } from '../../App';
-import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
+import AppState from '../../utils/AppState';
+import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
 
 const SecondHeader = withRouter(props => {
     const AppCtx = useContext(AppContext);
-    const {getCategory} = useCategoryAndPostTitle()
+    const {postsMainBase, setPosts} = AppState();
+    const {getCategory} = useCategoryAndPostTitleHook()
 
     const getPostsByCategory = (categoryName) => {
-        let postsByCategory = AppCtx.allPosts.filter(post => {
+        let postsByCategory = postsMainBase.filter(post => {
             return post.categories[0].name === categoryName;
         })
-        AppCtx.setPosts(postsByCategory);
+        setPosts(postsByCategory);
       }
 
     return(

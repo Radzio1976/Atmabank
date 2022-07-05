@@ -1,6 +1,6 @@
 import AppState from "./AppState";
 
-const useCategoryAndPostTitle = () => {
+const useCategoryAndPostTitleHook = () => {
     const {setCategory, setPostTitle} = AppState();
 
     const getCategory = (category) => setCategory(category);
@@ -9,4 +9,4 @@ const useCategoryAndPostTitle = () => {
     return {getCategory, getPostTitle};
 };
 
-export default useCategoryAndPostTitle;
+export default useCategoryAndPostTitleHook;

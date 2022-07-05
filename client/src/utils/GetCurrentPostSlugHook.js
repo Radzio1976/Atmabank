@@ -1,6 +1,6 @@
 import AppState from "./AppState";
 
-const useCurrentPostSlug = () => {
+const useCurrentPostSlugHook = () => {
     const {setCurrentPostSlug} = AppState();
 
     const getCurrentPostSlug = (postSlug) => setCurrentPostSlug(postSlug);
@@ -8,4 +8,4 @@ const useCurrentPostSlug = () => {
     return {getCurrentPostSlug};
 };
 
-export default useCurrentPostSlug;
+export default useCurrentPostSlugHook;

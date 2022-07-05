@@ -1,7 +1,7 @@
 import AppState from "./AppState";
 
 const useUniqueCategoriesHook = () => {
-    const {setUniqueCategories, postsMainBase} = AppState();
+    const {postsMainBase} = AppState();
     const getUniqueCategories = () => {
         const mainBaseOfCategories = postsMainBase;
         let categoriesNames = [];
@@ -11,9 +11,8 @@ const useUniqueCategoriesHook = () => {
         })
     
         const uniqueCategories = [...new Set(categoriesNames)]
-        console.log(uniqueCategories)
-        //return uniqueCategories.sort();
-        setUniqueCategories(uniqueCategories.sort());
+
+        return uniqueCategories.sort();
       };
       return {getUniqueCategories};
 };

@@ -34,8 +34,6 @@ const App = () => {
   const {getLastFiveComments} = useLastFiveCommentsHook();
   const {getPosts} = usePostsHook();
 
-  let allPosts = [];
-
   const [postsMainBase, setPostsMainBase] = useState([]); 
   const [posts, setPosts] = useState([]); 
 
@@ -43,19 +41,16 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
 
-  //const [postID, setPostID] = useState("");
   const [currentPostComments, setCurrentPostComments] = useState([]);
   const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
 
   const [mainCommentsFormVisibility, setmainCommentsFormVisibility] = useState(true);
 
-  const {error, loading, data} = useQuery(ALLPOSTSQUERY, {onCompleted: (data) => {
+  const {error, loading} = useQuery(ALLPOSTSQUERY, {onCompleted: (data) => {
     getPosts(data.blogPosts);
   }});
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
-  allPosts = data.blogPosts;
 
   const nameChange = (nameValue) => {
     setName(nameValue);
@@ -68,10 +63,6 @@ const App = () => {
   const textChange = (textValue) => {
     setText(textValue);
 };
-
-  //const getCurrentPostID = (postID) => {
-  //  setPostID(postID);
-  //}
 
   // This function update state of current post comments
   const getCurrentPostComments = (currentComments) => {
@@ -192,13 +183,11 @@ const App = () => {
     })
     .catch(err => {
         console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
-    })
-
+    });
   }
 
     return(
       <AppContext.Provider value={{
-        allPosts,
         postsMainBase,
         posts,
         setPosts,
@@ -211,7 +200,6 @@ const App = () => {
         text,
         textChange,
         setText,
-        //getCurrentPostID,
         currentPostComments,
         setCurrentPostComments,
         getCurrentPostComments,

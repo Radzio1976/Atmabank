@@ -1,23 +1,15 @@
-import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
 
 import './SecondHeader.css';
 
-import { AppContext } from '../../App';
-import AppState from '../../utils/AppState';
+import useResetPostsHook from '../../utils/GetResetPostsHook';
 import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
+import usePostsByCategoryHook from '../../utils/GetPostsByCategoryHook';
 
 const SecondHeader = withRouter(props => {
-    const AppCtx = useContext(AppContext);
-    const {postsMainBase, setPosts} = AppState();
+    const {getResetPosts} = useResetPostsHook();
     const {getCategory} = useCategoryAndPostTitleHook()
-
-    const getPostsByCategory = (categoryName) => {
-        let postsByCategory = postsMainBase.filter(post => {
-            return post.categories[0].name === categoryName;
-        })
-        setPosts(postsByCategory);
-      }
+    const {getPostsByCategory} = usePostsByCategoryHook();
 
     return(
         <div id="SecondHeader">
@@ -33,7 +25,7 @@ const SecondHeader = withRouter(props => {
                             borderLeft: "1px solid white"}}
                             onClick={() => {
                             props.history.push("/blog");
-                            AppCtx.setPosts(AppCtx.allPosts);
+                            getResetPosts();
                             getCategory();
                             }}>Blog</li>
                         <li style={{

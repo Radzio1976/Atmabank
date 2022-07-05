@@ -4,7 +4,6 @@ const initialState = {
     postsMainBase: [],
     posts: [],
     category: "", 
-    uniqueCategories: [],
     postTitle: "", 
     currentPostSlug: "", 
     postID: "", 
@@ -18,7 +17,6 @@ const AppState = () => {
     const [posts, setPosts] = useGlobalState("posts"); 
 
     const [category, setCategory] = useGlobalState("category");
-    const [uniqueCategories, setUniqueCategories] = useGlobalState("uniqueCategories");
 
     const [postTitle, setPostTitle] = useGlobalState("postTitle");
     const [currentPostSlug, setCurrentPostSlug] = useGlobalState("currentPostSlug");
@@ -41,8 +39,6 @@ const AppState = () => {
         setPosts,
         category, 
         setCategory, 
-        uniqueCategories, 
-        setUniqueCategories,
         postTitle, 
         setPostTitle, 
         currentPostSlug, 

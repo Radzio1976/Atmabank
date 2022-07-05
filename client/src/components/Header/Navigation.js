@@ -1,8 +1,8 @@
 import React from 'react';
-import { useContext } from "react";
 import {useQuery, gql} from "@apollo/client";
 import {withRouter} from 'react-router-dom';
-import { AppContext } from "../../App";
+
+import useResetPostsHook from '../../utils/GetResetPostsHook';
 import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
 
   const NAVQUERY = gql`
@@ -20,7 +20,7 @@ import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook
   }
   `
 const Navigation = withRouter(props => {
-  const AppCtx = useContext(AppContext);
+  const {getResetPosts} = useResetPostsHook();
   const {getCategory} = useCategoryAndPostTitleHook()
 
   const {data, error, loading} = useQuery(NAVQUERY);
@@ -38,7 +38,7 @@ const Navigation = withRouter(props => {
             <li onClick={() => props.history.push(`/${navigationData.aboutSlug}`)}>{navigationData.aboutTitle}</li>
             <li onClick={() => {
               props.history.push(`/${navigationData.blogSlug}`);
-              AppCtx.setPosts(AppCtx.allPosts);
+              getResetPosts();
               getCategory();
               }}>{navigationData.blogTitle}</li>
             <li onClick={() => props.history.push(`/${navigationData.contactSlug}`)}>{navigationData.contactTitle}</li>

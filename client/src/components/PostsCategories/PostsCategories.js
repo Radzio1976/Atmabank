@@ -1,26 +1,13 @@
 import {withRouter} from 'react-router-dom';
 
-import AppState from '../../utils/AppState';
 import useUniqueCategoriesHook from '../../utils/GetUniqueCategoriesHook';
 import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
-import { useEffect } from 'react';
+import usePostsByCategoryHook from '../../utils/GetPostsByCategoryHook';
 
 const PostsCategories = (props) => {
-    const {postsMainBase, setPosts, uniqueCategories} = AppState();
     const {getUniqueCategories} = useUniqueCategoriesHook();
     const {getCategory} = useCategoryAndPostTitleHook();
-
-    useEffect(() => {
-        getUniqueCategories();
-    }, []);
-
-      const getPostsByCategory = (categoryName) => {
-        let postsByCategory = postsMainBase.filter(post => {
-            return post.categories[0].name === categoryName;
-        })
-        setPosts(postsByCategory);
-      }
-
+    const {getPostsByCategory} = usePostsByCategoryHook();
 
     return(
         <div id="PostsCategories" className="right-column-box">
@@ -30,7 +17,7 @@ const PostsCategories = (props) => {
             </div>
             <nav>
                 <ul>
-                    {uniqueCategories.map((category, index) => {
+                    {getUniqueCategories().map((category, index) => {
                         return(
                             <li onClick={
                                 () => {

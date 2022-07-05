@@ -1,9 +1,9 @@
-import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
-import { AppContext } from '../../App';
+
+import AppState from '../../utils/AppState';
 
 const RecentPosts = withRouter(props => {
-    const AppCtx = useContext(AppContext);
+    const {postsMainBase} = AppState();
 
     return(
         <div id="RecentPosts"  className="right-column-box">
@@ -13,7 +13,7 @@ const RecentPosts = withRouter(props => {
                 </div>
                 <nav>
                     <ul>
-                        {AppCtx.allPosts.slice(0).reverse().map(post => {
+                        {postsMainBase.slice(0).reverse().map(post => {
                             return(
                                 <li onClick={() => props.history.push(`/blog/${post.slug}`)} key={post.id}>{post.title}</li>
                             )

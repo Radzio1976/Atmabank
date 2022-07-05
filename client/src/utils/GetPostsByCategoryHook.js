@@ -1,15 +1,14 @@
-import { useContext } from "react";
-import { AppContext } from "../App";
+import AppState from "./AppState";
 
-const useGetPostsByCategoryHook = () => {
-    const AppCtx = useContext(AppContext);
-    const getPostsByCategory = (categoryName) => {    
-        let postsByCategory = AppCtx.allPosts.filter(post => {
+const usePostsByCategoryHook = () => {
+    const {postsMainBase, setPosts} = AppState();
+    const getPostsByCategory = (categoryName) => {
+        let postsByCategory = postsMainBase.filter(post => {
             return post.categories[0].name === categoryName;
         })
-        AppCtx.setPosts(postsByCategory);
-    };
+        setPosts(postsByCategory);
+      }
     return {getPostsByCategory};
 };
 
-export default useGetPostsByCategoryHook;
+export default usePostsByCategoryHook;

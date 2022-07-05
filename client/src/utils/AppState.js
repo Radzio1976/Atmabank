@@ -7,7 +7,13 @@ const initialState = {
     postTitle: "", 
     currentPostSlug: "", 
     postID: "", 
-    lastFiveComments: []
+    lastFiveComments: [],
+    name: "",
+    nameError: "Pole imię musi zawierać conajmniej 5 znaków",
+    email: "",
+    emailError: "Pole email musi zawierać conajmniej 5 znaków oraz @",
+    text: "",
+    textError: "Pole tekst musi zawierać conajmniej 20 znaków"
 };
 
 const {useGlobalState} = createGlobalState(initialState);
@@ -23,6 +29,13 @@ const AppState = () => {
     const [postID, setPostID] = useGlobalState("postID");
 
     const [lastFiveComments, setLastFiveComments] = useGlobalState("lastFiveComments");
+
+    const [name, setName] = useGlobalState("name");
+    const nameError = useGlobalState("nameError");
+    const [email, setEmail] = useGlobalState("email");
+    const emailError = useGlobalState("emailError");
+    const [text, setText] = useGlobalState("text");
+    const textError = useGlobalState("textError");
     //console.log("AppState:");
     //console.log("Kategoria: ", category);
     //console.log("Tytuł aktualnego posta: ", postTitle);
@@ -46,7 +59,16 @@ const AppState = () => {
         postID, 
         setPostID, 
         lastFiveComments, 
-        setLastFiveComments
+        setLastFiveComments,
+        name,
+        setName,
+        nameError,
+        email,
+        setEmail,
+        emailError,
+        text,
+        setText,
+        textError
     };
 };
 

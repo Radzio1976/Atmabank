@@ -17,6 +17,7 @@ import AppState from './utils/AppState';
 import useLastFiveCommentsHook from './utils/GetLastFiveCommentsHook';
 import usePostsHook from './utils/GetPostsHook';
 import useCurrentPostCommentsHook from './utils/GetCurrentPostCommentsHook';
+import useCurrentPostCommentsQtyHook from './utils/GetCurrentPostCommentsQtyHook';
 
 const AppContext = createContext();
 
@@ -38,6 +39,7 @@ const App = () => {
   const {getLastFiveComments} = useLastFiveCommentsHook(); 
   const {getPosts} = usePostsHook();
   const {getCurrentPostComments} = useCurrentPostCommentsHook();
+  const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
 
   const [postsMainBase, setPostsMainBase] = useState([]); 
   const [posts, setPosts] = useState([]); 
@@ -67,16 +69,6 @@ const App = () => {
   const textChange = (textValue) => {
     setText(textValue);
 };
-
-  // This function update the counter for comments 
-  const getCurrentPostCommentsQty = (currentComments) => {
-    let result = 0;
-    let parentCommentsQty = currentComments.length;
-    currentComments.forEach(value => {
-      result = value.commentAnswers.length + result;
-    })
-    setCurrentPostCommentsQty(result + parentCommentsQty);  
-  };
 
   // This function supports clear of comment's form inputs
   const resetForm = () => {

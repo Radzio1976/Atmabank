@@ -29,6 +29,7 @@ import useCurrentPostSlugHook from '../../utils/GetCurrentPostSlugHook';
 import useLastFiveCommentsHook from '../../utils/GetLastFiveCommentsHook';
 import useCurrentPostIDHook from '../../utils/GetCurrentPostIDHook';
 import useCurrentPostCommentsHook from '../../utils/GetCurrentPostCommentsHook';
+import useCurrentPostCommentsQtyHook from '../../utils/GetCurrentPostCommentsQtyHook';
 
 const BlogPostContext = createContext();
 
@@ -40,6 +41,7 @@ const BlogPost = () => {
   const {getLastFiveComments} = useLastFiveCommentsHook();
   const {getCurrentPostID} = useCurrentPostIDHook();
   const {getCurrentPostComments} = useCurrentPostCommentsHook();
+  const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
   let { slug } = useParams();
 
 const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) => {
@@ -56,7 +58,7 @@ const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) =
       getCurrentPostSlug(currentPost.slug);
       getCurrentPostID(data.blogPosts[0].id);    
       getCurrentPostComments(currentComments);  
-      AppCtx.getCurrentPostCommentsQty(currentComments);     
+      getCurrentPostCommentsQty(currentComments);     
       getLastFiveComments(res.data.comments);   
   })
   .catch(err => {

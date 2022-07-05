@@ -14,7 +14,8 @@ const initialState = {
     emailError: "Pole email musi zawierać conajmniej 5 znaków oraz @",
     text: "",
     textError: "Pole tekst musi zawierać conajmniej 20 znaków",
-    currentPostComments: []
+    currentPostComments: [],
+    currentPostCommentsQty: 0
 };
 
 const {useGlobalState} = createGlobalState(initialState);
@@ -39,6 +40,7 @@ const AppState = () => {
     const textError = useGlobalState("textError");
 
     const [currentPostComments, setCurrentPostComments] = useGlobalState("currentPostComments");
+    const [currentPostCommentsQty, setCurrentPostCommentsQty] = useGlobalState("currentPostCommentsQty");
     //console.log("AppState:");
     //console.log("Kategoria: ", category);
     //console.log("Tytuł aktualnego posta: ", postTitle);
@@ -73,7 +75,9 @@ const AppState = () => {
         setText,
         textError,
         currentPostComments,
-        setCurrentPostComments
+        setCurrentPostComments,
+        currentPostCommentsQty, 
+        setCurrentPostCommentsQty
     };
 };
 

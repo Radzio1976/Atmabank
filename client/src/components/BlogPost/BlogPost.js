@@ -24,16 +24,18 @@ import RecentComments from '../RecentComments';
 import "./BlogPost.css";
 
 import useCategoryAndPostTitle from '../../utils/GetCategoryAndPostTitle';
-import usePostSlug from '../../utils/GetPostSlug';
+import useCurrentPostSlug from '../../utils/GetCurrentPostSlug';
 import useLastFiveComments from '../../utils/GetLastFiveComments';
+import useCurrentPostID from '../../utils/GetCurrentPostID';
 
 const BlogPostContext = createContext();
 
 const BlogPost = () => {
   const AppCtx = useContext(AppContext);
   const {getCategory, getPostTitle} = useCategoryAndPostTitle();
-  const {getPostSlug} = usePostSlug();
+  const {getCurrentPostSlug} = useCurrentPostSlug();
   const {getLastFiveComments} = useLastFiveComments();
+  const {getCurrentPostID} = useCurrentPostID();
   let { slug } = useParams();
 
 const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) => {
@@ -47,8 +49,8 @@ const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) =
       let currentPost = data.blogPosts[0];
       getCategory(currentPost.categories[0].name);
       getPostTitle(currentPost.title);
-      getPostSlug(currentPost.slug);
-      AppCtx.getCurrentPostID(data.blogPosts[0].id);    
+      getCurrentPostSlug(currentPost.slug);
+      getCurrentPostID(data.blogPosts[0].id);    
       AppCtx.getCurrentPostComments(currentComments);  
       AppCtx.getCurrentPostCommentsQty(currentComments);     
       getLastFiveComments(res.data.comments);   

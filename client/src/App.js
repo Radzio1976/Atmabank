@@ -19,7 +19,17 @@ import useLastFiveComments from './utils/GetLastFiveComments';
 const AppContext = createContext();
 
 const App = () => {
-  const {category, setCategory, postTitle, setPostTitle, postSlug, setPostSlug} = AppState();
+  const {        category, 
+    setCategory, 
+    postTitle, 
+    setPostTitle, 
+    currentPostSlug, 
+    setCurrentPostSlug, 
+    postID, 
+    setPostID, 
+    lastFiveComments, 
+    setLastFiveComments} = AppState();
+    
   const {getLastFiveComments} = useLastFiveComments();
 
   let allPosts = [];
@@ -30,7 +40,7 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
 
-  const [postID, setPostID] = useState("");
+  //const [postID, setPostID] = useState("");
   const [currentPostComments, setCurrentPostComments] = useState([]);
   const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
 
@@ -56,9 +66,9 @@ const App = () => {
     setText(textValue);
 };
 
-  const getCurrentPostID = (postID) => {
-    setPostID(postID);
-  }
+  //const getCurrentPostID = (postID) => {
+  //  setPostID(postID);
+  //}
 
   // This function update state of current post comments
   const getCurrentPostComments = (currentComments) => {
@@ -122,7 +132,7 @@ const App = () => {
         name, 
         email, 
         text, 
-        currentPostSlug: postSlug,
+        currentPostSlug,
         commentTime: new Date(), 
         isCommentAnswerOn: false,
         commentAnswers: []
@@ -149,7 +159,7 @@ const App = () => {
 
     // This function supports send parent comments answers
   const sendCommentsAnswer = (parentCommentID) => {
-    console.log(parentCommentID)
+    //console.log(parentCommentID)
     let mainComment = currentPostComments.filter(comment => {
       return comment._id === parentCommentID;
   })
@@ -160,7 +170,7 @@ const App = () => {
       name, 
       email, 
       text, 
-      currentPostSlug: postSlug,
+      currentPostSlug,
       commentTime: new Date(), 
       isCommentAnswerOn: false,
   }
@@ -197,7 +207,7 @@ const App = () => {
         text,
         textChange,
         setText,
-        getCurrentPostID,
+        //getCurrentPostID,
         currentPostComments,
         setCurrentPostComments,
         getCurrentPostComments,

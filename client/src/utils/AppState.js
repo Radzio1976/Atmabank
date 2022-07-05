@@ -4,6 +4,7 @@ const initialState = {
     postsMainBase: [],
     posts: [],
     category: "", 
+    uniqueCategories: [],
     postTitle: "", 
     currentPostSlug: "", 
     postID: "", 
@@ -17,6 +18,8 @@ const AppState = () => {
     const [posts, setPosts] = useGlobalState("posts"); 
 
     const [category, setCategory] = useGlobalState("category");
+    const [uniqueCategories, setUniqueCategories] = useGlobalState("uniqueCategories");
+
     const [postTitle, setPostTitle] = useGlobalState("postTitle");
     const [currentPostSlug, setCurrentPostSlug] = useGlobalState("currentPostSlug");
     const [postID, setPostID] = useGlobalState("postID");
@@ -28,8 +31,8 @@ const AppState = () => {
     //console.log("Slug aktualnego posta: ", currentPostSlug);
     //console.log("ID aktualnego posta: ", postID);
     //console.log("Ostatnie 5 komentarzy: ", lastFiveComments);
-    console.log(postsMainBase)
-    console.log(posts)
+    //console.log(postsMainBase)
+    //console.log(posts)
 
     return {
         postsMainBase, 
@@ -38,6 +41,8 @@ const AppState = () => {
         setPosts,
         category, 
         setCategory, 
+        uniqueCategories, 
+        setUniqueCategories,
         postTitle, 
         setPostTitle, 
         currentPostSlug, 

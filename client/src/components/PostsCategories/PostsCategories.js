@@ -1,26 +1,18 @@
-import { useContext } from 'react';
 import {withRouter} from 'react-router-dom';
 
-import { AppContext } from '../../App';
 import AppState from '../../utils/AppState';
+import useUniqueCategoriesHook from '../../utils/GetUniqueCategoriesHook';
 import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
+import { useEffect } from 'react';
 
 const PostsCategories = (props) => {
-    const AppCtx = useContext(AppContext);
-    const {postsMainBase, setPosts} = AppState();
+    const {postsMainBase, setPosts, uniqueCategories} = AppState();
+    const {getUniqueCategories} = useUniqueCategoriesHook();
     const {getCategory} = useCategoryAndPostTitleHook();
 
-    const uniqueCategories = () => {
-        const mainBaseOfCategories = AppCtx.allPosts;
-        let categoriesNames = [];
-    
-        mainBaseOfCategories.forEach(category => {
-            categoriesNames.push(category.categories[0].name)
-        })
-    
-        const uniqueCategories = [...new Set(categoriesNames)]
-        return uniqueCategories.sort();
-      }
+    useEffect(() => {
+        getUniqueCategories();
+    }, []);
 
       const getPostsByCategory = (categoryName) => {
         let postsByCategory = postsMainBase.filter(post => {
@@ -38,7 +30,7 @@ const PostsCategories = (props) => {
             </div>
             <nav>
                 <ul>
-                    {uniqueCategories().map((category, index) => {
+                    {uniqueCategories.map((category, index) => {
                         return(
                             <li onClick={
                                 () => {

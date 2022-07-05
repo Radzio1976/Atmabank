@@ -4,7 +4,7 @@ import Logo from './Logo';
 import Navigation from './Navigation';
 import SecondHeader from './SecondHeader';
 
-import AppState from '../../utils/AppState';
+import AppState from '../../hooks/AppState';
 
   const Header = withRouter(props => {
     const {category, postTitle} = AppState();

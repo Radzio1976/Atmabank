@@ -9,9 +9,9 @@ import RecentPosts from '../RecentPosts/RecentPosts';
 import PostsCategories from '../PostsCategories/PostsCategories';
 import RecentComments from '../RecentComments';
 
-import AppState from '../../utils/AppState';
-import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
-import useLastFiveCommentsHook from '../../utils/GetLastFiveCommentsHook';
+import AppState from '../../hooks/AppState';
+import useCategoryAndPostTitleHook from '../../hooks/GetCategoryAndPostTitleHook';
+import useLastFiveCommentsHook from '../../hooks/GetLastFiveCommentsHook';
 
 const Blog = () => {
   const {category} = AppState();

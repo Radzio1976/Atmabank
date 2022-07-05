@@ -1,5 +1,5 @@
 import {withRouter} from 'react-router-dom';
-import AppState from '../../utils/AppState';
+import AppState from '../../hooks/AppState';
 
 const BlogContainerLeftColumn = withRouter(props => {
   const {posts} = AppState();

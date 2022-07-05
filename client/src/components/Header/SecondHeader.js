@@ -2,9 +2,9 @@ import {withRouter} from 'react-router-dom';
 
 import './SecondHeader.css';
 
-import useResetPostsHook from '../../utils/GetResetPostsHook';
-import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
-import usePostsByCategoryHook from '../../utils/GetPostsByCategoryHook';
+import useResetPostsHook from '../../hooks/GetResetPostsHook';
+import useCategoryAndPostTitleHook from '../../hooks/GetCategoryAndPostTitleHook';
+import usePostsByCategoryHook from '../../hooks/GetPostsByCategoryHook';
 
 const SecondHeader = withRouter(props => {
     const {getResetPosts} = useResetPostsHook();

@@ -2,8 +2,8 @@ import React from 'react';
 import {useQuery, gql} from "@apollo/client";
 import {withRouter} from 'react-router-dom';
 
-import useResetPostsHook from '../../utils/GetResetPostsHook';
-import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
+import useResetPostsHook from '../../hooks/GetResetPostsHook';
+import useCategoryAndPostTitleHook from '../../hooks/GetCategoryAndPostTitleHook';
 
   const NAVQUERY = gql`
   query Navigation {

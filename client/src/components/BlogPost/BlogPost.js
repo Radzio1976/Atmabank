@@ -23,13 +23,13 @@ import RecentComments from '../RecentComments';
 
 import "./BlogPost.css";
 
-import AppState from '../../utils/AppState';
-import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
-import useCurrentPostSlugHook from '../../utils/GetCurrentPostSlugHook';
-import useLastFiveCommentsHook from '../../utils/GetLastFiveCommentsHook';
-import useCurrentPostIDHook from '../../utils/GetCurrentPostIDHook';
-import useCurrentPostCommentsHook from '../../utils/GetCurrentPostCommentsHook';
-import useCurrentPostCommentsQtyHook from '../../utils/GetCurrentPostCommentsQtyHook';
+import AppState from '../../hooks/AppState';
+import useCategoryAndPostTitleHook from '../../hooks/GetCategoryAndPostTitleHook';
+import useCurrentPostSlugHook from '../../hooks/GetCurrentPostSlugHook';
+import useLastFiveCommentsHook from '../../hooks/GetLastFiveCommentsHook';
+import useCurrentPostIDHook from '../../hooks/GetCurrentPostIDHook';
+import useCurrentPostCommentsHook from '../../hooks/GetCurrentPostCommentsHook';
+import useCurrentPostCommentsQtyHook from '../../hooks/GetCurrentPostCommentsQtyHook';
 
 const BlogPostContext = createContext();
 

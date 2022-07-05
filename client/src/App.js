@@ -13,11 +13,11 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
 
-import AppState from './utils/AppState';
-import useLastFiveCommentsHook from './utils/GetLastFiveCommentsHook';
-import usePostsHook from './utils/GetPostsHook';
-import useCurrentPostCommentsHook from './utils/GetCurrentPostCommentsHook';
-import useCurrentPostCommentsQtyHook from './utils/GetCurrentPostCommentsQtyHook';
+import AppState from './hooks/AppState';
+import useLastFiveCommentsHook from './hooks/GetLastFiveCommentsHook';
+import usePostsHook from './hooks/GetPostsHook';
+import useCurrentPostCommentsHook from './hooks/GetCurrentPostCommentsHook';
+import useCurrentPostCommentsQtyHook from './hooks/GetCurrentPostCommentsQtyHook';
 
 const AppContext = createContext();
 

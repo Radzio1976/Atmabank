@@ -2,8 +2,8 @@ import { useContext } from "react";
 import {withRouter} from 'react-router-dom';
 import { AppContext } from "../../App";
 
-import AppState from "../../utils/AppState";
-import useScrollToCommentsHook from "../../utils/ScrollToCommentHook";
+import AppState from "../../hooks/AppState";
+import useScrollToCommentsHook from "../../hooks/ScrollToCommentHook";
 
 const RecentComments = withRouter(props => {
   const AppCtx = useContext(AppContext);

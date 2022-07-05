@@ -1,4 +1,4 @@
-import AppState from "../../utils/AppState";
+import AppState from "../../hooks/AppState";
 
 const BlogpostCommentsQuantityContainer = () => {
     const {currentPostCommentsQty} = AppState();

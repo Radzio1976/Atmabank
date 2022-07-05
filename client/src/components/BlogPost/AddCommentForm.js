@@ -1,5 +1,5 @@
-import AppState from "../../utils/AppState";
-import useAddCommentFormChangeHook from "../../utils/GetAddCommentFormChangeHook";
+import AppState from "../../hooks/AppState";
+import useAddCommentFormChangeHook from "../../hooks/GetAddCommentFormChangeHook";
 
 const AddCommentForm = (props) => {
     const sendComment = props.sendComment;

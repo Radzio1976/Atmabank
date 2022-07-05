@@ -16,11 +16,13 @@ import BlogPost from './components/BlogPost';
 import AppState from './utils/AppState';
 import useLastFiveCommentsHook from './utils/GetLastFiveCommentsHook';
 import usePostsHook from './utils/GetPostsHook';
+import useCurrentPostCommentsHook from './utils/GetCurrentPostCommentsHook';
 
 const AppContext = createContext();
 
 const App = () => {
-  const {        category, 
+  const {
+    category, 
     setCategory, 
     postTitle, 
     setPostTitle, 
@@ -29,10 +31,13 @@ const App = () => {
     postID, 
     setPostID, 
     lastFiveComments, 
-    setLastFiveComments} = AppState();
+    setLastFiveComments,
+    currentPostComments
+        } = AppState();
     
-  const {getLastFiveComments} = useLastFiveCommentsHook();
+  const {getLastFiveComments} = useLastFiveCommentsHook(); 
   const {getPosts} = usePostsHook();
+  const {getCurrentPostComments} = useCurrentPostCommentsHook();
 
   const [postsMainBase, setPostsMainBase] = useState([]); 
   const [posts, setPosts] = useState([]); 
@@ -41,7 +46,6 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
 
-  const [currentPostComments, setCurrentPostComments] = useState([]);
   const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
 
   const [mainCommentsFormVisibility, setmainCommentsFormVisibility] = useState(true);
@@ -63,11 +67,6 @@ const App = () => {
   const textChange = (textValue) => {
     setText(textValue);
 };
-
-  // This function update state of current post comments
-  const getCurrentPostComments = (currentComments) => {
-    setCurrentPostComments(currentComments);
-  }
 
   // This function update the counter for comments 
   const getCurrentPostCommentsQty = (currentComments) => {
@@ -98,7 +97,7 @@ const App = () => {
     })
   
     setmainCommentsFormVisibility(false);
-    setCurrentPostComments(currentComments);
+    getCurrentPostComments(currentComments);
     resetForm();
   }
 
@@ -108,7 +107,7 @@ const App = () => {
         return {...el, isCommentAnswerOn: false}
     })
     setmainCommentsFormVisibility(true);
-    setCurrentPostComments(currentComments);
+    getCurrentPostComments(currentComments);
     resetForm();
   }
 
@@ -200,9 +199,6 @@ const App = () => {
         text,
         textChange,
         setText,
-        currentPostComments,
-        setCurrentPostComments,
-        getCurrentPostComments,
         currentPostCommentsQty,
         getCurrentPostCommentsQty,
         showSendAnswerForm,

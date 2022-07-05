@@ -23,19 +23,23 @@ import RecentComments from '../RecentComments';
 
 import "./BlogPost.css";
 
+import AppState from '../../utils/AppState';
 import useCategoryAndPostTitleHook from '../../utils/GetCategoryAndPostTitleHook';
 import useCurrentPostSlugHook from '../../utils/GetCurrentPostSlugHook';
 import useLastFiveCommentsHook from '../../utils/GetLastFiveCommentsHook';
 import useCurrentPostIDHook from '../../utils/GetCurrentPostIDHook';
+import useCurrentPostCommentsHook from '../../utils/GetCurrentPostCommentsHook';
 
 const BlogPostContext = createContext();
 
 const BlogPost = () => {
   const AppCtx = useContext(AppContext);
+  const {currentPostComments} = AppState();
   const {getCategory, getPostTitle} = useCategoryAndPostTitleHook();
   const {getCurrentPostSlug} = useCurrentPostSlugHook();
   const {getLastFiveComments} = useLastFiveCommentsHook();
   const {getCurrentPostID} = useCurrentPostIDHook();
+  const {getCurrentPostComments} = useCurrentPostCommentsHook();
   let { slug } = useParams();
 
 const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) => {
@@ -51,7 +55,7 @@ const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) =
       getPostTitle(currentPost.title);
       getCurrentPostSlug(currentPost.slug);
       getCurrentPostID(data.blogPosts[0].id);    
-      AppCtx.getCurrentPostComments(currentComments);  
+      getCurrentPostComments(currentComments);  
       AppCtx.getCurrentPostCommentsQty(currentComments);     
       getLastFiveComments(res.data.comments);   
   })
@@ -79,7 +83,7 @@ let postID = currentPost.id
               <BlogpostCommentsQuantityContainer />
               <BlogpostCommentsWrapper>
                 {
-                  AppCtx.currentPostComments.map((comment, index) => {
+                  currentPostComments.map((comment, index) => {
                       return(
                           <div id={`${currentPost.slug}-${index + 1}-comment`} className="blogpost-comment-wrapper" key={comment._id}>
                               <BlogpostCommentNameAndTextWrapper comment={comment} />

@@ -18,6 +18,7 @@ import useLastFiveCommentsHook from './hooks/GetLastFiveCommentsHook';
 import usePostsHook from './hooks/GetPostsHook';
 import useCurrentPostCommentsHook from './hooks/GetCurrentPostCommentsHook';
 import useCurrentPostCommentsQtyHook from './hooks/GetCurrentPostCommentsQtyHook';
+import useResetCommentFormHook from './hooks/GetResetCommentFormHook';
 
 const AppContext = createContext();
 
@@ -33,20 +34,20 @@ const App = () => {
     setPostID, 
     lastFiveComments, 
     setLastFiveComments,
-    currentPostComments
+    currentPostComments,
+    name,
+    email,
+    text
         } = AppState();
     
   const {getLastFiveComments} = useLastFiveCommentsHook(); 
   const {getPosts} = usePostsHook();
   const {getCurrentPostComments} = useCurrentPostCommentsHook();
   const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
+  const {resetCommentForm} = useResetCommentFormHook();
 
   const [postsMainBase, setPostsMainBase] = useState([]); 
   const [posts, setPosts] = useState([]); 
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [text, setText] = useState("");
 
   const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
 
@@ -57,25 +58,6 @@ const App = () => {
   }});
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
-  const nameChange = (nameValue) => {
-    setName(nameValue);
-  };
-
-  const emailChange = (emailValue) => {
-    setEmail(emailValue);
-  };
-
-  const textChange = (textValue) => {
-    setText(textValue);
-};
-
-  // This function supports clear of comment's form inputs
-  const resetForm = () => {
-    setName("");
-    setEmail("");
-    setText("");  
-  } 
   
   // This function supports visibility of parent comment form
   const showSendAnswerForm = (id) => {
@@ -90,7 +72,7 @@ const App = () => {
   
     setmainCommentsFormVisibility(false);
     getCurrentPostComments(currentComments);
-    resetForm();
+    resetCommentForm();
   }
 
   // This function supports visibility of "SKOMENTUJ" button
@@ -100,7 +82,7 @@ const App = () => {
     })
     setmainCommentsFormVisibility(true);
     getCurrentPostComments(currentComments);
-    resetForm();
+    resetCommentForm();
   }
 
   // This function return current time used to add comments
@@ -134,7 +116,7 @@ const App = () => {
       getCurrentPostComments(currentComments);
       getCurrentPostCommentsQty(currentComments);
       getLastFiveComments(res.data.comments);
-      resetForm();
+      resetCommentForm();
       
     })
     .catch(err => {
@@ -170,7 +152,7 @@ const App = () => {
       getCurrentPostComments(currentComments);
       getCurrentPostCommentsQty(currentComments);
       getLastFiveComments(res.data.comments);
-      resetForm();   
+      resetCommentForm();   
     })
     .catch(err => {
         console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
@@ -182,15 +164,6 @@ const App = () => {
         postsMainBase,
         posts,
         setPosts,
-        name,
-        nameChange,
-        setName,
-        email,
-        emailChange,
-        setEmail,
-        text,
-        textChange,
-        setText,
         currentPostCommentsQty,
         getCurrentPostCommentsQty,
         showSendAnswerForm,

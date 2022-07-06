@@ -58,22 +58,6 @@ const App = () => {
   }});
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  
-  // This function supports visibility of parent comment form
-  const showSendAnswerForm = (id) => {
-    const currentComments = currentPostComments.map(el => {
-        if (el._id === id) {
-            return {...el, isCommentAnswerOn: true}
-        } else {
-            return {...el, isCommentAnswerOn: false}
-        }
-        return {...el};
-    })
-  
-    setmainCommentsFormVisibility(false);
-    getCurrentPostComments(currentComments);
-    resetCommentForm();
-  }
 
   // This function supports visibility of "SKOMENTUJ" button
   const showCommentButton = () => {

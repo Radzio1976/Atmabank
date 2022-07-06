@@ -1,11 +1,11 @@
 import AppState from "./AppState";
 import useCurrentPostCommentsHook from "./GetCurrentPostCommentsHook";
-import useResetCommentFormHook from "./GetResetCommentFormHook";
+import useResetFormHook from "./GetResetFormHook";
 
 const useShowCommentButtonHook = () => {
     const {currentPostComments, setMainCommentsFormVisibility} = AppState();
     const {getCurrentPostComments} = useCurrentPostCommentsHook();
-    const {resetCommentForm} = useResetCommentFormHook();
+    const {resetForm} = useResetFormHook();
 
     const showCommentButton = () => {
         const currentComments = currentPostComments.map(el => {
@@ -13,7 +13,7 @@ const useShowCommentButtonHook = () => {
         })
         setMainCommentsFormVisibility(true);
         getCurrentPostComments(currentComments);
-        resetCommentForm();
+        resetForm();
       };
 
       return {showCommentButton};

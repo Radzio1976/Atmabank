@@ -18,7 +18,8 @@ import useLastFiveCommentsHook from './hooks/GetLastFiveCommentsHook';
 import usePostsHook from './hooks/GetPostsHook';
 import useCurrentPostCommentsHook from './hooks/GetCurrentPostCommentsHook';
 import useCurrentPostCommentsQtyHook from './hooks/GetCurrentPostCommentsQtyHook';
-import useResetCommentFormHook from './hooks/GetResetCommentFormHook';
+import useResetFormHook from './hooks/GetResetFormHook';
+import useFormChangeHook from './hooks/GetFormChangeHook';
 
 const AppContext = createContext();
 
@@ -44,7 +45,8 @@ const App = () => {
   const {getPosts} = usePostsHook();
   const {getCurrentPostComments} = useCurrentPostCommentsHook();
   const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
-  const {resetCommentForm} = useResetCommentFormHook();
+  const {resetForm} = useResetFormHook();
+  const {nameChange, emailChange, textChange} = useFormChangeHook();
 
   const [postsMainBase, setPostsMainBase] = useState([]); 
   const [posts, setPosts] = useState([]); 
@@ -67,36 +69,7 @@ const App = () => {
   }
 
   // This function supports send parent comments
-  const sendComment = () => {
-    let comment = {
-        postID, 
-        name, 
-        email, 
-        text, 
-        currentPostSlug,
-        commentTime: new Date(), 
-        isCommentAnswerOn: false,
-        commentAnswers: []
-    }
-    
-    Axios.post("/addComment", comment)
-    .then(res => {
-        console.log(res.data.info);
-        console.log("Wszystkie komentarze", res.data.comments);
-
-        const currentComments = res.data.comments.filter(comment => {
-          return comment.postID === postID
-      });           
-      getCurrentPostComments(currentComments);
-      getCurrentPostCommentsQty(currentComments);
-      getLastFiveComments(res.data.comments);
-      resetCommentForm();
-      
-    })
-    .catch(err => {
-        console.log("Nie udało się wysłać komentarza");
-    })
-  }
+  
 
     // This function supports send parent comments answers
   const sendCommentsAnswer = (parentCommentID) => {
@@ -126,7 +99,7 @@ const App = () => {
       getCurrentPostComments(currentComments);
       getCurrentPostCommentsQty(currentComments);
       getLastFiveComments(res.data.comments);
-      resetCommentForm();   
+      resetForm();   
     })
     .catch(err => {
         console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
@@ -142,7 +115,6 @@ const App = () => {
         getCurrentPostCommentsQty,
         mainCommentsFormVisibility,
         getCommentTimeInPolish,
-        sendComment,
         sendCommentsAnswer
         }}>
         <div id="App">

@@ -1,15 +1,15 @@
 import AppState from "./AppState";
 
-const useResetCommentFormHook = () => {
+const useResetFormHook = () => {
     const {setName, setEmail, setText} = AppState();
     
-    const resetCommentForm = () => {
+    const resetForm = () => {
         setName("");
         setEmail("");
         setText("");  
       };
 
-      return {resetCommentForm};
+      return {resetForm};
 };
 
-export default useResetCommentFormHook;
+export default useResetFormHook;

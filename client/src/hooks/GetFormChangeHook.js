@@ -1,6 +1,6 @@
 import AppState from "./AppState";
 
-const useAddCommentFormChangeHook = () => {
+const useFormChangeHook = () => {
     const {setName, setEmail, setText} = AppState();
 
     const nameChange = (nameValue) => setName(nameValue);
@@ -12,4 +12,4 @@ const useAddCommentFormChangeHook = () => {
     return {nameChange, emailChange, textChange};
 };
 
-export default useAddCommentFormChangeHook;
+export default useFormChangeHook;

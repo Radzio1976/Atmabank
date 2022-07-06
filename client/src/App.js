@@ -59,16 +59,6 @@ const App = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  // This function supports visibility of "SKOMENTUJ" button
-  const showCommentButton = () => {
-    const currentComments = currentPostComments.map(el => {
-        return {...el, isCommentAnswerOn: false}
-    })
-    setmainCommentsFormVisibility(true);
-    getCurrentPostComments(currentComments);
-    resetCommentForm();
-  }
-
   // This function return current time used to add comments
   const getCommentTimeInPolish = (time) => {
     const currentTime = `${time.getHours()}:${time.getMinutes()}` /// tutaj dokończyć
@@ -150,9 +140,7 @@ const App = () => {
         setPosts,
         currentPostCommentsQty,
         getCurrentPostCommentsQty,
-        showSendAnswerForm,
         mainCommentsFormVisibility,
-        showCommentButton,
         getCommentTimeInPolish,
         sendComment,
         sendCommentsAnswer

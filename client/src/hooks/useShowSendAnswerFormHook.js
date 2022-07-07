@@ -1,6 +1,6 @@
 import AppState from "./AppState";
-import useCurrentPostCommentsHook from "./GetCurrentPostCommentsHook";
-import useResetFormHook from "./GetResetFormHook";
+import useCurrentPostCommentsHook from "./useCurrentPostCommentsHook";
+import useResetFormHook from "./useResetFormHook";
 
 const useShowSendAnswerFormHook = () => {
     const {currentPostComments, setMainCommentsFormVisibility} = AppState();

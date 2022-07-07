@@ -1,14 +1,13 @@
-import { useContext } from "react";
 import {withRouter} from 'react-router-dom';
-import { AppContext } from "../../App";
 
 import AppState from "../../hooks/AppState";
-import useScrollToCommentsHook from "../../hooks/ScrollToCommentHook";
+import useScrollToCommentsHook from "../../hooks/useScrollToCommentHook";
+import useCommentTimeInPolishHook from "../../hooks/useCommentTimeInPolishHook";
 
 const RecentComments = withRouter(props => {
-  const AppCtx = useContext(AppContext);
-  const {scrollToComment} = useScrollToCommentsHook();
   const {lastFiveComments} = AppState();
+  const {scrollToComment} = useScrollToCommentsHook();
+  const {getCommentTimeInPolish} = useCommentTimeInPolishHook();
 
   return(
     <div id="RecentComments"  className="right-column-box">
@@ -26,7 +25,7 @@ const RecentComments = withRouter(props => {
                                 <div className="recent-comments-user-avatar"></div>
                                 <div className="recent-comments-user-name-and-date">
                                     <p>{comment.name}</p>
-                                    <p>{AppCtx.getCommentTimeInPolish(new Date(comment.commentTime))}</p>
+                                    <p>{getCommentTimeInPolish(new Date(comment.commentTime))}</p>
                                 </div>
                             </div>
                             <div className="recent-comments-user-comment">

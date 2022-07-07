@@ -3,7 +3,7 @@ import AddCommentForm from './AddCommentForm';
 
 import { AppContext } from "../../App";
 import AppState from "../../hooks/AppState";
-import useShowCommentButtonHook from "../../hooks/GetShowCommentButtonHook";
+import useShowCommentButtonHook from "../../hooks/useShowCommentButtonHook";
 
 const BlogpostAddCommentFormContainer= () => {
     const AppCtx = useContext(AppContext);

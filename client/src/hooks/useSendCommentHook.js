@@ -1,14 +1,15 @@
 import Axios from "axios";
+
 import AppState from "./AppState";
-import useFormChangeHook from "./GetFormChangeHook";
-import useCurrentPostCommentsHook from "./GetCurrentPostCommentsHook";
-import useCurrentPostCommentsQtyHook from "./GetCurrentPostCommentsQtyHook";
-import useLastFiveCommentsHook from "./GetLastFiveCommentsHook";
-import useResetFormHook from "./GetResetFormHook";
+import useFormChangeHook from "./useFormChangeHook";
+import useCurrentPostCommentsHook from "./useCurrentPostCommentsHook";
+import useCurrentPostCommentsQtyHook from "./useCurrentPostCommentsQtyHook";
+import useLastFiveCommentsHook from "./useLastFiveCommentsHook";
+import useResetFormHook from "./useResetFormHook";
 
 const useSendCommentHook = () => {
     const {postID, name, email, text, currentPostSlug} = AppState();
-    const {nameChange, nameError, nameErrorChange, emailChange, emailError, emailErrorChange, textChange, textError, textErrorChange} = useFormChangeHook();
+    const {nameError, nameErrorChange, emailError, emailErrorChange, textError, textErrorChange} = useFormChangeHook();
     const {getCurrentPostComments} = useCurrentPostCommentsHook();
     const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
     const {getLastFiveComments} = useLastFiveCommentsHook();

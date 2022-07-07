@@ -14,12 +14,12 @@ import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
 
 import AppState from './hooks/AppState';
-import useLastFiveCommentsHook from './hooks/GetLastFiveCommentsHook';
-import usePostsHook from './hooks/GetPostsHook';
-import useCurrentPostCommentsHook from './hooks/GetCurrentPostCommentsHook';
-import useCurrentPostCommentsQtyHook from './hooks/GetCurrentPostCommentsQtyHook';
-import useResetFormHook from './hooks/GetResetFormHook';
-import useFormChangeHook from './hooks/GetFormChangeHook';
+import useLastFiveCommentsHook from './hooks/useLastFiveCommentsHook';
+import usePostsHook from './hooks/usePostsHook';
+import useCurrentPostCommentsHook from './hooks/useCurrentPostCommentsHook';
+import useCurrentPostCommentsQtyHook from './hooks/useCurrentPostCommentsQtyHook';
+import useResetFormHook from './hooks/useResetFormHook';
+import useFormChangeHook from './hooks/useFormChangeHook';
 
 const AppContext = createContext();
 

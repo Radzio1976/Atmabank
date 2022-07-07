@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { AppContext } from "../../App";
-import useShowSendAnswerFormHook from "../../hooks/GetShowSendAnswerFormHook";
+import useShowSendAnswerFormHook from "../../hooks/useShowSendAnswerFormHook";
 
 const BlogpostCommentDateAndButtonWrapper = (props) => {
     const AppCtx = useContext(AppContext);

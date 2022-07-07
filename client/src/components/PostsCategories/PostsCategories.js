@@ -1,8 +1,8 @@
 import {withRouter} from 'react-router-dom';
 
-import useUniqueCategoriesHook from '../../hooks/GetUniqueCategoriesHook';
-import useCategoryAndPostTitleHook from '../../hooks/GetCategoryAndPostTitleHook';
-import usePostsByCategoryHook from '../../hooks/GetPostsByCategoryHook';
+import useUniqueCategoriesHook from '../../hooks/useUniqueCategoriesHook';
+import useCategoryAndPostTitleHook from '../../hooks/useCategoryAndPostTitleHook';
+import usePostsByCategoryHook from '../../hooks/usePostsByCategoryHook';
 
 const PostsCategories = (props) => {
     const {getUniqueCategories} = useUniqueCategoriesHook();

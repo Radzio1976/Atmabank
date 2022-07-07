@@ -62,13 +62,12 @@ const App = () => {
   if (error) return <p>Error :(</p>;
 
   // This function return current time used to add comments
+  
   const getCommentTimeInPolish = (time) => {
     const currentTime = `${time.getHours()}:${time.getMinutes()}` /// tutaj dokończyć
     let dateInPolish = new Intl.DateTimeFormat( 'pl-PL', { dateStyle: 'full' }).format(time);    
     return `${dateInPolish} o ${currentTime}`;
-  }
-
-  // This function supports send parent comments
+  }  
   
 
     // This function supports send parent comments answers

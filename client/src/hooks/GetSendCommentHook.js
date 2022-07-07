@@ -8,27 +8,26 @@ import useResetFormHook from "./GetResetFormHook";
 
 const useSendCommentHook = () => {
     const {postID, name, email, text, currentPostSlug} = AppState();
-    const {nameChange, emailChange, textChange} = useFormChangeHook();
+    const {nameChange, nameError, nameErrorChange, emailChange, emailError, emailErrorChange, textChange, textError, textErrorChange} = useFormChangeHook();
     const {getCurrentPostComments} = useCurrentPostCommentsHook();
     const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
     const {getLastFiveComments} = useLastFiveCommentsHook();
     const {resetForm} = useResetFormHook();
 
     const sendComment = () => {
-        console.log("Wysyłam komentarz");
         let isValid = true;
     
-        if (name.length < 5) {
+        if (name.length < 5 || name === nameError) {
           isValid = false;
-          nameChange("Pole Imię musi zawierać conajmniej 5 znaków");
+          nameErrorChange();
         }
-        if (email.length < 5 || email.includes("@") === false) {
+        if (email.length < 5 || email.includes("@") === false || email === emailError) {
           isValid = false;
-          emailChange("Pole Email musi zawierać conajmniej 5 znaków oraz @");
+          emailErrorChange();
         }
-        if (text.length < 20) {
+        if (text.length < 20 || text === textError) {
           isValid = false;
-          textChange("Pole Twój komentarz musi zawierać conajmniej 20 znaków")
+          textErrorChange();
         }
         if (isValid) {    
           let comment = {
@@ -60,6 +59,7 @@ const useSendCommentHook = () => {
             console.log("Nie udało się wysłać komentarza");
         });
         };   
+        console.log(isValid)
       };
 
       return {sendComment};

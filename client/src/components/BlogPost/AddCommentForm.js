@@ -21,7 +21,7 @@ const AddCommentForm = (props) => {
             placeholder="Imię"
             />
             <input 
-            style={{color: nameError !== "" ? "red" : ""}}
+            style={{color: emailError !== "" ? "red" : ""}}
             type="text" 
             name="email" 
             value={emailError === "" ? email : emailError} 
@@ -30,7 +30,7 @@ const AddCommentForm = (props) => {
             placeholder="Email"
              />
             <textarea 
-            style={{color: nameError !== "" ? "red" : ""}}
+            style={{color: textError !== "" ? "red" : ""}}
             name="text" 
             value={textError === "" ? text : textError} 
             onChange={(e) => textChange(e.target.value)} 

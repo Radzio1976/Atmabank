@@ -1,12 +1,10 @@
 import AppState from "../../hooks/AppState";
 import useFormChangeHook from "../../hooks/useFormChangeHook";
-import useSendCommentHook from "../../hooks/useSendCommentHook";
 
 const AddCommentForm = (props) => {
-    //const sendComment = props.sendComment;
+    const sendComment = props.sendComment;
     const {name, nameError, setNameError, email, emailError, setEmailError, text, textError, setTextError} = AppState();
     const {nameChange, emailChange, textChange} = useFormChangeHook();
-    const {sendComment} = useSendCommentHook();
 
     return(
         <div className="add-comment-form">

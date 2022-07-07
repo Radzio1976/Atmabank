@@ -1,11 +1,9 @@
-import { useContext } from "react";
-
 import AddCommentForm from './AddCommentForm';
 
-import { AppContext } from "../../App";
+import useSendCommentsAnswerHook from "../../hooks/useSendCommentsAnswerHook";
 
 const BlogpostAddCommentsAnswerFormContainer = (props) => {
-    const AppCtx = useContext(AppContext);
+    const {sendCommentsAnswer} = useSendCommentsAnswerHook();
     const comment = props.comment;
 
     return(
@@ -14,7 +12,7 @@ const BlogpostAddCommentsAnswerFormContainer = (props) => {
         <div className="blogpost-add-comments-answer-form">
             <h4>Odpowiedz użytkownikowi {comment.name}</h4>
         </div>
-            <AddCommentForm sendComment={() => AppCtx.sendCommentsAnswer(comment._id)} />
+            <AddCommentForm sendComment={() => sendCommentsAnswer(comment._id)} />
         </div> : ""}
     </>
     )

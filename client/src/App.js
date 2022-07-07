@@ -1,7 +1,5 @@
-import React, {useState, createContext} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {useQuery, gql } from "@apollo/client";
-import Axios from 'axios';
+import {useQuery } from "@apollo/client";
 import './index.css';
 
 import ALLPOSTSQUERY from '../src/queries/AllPostsQuery';
@@ -13,47 +11,10 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
 
-import AppState from './hooks/AppState';
-import useLastFiveCommentsHook from './hooks/useLastFiveCommentsHook';
 import usePostsHook from './hooks/usePostsHook';
-import useCurrentPostCommentsHook from './hooks/useCurrentPostCommentsHook';
-import useCurrentPostCommentsQtyHook from './hooks/useCurrentPostCommentsQtyHook';
-import useResetFormHook from './hooks/useResetFormHook';
-import useFormChangeHook from './hooks/useFormChangeHook';
 
-const AppContext = createContext();
-
-const App = () => {
-  const {
-    category, 
-    setCategory, 
-    postTitle, 
-    setPostTitle, 
-    currentPostSlug, 
-    setCurrentPostSlug, 
-    postID, 
-    setPostID, 
-    lastFiveComments, 
-    setLastFiveComments,
-    currentPostComments,
-    name,
-    email,
-    text
-        } = AppState();
-    
-  const {getLastFiveComments} = useLastFiveCommentsHook(); 
+const App = () => {    
   const {getPosts} = usePostsHook();
-  const {getCurrentPostComments} = useCurrentPostCommentsHook();
-  const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
-  const {resetForm} = useResetFormHook();
-  const {nameChange, emailChange, textChange} = useFormChangeHook();
-
-  const [postsMainBase, setPostsMainBase] = useState([]); 
-  const [posts, setPosts] = useState([]); 
-
-  const [currentPostCommentsQty, setCurrentPostCommentsQty] = useState(0);
-
-  const [mainCommentsFormVisibility, setmainCommentsFormVisibility] = useState(true);
 
   const {error, loading} = useQuery(ALLPOSTSQUERY, {onCompleted: (data) => {
     getPosts(data.blogPosts);
@@ -61,61 +22,7 @@ const App = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  // This function return current time used to add comments
-  
-  const getCommentTimeInPolish = (time) => {
-    const currentTime = `${time.getHours()}:${time.getMinutes()}` /// tutaj dokończyć
-    let dateInPolish = new Intl.DateTimeFormat( 'pl-PL', { dateStyle: 'full' }).format(time);    
-    return `${dateInPolish} o ${currentTime}`;
-  }  
-  
-
-    // This function supports send parent comments answers
-  const sendCommentsAnswer = (parentCommentID) => {
-    //console.log(parentCommentID)
-    let mainComment = currentPostComments.filter(comment => {
-      return comment._id === parentCommentID;
-  })
-  console.log(mainComment[0]._id)
-  let commentAnswer = {
-      parentCommentID,
-      postID, 
-      name, 
-      email, 
-      text, 
-      currentPostSlug,
-      commentTime: new Date(), 
-      isCommentAnswerOn: false,
-  }
-
-    Axios.post("/addCommentsAnswer", commentAnswer)
-    .then(res => {
-        console.log(res.data.info);
-        console.log("Wszystkie komentarze:", res.data.comments);
-        const currentComments = res.data.comments.filter(comment => {
-          return comment.postID === postID
-      });           
-      getCurrentPostComments(currentComments);
-      getCurrentPostCommentsQty(currentComments);
-      getLastFiveComments(res.data.comments);
-      resetForm();   
-    })
-    .catch(err => {
-        console.log("Nie udało się wysłać odpowiedzi na komentarz", err);
-    });
-  }
-
     return(
-      <AppContext.Provider value={{
-        postsMainBase,
-        posts,
-        setPosts,
-        currentPostCommentsQty,
-        getCurrentPostCommentsQty,
-        mainCommentsFormVisibility,
-        getCommentTimeInPolish,
-        sendCommentsAnswer
-        }}>
         <div id="App">
           <BrowserRouter>
             <Header />
@@ -128,9 +35,7 @@ const App = () => {
               </Switch>
           </BrowserRouter>
         </div>
-      </AppContext.Provider>
     )
 }
 
-export {AppContext};
 export default App;

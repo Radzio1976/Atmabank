@@ -2,7 +2,6 @@ import { createContext, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import {useQuery } from "@apollo/client";
 import Axios from 'axios';
-import { AppContext } from '../../App';
 
 import GET_CURRENT_POST from '../../queries/CurrentPostQuery';
 
@@ -34,8 +33,7 @@ import useCurrentPostCommentsQtyHook from '../../hooks/useCurrentPostCommentsQty
 const BlogPostContext = createContext();
 
 const BlogPost = () => {
-  const AppCtx = useContext(AppContext);
-  const {currentPostComments} = AppState();
+  const {posts, currentPostComments} = AppState();
   const {getCategory, getPostTitle} = useCategoryAndPostTitleHook();
   const {getCurrentPostSlug} = useCurrentPostSlugHook();
   const {getLastFiveComments} = useLastFiveCommentsHook();
@@ -102,7 +100,7 @@ let postID = currentPost.id
           </BlogpostContainerLeftColumn>
           <BlogpostContainerRightColumn>
             <RecentPosts />
-            <PostsCategories posts={AppCtx.posts} />
+            <PostsCategories posts={posts} />
             <RecentComments />
           </BlogpostContainerRightColumn>
         </div>

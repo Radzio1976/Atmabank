@@ -1,14 +1,13 @@
-import { useContext } from "react";
 import AddCommentForm from './AddCommentForm';
 
-import { AppContext } from "../../App";
 import AppState from "../../hooks/AppState";
 import useShowCommentButtonHook from "../../hooks/useShowCommentButtonHook";
+import useSendCommentHook from "../../hooks/useSendCommentHook";
 
 const BlogpostAddCommentFormContainer= () => {
-    const AppCtx = useContext(AppContext);
     const {mainCommentsFormVisibility} = AppState();
     const {showCommentButton} = useShowCommentButtonHook();
+    const {sendComment} = useSendCommentHook();
 
     return(
         <div className="blogpost-add-comment-form-container">
@@ -17,7 +16,7 @@ const BlogpostAddCommentFormContainer= () => {
                 {mainCommentsFormVisibility === false ? <p className="add-comment-form-button" onClick={showCommentButton}>Skomentuj</p> : ""}
             </div>
             {mainCommentsFormVisibility === true ? 
-            <AddCommentForm sendComment={AppCtx.sendComment} />
+            <AddCommentForm sendComment={sendComment} />
             : ""}
         </div>
     )

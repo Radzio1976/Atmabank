@@ -1,10 +1,5 @@
-import React, { useContext, useEffect } from "react";
-
-import { BlogPostContext } from "./BlogPost";
-
-const BlogpostPostContainer = () => {
-  const BlogPostCtx = useContext(BlogPostContext);
-  const currentPost = BlogPostCtx.currentPost;
+const BlogpostPostContainer = (props) => {
+  const currentPost = props.currentPost;
 
     return(
         <div className="blogpost-post-container">

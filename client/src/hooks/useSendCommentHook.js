@@ -60,7 +60,6 @@ const useSendCommentHook = () => {
             console.log("Nie udało się wysłać komentarza");
         });
         };   
-        console.log(isValid)
       };
 
       return {sendComment};

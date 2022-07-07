@@ -1,4 +1,3 @@
-import { createContext, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import {useQuery } from "@apollo/client";
 import Axios from 'axios';
@@ -30,10 +29,8 @@ import useCurrentPostIDHook from '../../hooks/useCurrentPostIDHook';
 import useCurrentPostCommentsHook from '../../hooks/useCurrentPostCommentsHook';
 import useCurrentPostCommentsQtyHook from '../../hooks/useCurrentPostCommentsQtyHook';
 
-const BlogPostContext = createContext();
-
 const BlogPost = () => {
-  const {posts, currentPostComments} = AppState();
+  const {currentPostComments} = AppState();
   const {getCategory, getPostTitle} = useCategoryAndPostTitleHook();
   const {getCurrentPostSlug} = useCurrentPostSlugHook();
   const {getLastFiveComments} = useLastFiveCommentsHook();
@@ -54,7 +51,7 @@ const {error, loading, data} = useQuery(GET_CURRENT_POST, {onCompleted: (data) =
       getCategory(currentPost.categories[0].name);
       getPostTitle(currentPost.title);
       getCurrentPostSlug(currentPost.slug);
-      getCurrentPostID(data.blogPosts[0].id);    
+      getCurrentPostID(currentPost.id);    
       getCurrentPostComments(currentComments);  
       getCurrentPostCommentsQty(currentComments);     
       getLastFiveComments(res.data.comments);   
@@ -68,17 +65,12 @@ if (loading) return <p>Loading...</p>;
 if (error) return <p>Error :(</p>;
 
 let currentPost = data.blogPosts[0];
-let postID = currentPost.id
 
   return(
-    <BlogPostContext.Provider value={{
-      currentPost,
-      postID
-    }}>
       <div id="BlogPost">
         <div className="blogpost-container">
           <BlogpostContainerLeftColumn>
-            <BlogpostPostContainer />
+            <BlogpostPostContainer currentPost={currentPost} />
             <BlogpostCommentsContainer>
               <BlogpostCommentsQuantityContainer />
               <BlogpostCommentsWrapper>
@@ -100,14 +92,12 @@ let postID = currentPost.id
           </BlogpostContainerLeftColumn>
           <BlogpostContainerRightColumn>
             <RecentPosts />
-            <PostsCategories posts={posts} />
+            <PostsCategories />
             <RecentComments />
           </BlogpostContainerRightColumn>
         </div>
     </div>
-    </BlogPostContext.Provider>
   )
 }
 
-export {BlogPostContext};
 export default BlogPost;

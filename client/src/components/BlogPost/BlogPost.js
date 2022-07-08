@@ -22,19 +22,15 @@ import RecentComments from '../RecentComments';
 import "./BlogPost.css";
 
 import AppState from '../../hooks/AppState';
-import useCategoryAndPostTitleHook from '../../hooks/useCategoryAndPostTitleHook';
-import useCurrentPostSlugHook from '../../hooks/useCurrentPostSlugHook';
+import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 import useLastFiveCommentsHook from '../../hooks/useLastFiveCommentsHook';
-import useCurrentPostIDHook from '../../hooks/useCurrentPostIDHook';
 import useCurrentPostCommentsHook from '../../hooks/useCurrentPostCommentsHook';
 import useCurrentPostCommentsQtyHook from '../../hooks/useCurrentPostCommentsQtyHook';
 
 const BlogPost = () => {
   const {currentPostComments} = AppState();
-  const {getCategory, getPostTitle} = useCategoryAndPostTitleHook();
-  const {getCurrentPostSlug} = useCurrentPostSlugHook();
+  const {getCategory, getPostTitle, getCurrentPostID, getCurrentPostSlug} = useCurrentPostDataHook();
   const {getLastFiveComments} = useLastFiveCommentsHook();
-  const {getCurrentPostID} = useCurrentPostIDHook();
   const {getCurrentPostComments} = useCurrentPostCommentsHook();
   const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
   let { slug } = useParams();

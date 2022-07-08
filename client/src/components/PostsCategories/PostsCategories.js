@@ -1,12 +1,12 @@
 import {withRouter} from 'react-router-dom';
 
 import useUniqueCategoriesHook from '../../hooks/useUniqueCategoriesHook';
-import useCategoryAndPostTitleHook from '../../hooks/useCategoryAndPostTitleHook';
+import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 import usePostsByCategoryHook from '../../hooks/usePostsByCategoryHook';
 
 const PostsCategories = (props) => {
     const {getUniqueCategories} = useUniqueCategoriesHook();
-    const {getCategory} = useCategoryAndPostTitleHook();
+    const {getCategory} = useCurrentPostDataHook();
     const {getPostsByCategory} = usePostsByCategoryHook();
 
     return(

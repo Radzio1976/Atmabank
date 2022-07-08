@@ -3,7 +3,7 @@ import {useQuery, gql} from "@apollo/client";
 import {withRouter} from 'react-router-dom';
 
 import useResetPostsHook from '../../hooks/useResetPostsHook';
-import useCategoryAndPostTitleHook from '../../hooks/useCategoryAndPostTitleHook';
+import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 
   const NAVQUERY = gql`
   query Navigation {
@@ -21,7 +21,7 @@ import useCategoryAndPostTitleHook from '../../hooks/useCategoryAndPostTitleHook
   `
 const Navigation = withRouter(props => {
   const {getResetPosts} = useResetPostsHook();
-  const {getCategory} = useCategoryAndPostTitleHook()
+  const {getCategory} = useCurrentPostDataHook();
 
   const {data, error, loading} = useQuery(NAVQUERY);
   if (loading) return <p>Loading...</p>;

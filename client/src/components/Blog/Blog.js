@@ -10,12 +10,12 @@ import PostsCategories from '../PostsCategories/PostsCategories';
 import RecentComments from '../RecentComments';
 
 import AppState from '../../hooks/AppState';
-import useCategoryAndPostTitleHook from '../../hooks/useCategoryAndPostTitleHook';
+import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 import useLastFiveCommentsHook from '../../hooks/useLastFiveCommentsHook';
 
 const Blog = () => {
   const {category} = AppState();
-  const {getCategory, getPostTitle} = useCategoryAndPostTitleHook();
+  const {getCategory, getPostTitle} = useCurrentPostDataHook();
   const {getLastFiveComments} = useLastFiveCommentsHook();
  
   useEffect(() => {

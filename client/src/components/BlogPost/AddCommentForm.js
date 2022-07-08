@@ -3,7 +3,10 @@ import useFormChangeHook from "../../hooks/useFormChangeHook";
 
 const AddCommentForm = (props) => {
     const sendComment = props.sendComment;
-    const {name, nameError, setNameError, email, emailError, setEmailError, text, textError, setTextError} = AppState();
+    const nameError = "Pole imię musi zawierać conajmniej 5 znaków";
+    const emailError = "Pole email musi zawierać conajmniej 5 znaków oraz @";
+    const textError = "Pole text musi zawierać conajmniej 20 znaków";
+    const {name, setName, email, setEmail, text, setText} = AppState();
     const {nameChange, emailChange, textChange} = useFormChangeHook();
 
     return(
@@ -13,26 +16,26 @@ const AddCommentForm = (props) => {
             style={{color: nameError !== "" ? "red" : ""}}
             type="text" 
             name="name" 
-            value={nameError === "" ? name : nameError} 
+            value={name} 
             onChange={(e) => nameChange(e.target.value)} 
-            onFocus={() => setNameError("")} 
+            onFocus={() => setName("")} 
             placeholder="Imię"
             />
             <input 
             style={{color: emailError !== "" ? "red" : ""}}
             type="text" 
             name="email" 
-            value={emailError === "" ? email : emailError} 
+            value={email} 
             onChange={(e) => emailChange(e.target.value)} 
-            onFocus={() => setEmailError("")} 
+            onFocus={() => setEmail("")} 
             placeholder="Email"
              />
             <textarea 
             style={{color: textError !== "" ? "red" : ""}}
             name="text" 
-            value={textError === "" ? text : textError} 
+            value={text} 
             onChange={(e) => textChange(e.target.value)} 
-            onFocus={() => setTextError("")} 
+            onFocus={() => setText("")} 
             placeholder="Twój komentarz" 
             />
         </form>

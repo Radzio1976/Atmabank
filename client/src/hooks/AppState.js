@@ -9,11 +9,8 @@ const initialState = {
     postID: "", 
     lastFiveComments: [],
     name: "",
-    nameError: "",
     email: "",
-    emailError: "",
     text: "",
-    textError: "",
     currentPostComments: [],
     currentPostCommentsQty: 0,
     mainCommentsFormVisibility: true
@@ -34,11 +31,8 @@ const AppState = () => {
     const [lastFiveComments, setLastFiveComments] = useGlobalState("lastFiveComments");
 
     const [name, setName] = useGlobalState("name");
-    const [nameError, setNameError] = useGlobalState("nameError");
     const [email, setEmail] = useGlobalState("email");
-    const [emailError, setEmailError] = useGlobalState("emailError");
     const [text, setText] = useGlobalState("text");
-    const [textError, setTextError] = useGlobalState("textError");
 
     const [currentPostComments, setCurrentPostComments] = useGlobalState("currentPostComments");
     const [currentPostCommentsQty, setCurrentPostCommentsQty] = useGlobalState("currentPostCommentsQty");
@@ -52,6 +46,9 @@ const AppState = () => {
     //console.log("Ostatnie 5 komentarzy: ", lastFiveComments);
     //console.log(postsMainBase)
     //console.log(posts)
+    console.log(name)
+    console.log(email)
+    console.log(text)
 
     return {
         postsMainBase, 
@@ -70,16 +67,10 @@ const AppState = () => {
         setLastFiveComments,
         name,
         setName,
-        nameError, 
-        setNameError,
         email,
         setEmail,
-        emailError, 
-        setEmailError,
         text,
         setText,
-        textError, 
-        setTextError,
         currentPostComments,
         setCurrentPostComments,
         currentPostCommentsQty, 

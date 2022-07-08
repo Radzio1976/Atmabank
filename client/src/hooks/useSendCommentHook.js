@@ -1,15 +1,13 @@
 import Axios from "axios";
 
 import AppState from "./AppState";
-import useFormChangeHook from "./useFormChangeHook";
 import useCurrentPostCommentsHook from "./useCurrentPostCommentsHook";
 import useCurrentPostCommentsQtyHook from "./useCurrentPostCommentsQtyHook";
 import useLastFiveCommentsHook from "./useLastFiveCommentsHook";
 import useResetFormHook from "./useResetFormHook";
 
 const useSendCommentHook = () => {
-    const {postID, name, email, text, currentPostSlug} = AppState();
-    const {nameError, nameErrorChange, emailError, emailErrorChange, textError, textErrorChange} = useFormChangeHook();
+    const {postID, name, setName, email, setEmail, text, setText, currentPostSlug} = AppState();
     const {getCurrentPostComments} = useCurrentPostCommentsHook();
     const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
     const {getLastFiveComments} = useLastFiveCommentsHook();
@@ -18,17 +16,17 @@ const useSendCommentHook = () => {
     const sendComment = () => {
         let isValid = true;
     
-        if (name.length < 5 || name === nameError) {
+        if (name.length < 5 || name === "Pole imię musi zawierać conajmniej 5 znaków") {
           isValid = false;
-          nameErrorChange();
+          setName("Pole imię musi zawierać conajmniej 5 znaków");
         }
-        if (email.length < 5 || email.includes("@") === false || email === emailError) {
+        if (email.length < 5 || email.includes("@") === false || email === "Pole email musi zawierać conajmniej 5 znaków oraz @") {
           isValid = false;
-          emailErrorChange();
+          setEmail("Pole email musi zawierać conajmniej 5 znaków oraz @")
         }
-        if (text.length < 20 || text === textError) {
+        if (text.length < 20 || text === "Pole text musi zawierać conajmniej 20 znaków") {
           isValid = false;
-          textErrorChange();
+          setText("Pole text musi zawierać conajmniej 20 znaków")
         }
         if (isValid) {    
           let comment = {

@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require("path");
 const {MongoClient} = require('mongodb');
@@ -10,6 +9,7 @@ const uri = process.env.MONGODB_URI;
 const getComments = require('./mongoDBRequests/GetComments');
 const addComment = require('./mongoDBRequests/AddComment');
 const addCommentsAnswer = require('./mongoDBRequests/AddCommentsAnswer');
+const sendContactForm = require('./mongoDBRequests/SendContactForm');
 
 const app=express();
 
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-app.get("/api/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("test");
 })
 
@@ -59,7 +59,11 @@ app.post("/addComment", (req, res) => {
 
 app.post("/addCommentsAnswer", (req, res) => {
   addCommentsAnswer(req, res, db);
-  });
+});
+
+app.post("/sendContactForm", (req, res) => {
+  sendContactForm(req, res);
+});
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

@@ -6,10 +6,10 @@ const {MongoClient} = require('mongodb');
 require("dotenv/config");
 const uri = process.env.MONGODB_URI;
 
-const getComments = require('./mongoDBRequests/GetComments');
-const addComment = require('./mongoDBRequests/AddComment');
-const addCommentsAnswer = require('./mongoDBRequests/AddCommentsAnswer');
-const sendContactForm = require('./mongoDBRequests/SendContactForm');
+const getComments = require('./httpRequests/GetComments');
+const addComment = require('./httpRequests/AddComment');
+const addCommentsAnswer = require('./httpRequests/AddCommentsAnswer');
+const sendContactForm = require('./httpRequests/SendContactForm');
 
 const app=express();
 

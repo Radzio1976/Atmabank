@@ -10,6 +10,7 @@ import About from './components/About';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
+import Footer from './components/Footer/Footer';
 
 import usePostsHook from './hooks/usePostsHook';
 
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/kontakt" component={Contact} />
                 <Route path="/blog/:slug" component={BlogPost} />
               </Switch>
+            <Footer />
           </BrowserRouter>
         </div>
     )

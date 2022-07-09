@@ -1,0 +1,12 @@
+#Footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: #27292c;
+    color: #fff;
+}
+
+.footer-container span {
+    color: cornflowerblue;
+}

@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 
 import useResetPostsHook from '../../hooks/useResetPostsHook';
 import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
+import useResetFormHook from '../../hooks/useResetFormHook';
 
   const NAVQUERY = gql`
   query Navigation {
@@ -22,6 +23,7 @@ import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 const Navigation = withRouter(props => {
   const {getResetPosts} = useResetPostsHook();
   const {getCategory} = useCurrentPostDataHook();
+  const {resetForm} = useResetFormHook();
 
   const {data, error, loading} = useQuery(NAVQUERY);
   if (loading) return <p>Loading...</p>;
@@ -41,7 +43,10 @@ const Navigation = withRouter(props => {
               getResetPosts();
               getCategory();
               }}>{navigationData.blogTitle}</li>
-            <li onClick={() => props.history.push(`/${navigationData.contactSlug}`)}>{navigationData.contactTitle}</li>
+            <li onClick={() => {
+              props.history.push(`/${navigationData.contactSlug}`)
+              resetForm();
+              }}>{navigationData.contactTitle}</li>
           </ul>
         </nav>
       </div>

@@ -1,32 +1,14 @@
 import Axios from "axios";
 
 import AppState from "./AppState";
-import useFormChangeHook from "./useFormChangeHook";
+import useFormValidationHook from "./useFormValidationHook";
 
 const useSendContactFormHook = () => {
-    const {name, nameError, email, emailError, subject, subjectError, text, textError} = AppState();
-    const {nameErrorChange, emailErrorChange, subjectErrorChange, textErrorChange} = useFormChangeHook();
+    const {name, email, subject, text} = AppState();
+    const {getFormValidation} = useFormValidationHook();
 
     const sendContactForm = () => {
-        let isValid = true;
-    
-        if (name.length < 5 || name === nameError) {
-          isValid = false;
-          nameErrorChange();
-        }
-        if (email.length < 5 || email.includes("@") === false || email === emailError) {
-          isValid = false;
-          emailErrorChange();
-        }
-        if (subject.length < 5 || subject === subjectError) {
-            isValid = false;
-            subjectErrorChange();
-        }
-        if (text.length < 20 || text === textError) {
-          isValid = false;
-          textErrorChange();
-        }
-        if (isValid) {
+        if (getFormValidation({name, email, subject, text}) === true) {
             let message = {
                 name,
                 email,

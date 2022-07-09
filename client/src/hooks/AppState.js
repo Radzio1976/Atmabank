@@ -13,9 +13,9 @@ const initialState = {
     email: "",
     emailError: "Pole email musi zawierać conajmniej 5 znaków oraz @",
     subject: "",
-    subjectError: "Pole text musi zawierać conajmniej 5 znaków",
+    subjectError: "Pole temat musi zawierać conajmniej 5 znaków",
     text: "",
-    textError: "Pole text musi zawierać conajmniej 20 znaków",
+    textError: "Pole tekst musi zawierać conajmniej 20 znaków",
     currentPostComments: [],
     currentPostCommentsQty: 0,
     mainCommentsFormVisibility: true
@@ -36,26 +36,18 @@ const AppState = () => {
     const [lastFiveComments, setLastFiveComments] = useGlobalState("lastFiveComments");
 
     const [name, setName] = useGlobalState("name");
-    const [nameError, setNameError] = useGlobalState("nameError");
+    const [nameError] = useGlobalState("nameError");
     const [email, setEmail] = useGlobalState("email");
-    const [emailError, setEmailError] = useGlobalState("emailError");
+    const [emailError] = useGlobalState("emailError");
     const [subject, setSubject] = useGlobalState("subject");
-    const [subjectError, setSubjectError] = useGlobalState("subjectError");
+    const [subjectError] = useGlobalState("subjectError");
     const [text, setText] = useGlobalState("text");
-    const [textError, setTextError] = useGlobalState("textError");
+    const [textError] = useGlobalState("textError");
 
     const [currentPostComments, setCurrentPostComments] = useGlobalState("currentPostComments");
     const [currentPostCommentsQty, setCurrentPostCommentsQty] = useGlobalState("currentPostCommentsQty");
 
     const [mainCommentsFormVisibility, setMainCommentsFormVisibility] = useGlobalState("mainCommentsFormVisibility");
-    //console.log("AppState:");
-    //console.log("Kategoria: ", category);
-    //console.log("Tytuł aktualnego posta: ", postTitle);
-    //console.log("Slug aktualnego posta: ", currentPostSlug);
-    //console.log("ID aktualnego posta: ", postID);
-    //console.log("Ostatnie 5 komentarzy: ", lastFiveComments);
-    //console.log(postsMainBase)
-    //console.log(posts)
 
     return {
         postsMainBase, 

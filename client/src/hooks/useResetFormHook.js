@@ -1,11 +1,12 @@
 import AppState from "./AppState";
 
 const useResetFormHook = () => {
-    const {setName, setEmail, setText} = AppState();
+    const {setName, setEmail, setSubject, setText} = AppState();
     
     const resetForm = () => {
         setName("");
         setEmail("");
+        setSubject("");
         setText("");  
       };
 

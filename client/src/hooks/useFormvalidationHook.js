@@ -1,26 +1,36 @@
 import AppState from "./AppState";
+import useFormChangeHook from "./useFormChangeHook";
 
 const useFormValidationHook = () => {
-    const {name, setName, email, setEmail, text, setText} = AppState();
+  const {nameError, emailError, subjectError, textError} = AppState();
+  const {nameErrorChange, emailErrorChange, subjectErrorChange, textErrorChange} = useFormChangeHook();
 
-    const getFormValidation = () => {
-        let isValid = true;
+    const getFormValidation = ({name, email, subject, text}) => {
+      let isValid = true;
     
-        if (name.length < 5 || name === "Pole imię musi zawierać conajmniej 5 znaków") {
+      if (name.length < 5 || name === nameError) {
+        isValid = false;
+        nameErrorChange();
+      }
+      if (email.length < 5 || email.includes("@") === false || email === emailError) {
+        isValid = false;
+        emailErrorChange();
+      }
+      if (subject !== undefined) {
+        if (subject.length < 5 || subject === subjectError) {
           isValid = false;
-          setName("Pole imię musi zawierać conajmniej 5 znaków");
-        };
-        if (email.length < 5 || email.includes("@") === false || email === "Pole email musi zawierać conajmniej 5 znaków oraz @") {
-          isValid = false;
-          setEmail("Pole email musi zawierać conajmniej 5 znaków oraz @")
-        };
-        if (text.length < 20 || text === "Pole text musi zawierać conajmniej 20 znaków") {
-          isValid = false;
-          setText("Pole text musi zawierać conajmniej 20 znaków")
-        };
+          subjectErrorChange();
+        }
+      }
+      if (text.length < 20 || text === textError) {
+        isValid = false;
+        textErrorChange();
+      }
         if (isValid) {
             return true;
-        };
+        } else {
+          return false;
+        }
     };
 
     return {getFormValidation};

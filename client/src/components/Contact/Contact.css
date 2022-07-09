@@ -1,5 +1,6 @@
 #Contact {
-    height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
     background-color: #e0e0df;
 }
 
@@ -7,7 +8,6 @@
     width: 50%;
     margin: 0 auto;
     border-radius: 5px;
-    padding-top: 100px;
   }
 
 .contact-title {

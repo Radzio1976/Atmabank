@@ -9,6 +9,7 @@
     width: 1200px;
     margin: 0 auto;
     padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .blogpost-container-left-column {
@@ -32,6 +33,10 @@
     font-weight: 600;
     padding: 20px 0 20px 0;
     line-height: 24px;
+}
+
+.blogpost-comments-container {
+    word-break: break-word;
 }
 
 .blogpost-comments-quantity-container h3 {

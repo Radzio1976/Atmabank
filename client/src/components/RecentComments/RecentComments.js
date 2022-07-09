@@ -11,7 +11,7 @@ const RecentComments = withRouter(props => {
 
   return(
     <div id="RecentComments"  className="right-column-box">
-        <div className="recent-comments-container right-column-box-container">
+        <div className="recent-comments-container right-column-box-container" style={{wordBreak: "break-word"}}>
         <div className="recent-comments-title right-column-box-title">
             <h3>Aktualne komentarze</h3>
         </div>

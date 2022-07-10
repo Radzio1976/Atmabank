@@ -16,7 +16,7 @@ const useSendCommentHook = () => {
     const {resetForm} = useResetFormHook();
 
     const sendComment = () => {
-        if (getFormValidation({name, email, text}) === true) {    
+        //if (getFormValidation({name, email, text}) === true) {    
           let comment = {
             postID, 
             name, 
@@ -45,7 +45,7 @@ const useSendCommentHook = () => {
         .catch(err => {
             console.log("Nie udało się wysłać komentarza", err);
         });
-        };   
+        //};   
       };
 
       return {sendComment};

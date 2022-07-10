@@ -36,13 +36,13 @@ const AppState = () => {
     const [lastFiveComments, setLastFiveComments] = useGlobalState("lastFiveComments");
 
     const [name, setName] = useGlobalState("name");
-    const [nameError, setNameError] = useGlobalState("nameError");
+    const [nameError] = useGlobalState("nameError");
     const [email, setEmail] = useGlobalState("email");
-    const [emailError, setEmailError] = useGlobalState("emailError");
+    const [emailError] = useGlobalState("emailError");
     const [subject, setSubject] = useGlobalState("subject");
-    const [subjectError, setSubjectError] = useGlobalState("subjectError");
+    const [subjectError] = useGlobalState("subjectError");
     const [text, setText] = useGlobalState("text");
-    const [textError, setTexterror] = useGlobalState("textError");
+    const [textError] = useGlobalState("textError");
 
     const [currentPostComments, setCurrentPostComments] = useGlobalState("currentPostComments");
     const [currentPostCommentsQty, setCurrentPostCommentsQty] = useGlobalState("currentPostCommentsQty");

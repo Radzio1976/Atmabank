@@ -1,14 +1,14 @@
 import Axios from "axios";
 
 import AppState from "./AppState";
-import useFormValidationHook from "./useFormValidationHook";
+//import useFormValidationHook from "./useFormValidationHook";
 
 const useSendContactFormHook = () => {
     const {name, email, subject, text} = AppState();
-    const {getFormValidation} = useFormValidationHook();
+    //const {getFormValidation} = useFormValidationHook();
 
     const sendContactForm = () => {
-        if (getFormValidation({name, email, subject, text}) === true) {
+        //if (getFormValidation({name, email, subject, text}) === true) {
             let message = {
                 name,
                 email,
@@ -22,7 +22,7 @@ const useSendContactFormHook = () => {
             .catch(err => {
                 console.log("Nie udało się wysłać wiadomości", err)
             })
-        }
+        //}
     };
 
     return {sendContactForm};

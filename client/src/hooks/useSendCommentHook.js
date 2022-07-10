@@ -1,7 +1,6 @@
 import Axios from "axios";
 
 import AppState from "./AppState";
-import useFormValidationHook from "./useFormValidationHook";
 import useCurrentPostCommentsHook from "./useCurrentPostCommentsHook";
 import useCurrentPostCommentsQtyHook from "./useCurrentPostCommentsQtyHook";
 import useLastFiveCommentsHook from "./useLastFiveCommentsHook";
@@ -9,14 +8,12 @@ import useResetFormHook from "./useResetFormHook";
 
 const useSendCommentHook = () => {
     const {postID, name, email, text, currentPostSlug} = AppState();
-    const {getFormValidation} = useFormValidationHook();
     const {getCurrentPostComments} = useCurrentPostCommentsHook();
     const {getCurrentPostCommentsQty} = useCurrentPostCommentsQtyHook();
     const {getLastFiveComments} = useLastFiveCommentsHook();
     const {resetForm} = useResetFormHook();
 
-    const sendComment = () => {
-        //if (getFormValidation({name, email, text}) === true) {    
+    const sendComment = () => { 
           let comment = {
             postID, 
             name, 
@@ -45,7 +42,6 @@ const useSendCommentHook = () => {
         .catch(err => {
             console.log("Nie udało się wysłać komentarza", err);
         });
-        //};   
       };
 
       return {sendComment};

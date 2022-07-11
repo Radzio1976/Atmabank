@@ -18,6 +18,7 @@ import BlogpostContainerRightColumn from './BlogpostContainerRightColumn';
 import RecentPosts from '../RecentPosts/RecentPosts';
 import PostsCategories from '../PostsCategories/PostsCategories';
 import RecentComments from '../RecentComments';
+import BackToTopButton from "../BackToTopButton/BackToTopButton";
 
 import "./BlogPost.css";
 
@@ -91,6 +92,7 @@ let currentPost = data.blogPosts[0];
             <PostsCategories />
             <RecentComments />
           </BlogpostContainerRightColumn>
+          <BackToTopButton />
         </div>
     </div>
   )

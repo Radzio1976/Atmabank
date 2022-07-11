@@ -18,7 +18,8 @@ const initialState = {
     textError: "Pole tekst musi zawierać conajmniej 20 znaków",
     currentPostComments: [],
     currentPostCommentsQty: 0,
-    mainCommentsFormVisibility: true
+    mainCommentsFormVisibility: true,
+    backToTopButton: false
 };
 
 const {useGlobalState} = createGlobalState(initialState);
@@ -48,6 +49,8 @@ const AppState = () => {
     const [currentPostCommentsQty, setCurrentPostCommentsQty] = useGlobalState("currentPostCommentsQty");
 
     const [mainCommentsFormVisibility, setMainCommentsFormVisibility] = useGlobalState("mainCommentsFormVisibility");
+
+    const [backToTopButton, setBackToTopButton] = useGlobalState("backToTopButton");
 
     return {
         postsMainBase, 
@@ -81,7 +84,9 @@ const AppState = () => {
         currentPostCommentsQty, 
         setCurrentPostCommentsQty,
         mainCommentsFormVisibility, 
-        setMainCommentsFormVisibility
+        setMainCommentsFormVisibility,
+        backToTopButton, 
+        setBackToTopButton
     };
 };
 

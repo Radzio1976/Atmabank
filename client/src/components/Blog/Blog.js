@@ -8,6 +8,7 @@ import BlogContainerRightColumn from './BlogContainerRightColumn';
 import RecentPosts from '../RecentPosts/RecentPosts';
 import PostsCategories from '../PostsCategories/PostsCategories';
 import RecentComments from '../RecentComments';
+import BackToTopButton from '../BackToTopButton/BackToTopButton';
 
 import AppState from '../../hooks/AppState';
 import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
@@ -41,6 +42,7 @@ const Blog = () => {
             <PostsCategories />
             <RecentComments />
           </BlogContainerRightColumn>
+          <BackToTopButton />
         </div>
       </div>
   )

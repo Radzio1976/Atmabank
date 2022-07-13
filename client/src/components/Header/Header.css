@@ -124,11 +124,11 @@
     }
 
     #nav-container ul {
-        width: 70%;
+        width: 80%;
     }
 
     #nav-container li {
-        font-size: 31px;
+        font-size: 45px;
     }
 }
 
@@ -149,6 +149,6 @@
     }
 
     #nav-container li {
-        font-size: 33px;
+        font-size: 45px;
     }
 }

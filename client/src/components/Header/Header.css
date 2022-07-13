@@ -32,7 +32,9 @@
 }
 
 #nav-container {
+    /*
     width: 1200px;
+    */
     margin: 0 auto;
 }
 
@@ -134,7 +136,7 @@
 
 @media (max-width: 449px) {
     #Logo h1 {
-        font-size: 75px;
+        font-size: 36px;
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -145,10 +147,11 @@
     }
 
     #nav-container ul {
-        width: 85%;
+        width: 90%;
     }
 
     #nav-container li {
-        font-size: 45px;
+        font-size: 15px;
+        padding: 4px 1%;
     }
 }

@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 import ArrowUpImage from "../../images/back-to-top-arrow.png";
+import ArrowUpImageHover from "../../images/back-to-top-arrow-hover.png";
 
 import AppState from "../../hooks/AppState";
 import useBackToTopButtonHook from "../../hooks/useBackToTopButtonHook";
 
 const BackToTopButton = () => {
+    const [backToTopButtonHover, setBackToTopButtonHover] = useState(false);
     const {backToTopButton} = AppState();
     const {ShowBackToTopButton, scrollToTop} = useBackToTopButtonHook();
 
@@ -11,6 +15,8 @@ const BackToTopButton = () => {
 
     return(
         <div 
+        onMouseEnter={() => setBackToTopButtonHover(true)}
+        onMouseLeave={() => setBackToTopButtonHover(false)}
         onClick={scrollToTop} 
         style={{ 
             display: backToTopButton === true ? "block" : "none", 
@@ -21,7 +27,7 @@ const BackToTopButton = () => {
             cursor: "pointer", 
             right: "60px", 
             bottom: "60px", 
-            backgroundImage: `url(${ArrowUpImage})`
+            backgroundImage: backToTopButtonHover === false ? `url(${ArrowUpImage})` : `url(${ArrowUpImageHover})`
         }}
         ></div>
     )

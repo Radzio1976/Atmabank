@@ -1,5 +1,6 @@
 #BlogPost {
     background-color: #e0e0df;
+    background-image: url("../../images/absurdity.png");
     letter-spacing: 2px;
 }
 
@@ -35,12 +36,20 @@
     line-height: 24px;
 }
 
+.blogpost-post-text h5 {
+    font-family: 'PT Serif', serif;
+    font-size: 32px;
+    font-weight: 100;
+    padding-bottom: 20px;
+}
+
 .blogpost-comments-container {
     word-break: break-word;
 }
 
-.blogpost-comments-quantity-container h3 {
-    font-size: 75px;
+.blogpost-comments-quantity-container h5 {
+    font-family: 'PT Serif', serif;
+    font-size: 56px;
     font-weight: 100;
     text-align: center;
     padding-bottom: 35px;
@@ -142,5 +151,5 @@
 
 
 .blogpost-container-right-column {
-    width: 33%;
+    width: 32%;
 }

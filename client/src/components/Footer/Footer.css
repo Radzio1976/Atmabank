@@ -9,4 +9,10 @@
 
 .footer-container span {
     color: cornflowerblue;
+    cursor: pointer;
 }
+
+.footer-container span:hover {
+    color: #ecdd62;
+}
+

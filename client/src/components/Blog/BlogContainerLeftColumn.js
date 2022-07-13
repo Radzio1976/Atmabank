@@ -11,7 +11,7 @@ const BlogContainerLeftColumn = withRouter(props => {
               return(
                 <div className="blog-post-container" key={value.id}>
                 <div className="blog-post-title">
-                  <h1>{value.title}</h1>
+                  <h3>{value.title}</h3>
                 </div>
                 <div className="blog-post-image">
                   <img src={value.image[0].url} alt={value.image[0].fileName}></img>

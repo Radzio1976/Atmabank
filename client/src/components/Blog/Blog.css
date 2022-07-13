@@ -1,5 +1,6 @@
 #Blog {
     background-color: #e0e0df;
+    background-image: url("../../images/absurdity.png");
     letter-spacing: 2px;
 }
 
@@ -23,7 +24,8 @@
     padding: 0 0 40px 10px;
 }
 
-.blog-post-title h1 {
+.blog-post-title h3 {
+    font-family: 'PT Serif', serif;
     font-size: 56px;
     font-weight: 100;
 }
@@ -65,7 +67,7 @@
 }
 
 .blog-container-right-column {
-    width: 33%;
+    width: 32%;
 }
 
 #PostCategories ul {
@@ -82,6 +84,10 @@
 .right-column-box li {
     padding-bottom: 10px;
     cursor: pointer;
+}
+
+.right-column-box li:hover {
+    color: #ecdd62;
 }
 
 .right-column-box-title {

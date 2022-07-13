@@ -5,7 +5,9 @@
 }
 
 #logo-container {
+    /*
     width: 20%;
+    */
     margin: 0 auto;
     border-bottom: 1px solid #3f3e41;
 }
@@ -52,4 +54,101 @@
 #nav-container li:hover {
     background-color: #ecdd62;
     color: black;
+}
+
+@media (max-width: 850px) and (min-width: 750px) {
+    #Logo h1 {
+        font-size: 45px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #Navigation {
+        padding-top: 35px;
+        padding-bottom: 35px
+    }
+
+    #nav-container li {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 749px) and (min-width: 650px) {
+    #Logo h1 {
+        font-size: 50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #Navigation {
+        padding-top: 35px;
+        padding-bottom: 35px
+    }
+
+    #nav-container li {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 649px) and (min-width: 550px) {
+    #Logo h1 {
+        font-size: 55px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #Navigation {
+        padding-top: 35px;
+        padding-bottom: 35px
+    }
+
+    #nav-container ul {
+        width: 62%;
+    }
+
+    #nav-container li {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 549px) and (min-width: 450px) {
+    #Logo h1 {
+        font-size: 65px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #Navigation {
+        padding-top: 35px;
+        padding-bottom: 35px
+    }
+
+    #nav-container ul {
+        width: 70%;
+    }
+
+    #nav-container li {
+        font-size: 29px;
+    }
+}
+
+@media (max-width: 449px) {
+    #Logo h1 {
+        font-size: 75px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #Navigation {
+        padding-top: 35px;
+        padding-bottom: 35px
+    }
+
+    #nav-container ul {
+        width: 85%;
+    }
+
+    #nav-container li {
+        font-size: 31px;
+    }
 }

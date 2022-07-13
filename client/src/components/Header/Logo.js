@@ -20,7 +20,7 @@ import './Header.css';
     
     return(
       <div id="Logo">
-        <div id="logo-container">
+        <div className="logo-container">
           <h1 onClick={() => props.history.push("/")}>{data.logo.title}</h1>
         </div>
       </div>

@@ -93,23 +93,28 @@
 }
 
 @media (max-width: 649px) and (min-width: 550px) {
+    .logo-container {
+        width: 56%;
+    }
+
     #Logo h1 {
-        font-size: 55px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        font-size: 36px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     #Navigation {
-        padding-top: 35px;
-        padding-bottom: 35px
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     #nav-container ul {
-        width: 62%;
+        width: 90%;
     }
 
     #nav-container li {
-        font-size: 29px;
+        font-size: 15px;
+        padding: 4px 6%; 
     }
 }
 

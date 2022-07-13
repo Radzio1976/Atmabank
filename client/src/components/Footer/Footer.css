@@ -16,6 +16,13 @@
     color: #ecdd62;
 }
 
+@media (max-width: 749px) and (min-width: 650px) {
+    #Footer {
+        font-size: 15px;
+        height: 68px;
+    }
+}
+
 @media (max-width: 649px) and (min-width: 550px) {
     #Footer {
         font-size: 15px;

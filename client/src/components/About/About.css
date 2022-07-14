@@ -38,3 +38,29 @@
     letter-spacing: 2px;
     line-height: 22px;
 }
+
+@media (max-width: 449px) {
+    .about-container {
+        padding-top: 50px;
+        display: block;
+
+    }
+
+    .about-image {
+        width: 95%;
+        height: 256px;
+        background-position-y: -80px;
+        margin: 0 auto;
+    }
+
+    .about-text-container {
+        padding-top: 10px;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+
+    .about-title {
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+}

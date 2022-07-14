@@ -42,7 +42,7 @@
     display: flex;
     justify-content: space-between;
     list-style-type: none;
-    width: 50%;
+    width: 550px;
     margin: 0 auto;
 }
 
@@ -58,7 +58,7 @@
     color: black;
 }
 
-@media (max-width: 850px) and (min-width: 449px) {
+@media (max-width: 850px) {
     .logo-container {
         width: 56%;
     }

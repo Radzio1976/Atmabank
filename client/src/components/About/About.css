@@ -3,20 +3,22 @@
     justify-content: center;
     background-color: #e0e0df;
     background-image: url("../../images/absurdity.png");
+    height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 700px;
 }
 
 .about-container {
     display: flex;
     justify-content: space-between;
+    height: 440px;
     width: 1200px;
-    padding-top: 100px;
-    padding-bottom: 100px;
 }
 
 .about-image {
     background-image: url("../../images/about_image.png");
     background-size: cover;
-    width: 241%;
+    width: 278%;
     height: 440px;
 }
 
@@ -39,18 +41,32 @@
     line-height: 22px;
 }
 
-@media (max-width: 449px) {
+@media (max-width: 1200px) and (min-width: 851px) {
     .about-container {
-        padding-top: 50px;
-        display: block;
-
+        height: 350px;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
     }
 
     .about-image {
-        width: 95%;
-        height: 256px;
-        background-position-y: -80px;
-        margin: 0 auto;
+        width: 290%;
+        height: 350px;
+    }
+
+    .about-text-container {
+        padding-left: 60px;
+    }
+}
+
+@media (max-width: 850px) {
+    #About {
+        padding-top: 50px;
+    }
+
+    .about-container {
+        display: block;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .about-text-container {
@@ -62,5 +78,32 @@
     .about-title {
         font-size: 34px;
         margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 850px) and (min-width: 550px) {
+    .about-image {
+        width: 95%;
+        height: 340px;
+        background-position-y: -80px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 549px) and (min-width: 426px){
+    .about-image {
+        width: 95%;
+        height: 256px;
+        background-position-y: -80px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 425px) {
+    .about-image {
+        width: 95%;
+        height: 256px;
+        background-position-y: -22px;
+        margin: 0 auto;
     }
 }

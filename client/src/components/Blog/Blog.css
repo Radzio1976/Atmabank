@@ -148,17 +148,13 @@
     .blog-post-image {
         height: auto;
     }
-}
 
-@media (max-width: 549px) {
     .blog-post-read-more p {
-        width: 70px;
-        padding: 2px 0;
+        width: 90px;
+        padding: 4px 0;
         font-size: 16px;
     }
 }
-
-
 
 @media (max-width: 1199px) and (min-width: 650px) {
     .blog-post-title h3 {
@@ -186,13 +182,5 @@
 @media (max-width: 850px) and (min-width: 650px) {
    .blog-post-image {
         height: 400px;
-    }
-}
-
-@media (max-width: 649px) and (min-width: 550px) {
-    .blog-post-read-more p {
-        width: 90px;
-        padding: 4px 0;
-        font-size: 16px;
     }
 }

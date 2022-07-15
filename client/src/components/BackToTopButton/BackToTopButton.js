@@ -15,6 +15,7 @@ const BackToTopButton = () => {
 
     return(
         <div 
+        className="back-to-top-button"
         onMouseEnter={() => setBackToTopButtonHover(true)}
         onMouseLeave={() => setBackToTopButtonHover(false)}
         onClick={scrollToTop} 

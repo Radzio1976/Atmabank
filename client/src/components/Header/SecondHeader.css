@@ -24,6 +24,34 @@
     cursor: pointer;
 }
 
+.second-header-li {
+    padding-left: 25px;
+    margin-left: 25px; 
+    border-left: 1px solid white;
+}
+
+
 #SecondHeader li:hover {
     color: #ecdd62;
+}
+
+@media (max-width: 1199px) and (min-width: 851px) {
+    #SecondHeader {
+        padding-top: 28px;
+        padding-bottom: 28px;
+    }
+}
+
+@media (max-width: 850px) {
+    #SecondHeader {
+        font-size: 17px;
+        padding-top: 28px;
+        padding-bottom: 28px;
+    }
+
+    .second-header-li {
+        padding-left: 12px;
+        margin-left: 12px; 
+        border-left: 1px solid white;
+    }
 }

@@ -58,6 +58,22 @@
     color: black;
 }
 
+@media (max-width: 1199px) and (min-width: 851px) {
+    #Logo h1 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #Navigation {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    #nav-container li {
+        padding: 10px 22px;
+    }
+}
+
 @media (max-width: 850px) {
     .logo-container {
         width: 56%;

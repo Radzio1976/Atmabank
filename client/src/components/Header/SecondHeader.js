@@ -19,29 +19,23 @@ const SecondHeader = withRouter(props => {
                         <li onClick={
                             () => props.history.push("/")
                             }>Home</li>
-                        <li style={{
-                            paddingLeft: "25px", 
-                            marginLeft: "25px", 
-                            borderLeft: "1px solid white"}}
+                        <li className="second-header-li"
                             onClick={() => {
                             props.history.push("/blog");
                             getResetPosts();
                             getCategory();
                             }}>Blog</li>
-                        <li style={{
-                            display: props.category === undefined ? "none" : "block", 
-                            paddingLeft: "25px", 
-                            marginLeft: "25px", 
-                            borderLeft: "1px solid white"}} 
+                        <li className="second-header-li"
+                            style={{
+                            display: props.category === undefined ? "none" : "block"
+                        }} 
                             onClick={() => {
                             props.history.push("/blog")
                             getPostsByCategory(props.category)
                             }}>{props.category}</li>
-                        <li style={{
-                            display: props.postTitle === undefined ? "none" : "block", 
-                            paddingLeft: "25px", 
-                            marginLeft: "25px", 
-                            borderLeft: "1px solid white"
+                        <li className="second-header-li"
+                            style={{
+                            display: props.postTitle === undefined ? "none" : "block"
                             }}>{props.postTitle}</li>
                     </ul>
                 </nav>

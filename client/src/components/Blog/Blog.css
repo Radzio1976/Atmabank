@@ -2,14 +2,14 @@
     background-color: #e0e0df;
     background-image: url("../../images/absurdity.png");
     letter-spacing: 2px;
+    padding-top: 100px;
 }
 
 .blog-container {
     display: flex;
     justify-content: space-between;
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding-top: 100px;
 }
 
 .blog-container-left-column {
@@ -105,4 +105,94 @@
 
 .recent-comments-user-name-and-date {
     padding-bottom: 7px;
+}
+
+@media (max-width: 1199px) {
+    #Blog {
+        padding-top: 50px;
+    }
+
+    .blog-container {
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+
+    .blog-post-container {
+        padding-bottom: 35px;
+    }
+
+    .blog-post-title {
+        padding: 0 0 12px 10px;
+    }
+}
+
+@media (max-width: 850px) {
+    .blog-container {
+        width: 100%;
+    }
+
+    .blog-container-left-column {
+        width: 100%;
+    }
+
+    .blog-container-right-column {
+        display: none;
+    }
+}
+
+@media (max-width: 649px) {
+    .blog-post-title h3 {
+        font-size: 25px;
+    }
+
+    .blog-post-image {
+        height: auto;
+    }
+}
+
+@media (max-width: 549px) {
+    .blog-post-read-more p {
+        width: 70px;
+        padding: 2px 0;
+        font-size: 16px;
+    }
+}
+
+
+
+@media (max-width: 1199px) and (min-width: 650px) {
+    .blog-post-title h3 {
+        font-size: 30px;
+    }
+
+    .blog-post-read-more p {
+        width: 100px;
+        padding: 6px 0;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 851px) {
+    .blog-post-image {
+        height: 359px;
+    }
+
+    .right-column-box {
+        margin-bottom: 30px;
+        padding: 5px 37px;
+    }
+}
+
+@media (max-width: 850px) and (min-width: 650px) {
+   .blog-post-image {
+        height: 400px;
+    }
+}
+
+@media (max-width: 649px) and (min-width: 550px) {
+    .blog-post-read-more p {
+        width: 90px;
+        padding: 4px 0;
+        font-size: 16px;
+    }
 }

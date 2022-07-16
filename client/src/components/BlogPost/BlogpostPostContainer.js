@@ -7,7 +7,7 @@ const BlogpostPostContainer = (props) => {
             <img src={currentPost.image[0].url} alt={currentPost.image[0].fileName} ></img>
           </div>
           <div className="blogpost-post-text">
-            <h5>{currentPost.title}</h5>
+            <h5 className="blogpost-post-title">{currentPost.title}</h5>
             <div dangerouslySetInnerHTML={{__html: currentPost.text.html}} />
           </div>
       </div>

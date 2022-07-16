@@ -10,7 +10,7 @@ const BlogpostAddCommentsAnswerFormContainer = (props) => {
         <>
         {comment.isCommentAnswerOn === true ? <div className="blogpost-add-comments-answer-form-container">
         <div className="blogpost-add-comments-answer-form">
-            <h4>Odpowiedz użytkownikowi {comment.name}</h4>
+            <h5>Odpowiedz użytkownikowi {comment.name}</h5>
         </div>
             <AddCommentForm sendComment={() => sendCommentsAnswer(comment._id)} />
         </div> : ""}

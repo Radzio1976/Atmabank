@@ -12,7 +12,7 @@ const BlogpostAddCommentFormContainer= () => {
     return(
         <div className="blogpost-add-comment-form-container">
             <div className="blogpost-add-comment-form-title">
-                <h1>Skomentuj artykuł</h1>
+                <h5>Skomentuj artykuł</h5>
                 {mainCommentsFormVisibility === false ? <p className="add-comment-form-button" onClick={showCommentButton}>Skomentuj</p> : ""}
             </div>
             {mainCommentsFormVisibility === true ? 

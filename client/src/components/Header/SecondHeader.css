@@ -37,8 +37,14 @@
 
 @media (max-width: 1199px) and (min-width: 851px) {
     #SecondHeader {
+        font-size: 20px;
         padding-top: 28px;
         padding-bottom: 28px;
+    }
+
+    .second-header-li {
+        padding-left: 10px;
+        margin-left: 10px
     }
 }
 
@@ -53,5 +59,16 @@
         padding-left: 12px;
         margin-left: 12px; 
         border-left: 1px solid white;
+    }
+}
+
+@media (max-width: 649px) {
+    .first-second-header-li, .second-second-header-li, .third-second-header-li {
+        display: none !important;
+    }
+
+    .fourth-second-header-li {
+        border-left: none;
+        margin: 0 auto;
     }
 }

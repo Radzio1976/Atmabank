@@ -16,16 +16,17 @@ const SecondHeader = withRouter(props => {
             <div className="second-header-container">
                 <nav>
                     <ul>
-                        <li onClick={
+                        <li className="first-second-header-li"
+                            onClick={
                             () => props.history.push("/")
                             }>Home</li>
-                        <li className="second-header-li"
+                        <li className="second-header-li second-second-header-li"
                             onClick={() => {
                             props.history.push("/blog");
                             getResetPosts();
                             getCategory();
                             }}>Blog</li>
-                        <li className="second-header-li"
+                        <li className="second-header-li third-second-header-li"
                             style={{
                             display: props.category === undefined ? "none" : "block"
                         }} 
@@ -33,7 +34,7 @@ const SecondHeader = withRouter(props => {
                             props.history.push("/blog")
                             getPostsByCategory(props.category)
                             }}>{props.category}</li>
-                        <li className="second-header-li"
+                        <li className="second-header-li fourth-second-header-li"
                             style={{
                             display: props.postTitle === undefined ? "none" : "block"
                             }}>{props.postTitle}</li>

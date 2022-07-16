@@ -43,6 +43,10 @@
     line-height: 24px;
 }
 
+.blogpost-post-text div {
+    text-align: justify;
+}
+
 .blogpost-comments-container {
     word-break: break-word;
 }
@@ -80,6 +84,7 @@
 
 .blogpost-comment-text {
     margin-bottom: 25px;
+    text-align: justify;
 }
 
 .blogpost-comment-date-and-button-wrapper, .blogpost-comment-date-wrapper {

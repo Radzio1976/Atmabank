@@ -22,14 +22,10 @@
 #SecondHeader li {
     list-style-type: none;
     cursor: pointer;
-}
-
-.second-header-li {
     padding-left: 25px;
     margin-left: 25px; 
     border-left: 1px solid white;
 }
-
 
 #SecondHeader li:hover {
     color: #ecdd62;
@@ -42,9 +38,10 @@
         padding-bottom: 28px;
     }
 
-    .second-header-li {
-        padding-left: 10px;
-        margin-left: 10px
+    #SecondHeader li {
+        padding-left: 14px;
+        margin-left: 14px;
+        border-left: 1px solid white;
     }
 }
 
@@ -55,20 +52,9 @@
         padding-bottom: 28px;
     }
 
-    .second-header-li {
+    #SecondHeader li {
         padding-left: 12px;
         margin-left: 12px; 
         border-left: 1px solid white;
-    }
-}
-
-@media (max-width: 649px) {
-    .first-second-header-li, .second-second-header-li, .third-second-header-li {
-        display: none !important;
-    }
-
-    .fourth-second-header-li {
-        border-left: none;
-        margin: 0 auto;
     }
 }

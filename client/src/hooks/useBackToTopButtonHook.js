@@ -10,7 +10,6 @@ const useBackToTopButtonHook = () => {
         const pageTotalHeight = document.body.scrollHeight;
 
         window.addEventListener("scroll", () => {
-            console.log(window.scrollY)
             if (window.scrollY > pageTotalHeight * 0.3) {
                 setBackToTopButton(true);
             } else {

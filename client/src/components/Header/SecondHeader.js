@@ -12,12 +12,13 @@ const SecondHeader = withRouter(props => {
     console.log(props.location.pathname)
     const pathName = props.location.pathname;
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
     useEffect(() => {
         window.addEventListener("resize", () => {
             setScreenWidth(window.innerWidth)
         })
     })
-    console.log(screenWidth)
+
     const {getResetPosts} = useResetPostsHook();
     const {getCategory} = useCurrentPostDataHook();
     const {getPostsByCategory} = usePostsByCategoryHook();

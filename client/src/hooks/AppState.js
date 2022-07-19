@@ -19,7 +19,8 @@ const initialState = {
     currentPostComments: [],
     currentPostCommentsQty: 0,
     mainCommentsFormVisibility: true,
-    backToTopButton: false
+    backToTopButton: false,
+    screenWidth: window.innerWidth
 };
 
 const {useGlobalState} = createGlobalState(initialState);
@@ -51,6 +52,8 @@ const AppState = () => {
     const [mainCommentsFormVisibility, setMainCommentsFormVisibility] = useGlobalState("mainCommentsFormVisibility");
 
     const [backToTopButton, setBackToTopButton] = useGlobalState("backToTopButton");
+
+    const [screenWidth, setScreenWidth] = useGlobalState("screenWidth");
 
     return {
         postsMainBase, 
@@ -86,7 +89,9 @@ const AppState = () => {
         mainCommentsFormVisibility, 
         setMainCommentsFormVisibility,
         backToTopButton, 
-        setBackToTopButton
+        setBackToTopButton,
+        screenWidth, 
+        setScreenWidth
     };
 };
 

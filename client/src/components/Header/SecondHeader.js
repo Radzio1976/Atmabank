@@ -2,25 +2,22 @@ import {withRouter} from 'react-router-dom';
 
 import './SecondHeader.css';
 
+import AppState from '../../hooks/AppState';
 import useResetPostsHook from '../../hooks/useResetPostsHook';
 import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 import usePostsByCategoryHook from '../../hooks/usePostsByCategoryHook';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import useScreenWidthHook from '../../hooks/useScreenWidthHook';
 
 const SecondHeader = withRouter(props => {
     const pathName = props.location.pathname;
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            setScreenWidth(window.innerWidth)
-        })
-    })
+    const {screenWidth} = AppState();
 
     const {getResetPosts} = useResetPostsHook();
     const {getCategory} = useCurrentPostDataHook();
     const {getPostsByCategory} = usePostsByCategoryHook();
+    const {GetScreenWidth} = useScreenWidthHook();
+
+    GetScreenWidth();
 
     return(
         <div id="SecondHeader">

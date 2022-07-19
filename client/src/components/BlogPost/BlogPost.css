@@ -96,7 +96,7 @@
     padding: 15px;
 }
 
-.blogpost-add-comment-form-title {
+.blogpost-add-comment-form-title h5 {
     display: flex;
     justify-content: center;
     font-family: 'PT Serif', serif;

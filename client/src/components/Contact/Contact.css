@@ -1,4 +1,5 @@
 #Contact {
+    height: 100vh;
     padding-top: 100px;
     padding-bottom: 100px;
     background-color: #e0e0df;
@@ -14,7 +15,7 @@
 }
 
 .contact-container {
-    width: 37%;
+    max-width: 650px;
     margin: 0 auto;
     border-radius: 5px;
   }
@@ -23,7 +24,7 @@
     padding-bottom: 40px;
 }
 
-.contact-title h3 {
+.contact-title h5 {
     display: flex;
     justify-content: center;
     font-family: 'PT Serif', serif;
@@ -63,6 +64,35 @@ textarea {
 #Contact p:hover {
     background-color: #ecdd62;
     color: black;
+}
+
+@media (max-width: 649px) {
+    #Contact {
+        padding-top: 50px;
+        padding-bottom: 440px;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+
+    .contact-title h5 {
+        font-size: 30px;
+    }
+
+    .contact-title {
+        padding-bottom: 20px;
+    }
+
+    input, textarea {
+        padding: 6px;
+        margin-bottom: 2px;
+    }
+
+    #Contact p {
+        width: 90px;
+        padding: 4px 0;
+        margin-top: 10px;
+        font-size: 16px;
+    }
 }
   
   

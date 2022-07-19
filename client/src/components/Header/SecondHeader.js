@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const SecondHeader = withRouter(props => {
-    console.log(props.location.pathname)
     const pathName = props.location.pathname;
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 

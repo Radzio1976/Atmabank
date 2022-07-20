@@ -108,3 +108,13 @@
         margin: 0 auto;
     }
 }
+
+@media (max-width: 349px) {
+    .about-image {
+        height: 205px;
+    }
+
+    .about-title {
+        font-size: 30px;
+    }
+}

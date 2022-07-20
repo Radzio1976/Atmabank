@@ -91,3 +91,16 @@
         letter-spacing: 4px;
     }
 }
+
+@media (max-width: 349px) {
+    .home-text-title {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        letter-spacing: 17px;
+    }
+
+    .home-text-undertitle {
+        margin-top: 20px;
+        letter-spacing: 2px;
+    }
+}

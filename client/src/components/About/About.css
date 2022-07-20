@@ -39,6 +39,7 @@
     font-weight: 600;
     letter-spacing: 2px;
     line-height: 22px;
+    text-align: justify;
 }
 
 @media (max-width: 1200px) and (min-width: 851px) {

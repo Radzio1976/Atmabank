@@ -29,3 +29,9 @@
     }
 }
 
+@media (max-width: 349px) {
+    #Footer {
+        height: 55px
+    }
+}
+

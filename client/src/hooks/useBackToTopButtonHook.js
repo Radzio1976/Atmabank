@@ -19,9 +19,7 @@ const useBackToTopButtonHook = () => {
     }, []);
     };
 
-    const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    return {ShowBackToTopButton, scrollToTop};
+    return {ShowBackToTopButton};
 };
 
 export default useBackToTopButtonHook;

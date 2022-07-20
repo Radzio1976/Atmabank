@@ -1,52 +1,41 @@
 import React from 'react';
-import {useQuery, gql} from "@apollo/client";
 import {withRouter} from 'react-router-dom';
 
 import useResetPostsHook from '../../hooks/useResetPostsHook';
 import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 import useResetFormHook from '../../hooks/useResetFormHook';
+import useScrollToTopHook from '../../hooks/useScrollToTopHook';
 
-  const NAVQUERY = gql`
-  query Navigation {
-    navigation(where: {id: "cl3o72rpirmzd0eujlrw23y4q"}) {
-      homeTitle
-      homeSlug
-      aboutTitle
-      aboutSlug
-      blogTitle
-      blogSlug
-      contactTitle
-      contactSlug
-    }
-  }
-  `
 const Navigation = withRouter(props => {
   const {getResetPosts} = useResetPostsHook();
   const {getCategory} = useCurrentPostDataHook();
   const {resetForm} = useResetFormHook();
-
-  const {data, error, loading} = useQuery(NAVQUERY);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  const navigationData = data.navigation;
+  const {scrollToTop} = useScrollToTopHook();
 
   return(
     <div id="Navigation">
       <div id="nav-container">
         <nav>
           <ul>
-            <li onClick={() => props.history.push('/')}>{navigationData.homeTitle}</li>
-            <li onClick={() => props.history.push(`/${navigationData.aboutSlug}`)}>{navigationData.aboutTitle}</li>
             <li onClick={() => {
-              props.history.push(`/${navigationData.blogSlug}`);
+              props.history.push('/');
+              scrollToTop();
+              }}>HOME</li>
+            <li onClick={() => {
+              props.history.push('/o-mnie')
+              scrollToTop();
+              }}>O MNIE</li>
+            <li onClick={() => {
+              props.history.push('/blog');
               getResetPosts();
               getCategory();
-              }}>{navigationData.blogTitle}</li>
+              scrollToTop();
+              }}>BLOG</li>
             <li onClick={() => {
-              props.history.push(`/${navigationData.contactSlug}`)
+              props.history.push('/kontakt')
               resetForm();
-              }}>{navigationData.contactTitle}</li>
+              scrollToTop();
+              }}>KONTAKT</li>
           </ul>
         </nav>
       </div>

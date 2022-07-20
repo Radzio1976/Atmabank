@@ -1,8 +1,11 @@
 import {withRouter} from 'react-router-dom';
+
 import AppState from '../../hooks/AppState';
+import useScrollToTopHook from '../../hooks/useScrollToTopHook';
 
 const BlogContainerLeftColumn = withRouter(props => {
   const {posts} = AppState();
+  const {scrollToTop} = useScrollToTopHook();
   
     return(
         <div className="blog-container-left-column">
@@ -20,7 +23,10 @@ const BlogContainerLeftColumn = withRouter(props => {
                   <p>{value.text.text.substring(0, 300)} ...</p>
                 </div>
                 <div className="blog-post-read-more">
-                  <p onClick={() => props.history.push(`/blog/${value.slug}`)}>Więcej</p>
+                  <p onClick={() => {
+                    props.history.push(`/blog/${value.slug}`);
+                    scrollToTop();
+                    }}>Więcej</p>
                 </div>
               </div>
               )

@@ -1,9 +1,11 @@
 import {withRouter} from 'react-router-dom';
 
 import AppState from '../../hooks/AppState';
+import useScrollToTopHook from '../../hooks/useScrollToTopHook';
 
 const RecentPosts = withRouter(props => {
     const {postsMainBase} = AppState();
+    const {scrollToTop} = useScrollToTopHook();
 
     return(
         <div id="RecentPosts"  className="right-column-box">
@@ -15,7 +17,10 @@ const RecentPosts = withRouter(props => {
                     <ul>
                         {postsMainBase.slice(0).reverse().map(post => {
                             return(
-                                <li onClick={() => props.history.push(`/blog/${post.slug}`)} key={post.id}>{post.title}</li>
+                                <li onClick={() => {
+                                    props.history.push(`/blog/${post.slug}`)
+                                    scrollToTop();
+                                }} key={post.id}>{post.title}</li>
                             )
                         })}
                     </ul>

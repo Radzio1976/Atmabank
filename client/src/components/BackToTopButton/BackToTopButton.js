@@ -5,12 +5,14 @@ import ArrowUpImageHover from "../../images/back-to-top-arrow-hover.png";
 
 import AppState from "../../hooks/AppState";
 import useBackToTopButtonHook from "../../hooks/useBackToTopButtonHook";
+import useScrollToTopHook from "../../hooks/useScrollToTopHook";
 import useScreenWidth from "../../hooks/useScreenWidthHook";
 
 const BackToTopButton = () => {
     const [backToTopButtonHover, setBackToTopButtonHover] = useState(false);
     const {backToTopButton, screenWidth} = AppState();
-    const {ShowBackToTopButton, scrollToTop} = useBackToTopButtonHook();
+    const {ShowBackToTopButton} = useBackToTopButtonHook();
+    const {scrollToTop} = useScrollToTopHook();
     const {GetScreenWidth} = useScreenWidth();
 
     ShowBackToTopButton();

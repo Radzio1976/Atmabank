@@ -3,11 +3,13 @@ import {withRouter} from 'react-router-dom';
 import useUniqueCategoriesHook from '../../hooks/useUniqueCategoriesHook';
 import useCurrentPostDataHook from '../../hooks/useCurrentPostDataHook';
 import usePostsByCategoryHook from '../../hooks/usePostsByCategoryHook';
+import useScrollToTopHook from '../../hooks/useScrollToTopHook';
 
 const PostsCategories = (props) => {
     const {getUniqueCategories} = useUniqueCategoriesHook();
     const {getCategory} = useCurrentPostDataHook();
     const {getPostsByCategory} = usePostsByCategoryHook();
+    const {scrollToTop} = useScrollToTopHook();
 
     return(
         <div id="PostsCategories" className="right-column-box">
@@ -24,6 +26,7 @@ const PostsCategories = (props) => {
                                 props.history.push("/blog");
                                 getPostsByCategory(category);
                                 getCategory(category);
+                                scrollToTop();
                             }} key={index}>{category}</li>
                         )
                     })}

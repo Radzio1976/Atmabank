@@ -8,7 +8,7 @@ module.exports = function sendContactForm(req, res) {
     console.log(data)
     
     let smtpTransport = nodemailer.createTransport({
-        host: 'pralniacytrynka.xaa.pl',
+        host: 'atmabank.xaa.pl',
         port: 465,
         auth: {
             user: email,
@@ -34,10 +34,10 @@ module.exports = function sendContactForm(req, res) {
 
     smtpTransport.sendMail(mailOptions, (error, response) => {
         if (error) {
-            res.send(error)
+            res.send({sendMessageSuccess: false, error})
         }
         else {
-            res.send({info: 'Success'})
+            res.send({sendMessageSuccess: true})
         }    
         smtpTransport.close();
     })

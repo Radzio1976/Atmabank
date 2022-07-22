@@ -5,16 +5,22 @@ import useSendContactFormHook from "../../hooks/useSendContactFormHook";
 import './Contact.css';
 
 const Contact = () => {
-    const {name, setName, nameError, email, setEmail, emailError, subject, setSubject, subjectError, text, setText, textError} = AppState();
+    const {name, setName, nameError, email, setEmail, emailError, subject, setSubject, subjectError, text, setText, textError, sendMessageSuccess} = AppState();
     const {nameChange, emailChange, subjectChange, textChange} = useFormChangeHook();
     const {sendContactForm} = useSendContactFormHook();
     return(
         <div id="Contact">
             <div className="contact-container">
                 <div className="contact-title">
-                    <h5>Skontaktuj się ze mną</h5>
+                {sendMessageSuccess ? 
+                <h5 style={{
+                    textAlign: "center",
+                    paddingTop: "10vh",
+                    paddingBottom: "18vh"
+                }}>Wiadomość wysłana pomyślnie</h5> :
+                    <h5>Skontaktuj się ze mną</h5>}
                 </div>
-                <form>
+                {sendMessageSuccess === false ? <form>
                     <input 
                     style={{color: name === nameError ? "red" : ""}}
                     type="text" 
@@ -55,7 +61,7 @@ const Contact = () => {
                     onFocus={() => text === textError ? setText("") : ""} 
                     />
                     <p onClick={sendContactForm}>Wyślij</p>
-                </form>
+                </form> : ""}
             </div>
         </div>
     )

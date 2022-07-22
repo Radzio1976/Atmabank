@@ -4,7 +4,7 @@ import AppState from "./AppState";
 import useFormValidationHook from "./useFormValidationHook";
 
 const useSendContactFormHook = () => {
-    const {name, email, subject, text} = AppState();
+    const {name, email, subject, text, setSendMessageSuccess} = AppState();
     const {getFormValidation} = useFormValidationHook();
 
     const sendContactForm = () => {
@@ -17,7 +17,8 @@ const useSendContactFormHook = () => {
             };
             Axios.post("/sendContactForm", message)
             .then(res => {
-                console.log(res.data.info);
+                console.log(res.data.sendMessageSuccess);
+                setSendMessageSuccess(res.data.sendMessageSuccess);
             })
             .catch(err => {
                 console.log("Nie udało się wysłać wiadomości", err)

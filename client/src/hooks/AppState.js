@@ -16,6 +16,7 @@ const initialState = {
     subjectError: "Pole temat musi zawierać conajmniej 5 znaków",
     text: "",
     textError: "Pole tekst musi zawierać conajmniej 20 znaków",
+    sendMessageSuccess: false,
     currentPostComments: [],
     currentPostCommentsQty: 0,
     mainCommentsFormVisibility: true,
@@ -45,6 +46,8 @@ const AppState = () => {
     const [subjectError] = useGlobalState("subjectError");
     const [text, setText] = useGlobalState("text");
     const [textError] = useGlobalState("textError");
+
+    const [sendMessageSuccess, setSendMessageSuccess] = useGlobalState("sendMessageSuccess");
 
     const [currentPostComments, setCurrentPostComments] = useGlobalState("currentPostComments");
     const [currentPostCommentsQty, setCurrentPostCommentsQty] = useGlobalState("currentPostCommentsQty");
@@ -82,6 +85,8 @@ const AppState = () => {
         text,
         setText,
         textError,
+        sendMessageSuccess, 
+        setSendMessageSuccess,
         currentPostComments,
         setCurrentPostComments,
         currentPostCommentsQty, 

@@ -10,7 +10,7 @@ const BlogpostCommentsAnswerContainer = (props) => {
         {
             comment.commentAnswers.map((answer, index) => {
                 return(
-                    <BlogpostCommentsAnswerWrapper key={index} answer={answer} index={index} parentCommentIndex={parentCommentIndex} currentPostSlug={currentPostSlug} />
+                    <BlogpostCommentsAnswerWrapper key={index} comment={comment} answer={answer} index={index} parentCommentIndex={parentCommentIndex} currentPostSlug={currentPostSlug} />
                 )
             })
         }

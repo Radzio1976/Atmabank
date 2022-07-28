@@ -14,6 +14,7 @@ const getComments = require('./httpRequests/GetComments');
 const addComment = require('./httpRequests/AddComment');
 const addCommentsAnswer = require('./httpRequests/AddCommentsAnswer');
 const removeComment = require('./httpRequests/RemoveComment');
+const removeCommentsAnswer = require('./httpRequests/removeCommentsAnswer');
 const sendContactForm = require('./httpRequests/SendContactForm');
 
 const app=express();
@@ -77,7 +78,11 @@ app.post("/addCommentsAnswer", (req, res) => {
 
 app.post("/removeComment", (req, res) => {
   removeComment(req, res, commentsdb);
-})
+});
+
+app.post("/removeCommentsAnswer", (req, res) => {
+  removeCommentsAnswer(req, res, commentsdb);
+});
 
 app.post("/sendContactForm", (req, res) => {
   sendContactForm(req, res);

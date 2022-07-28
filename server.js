@@ -4,11 +4,16 @@ const cors = require('cors');
 const path = require("path");
 const {MongoClient} = require('mongodb');
 require("dotenv/config");
+const speakeasy = require('speakeasy');
+const qrcode = require('qrcode');
 const uri = process.env.MONGODB_URI;
 
+const sendLoginData = require('./httpRequests/SendLoginData');
+const sendGoogleToken = require('./httpRequests/SendGoogleToken');
 const getComments = require('./httpRequests/GetComments');
 const addComment = require('./httpRequests/AddComment');
 const addCommentsAnswer = require('./httpRequests/AddCommentsAnswer');
+const removeComment = require('./httpRequests/RemoveComment');
 const sendContactForm = require('./httpRequests/SendContactForm');
 
 const app=express();
@@ -46,20 +51,33 @@ async function mongoDBConnection() {
 }
 mongoDBConnection();
 
-const db = client.db("atma_bank").collection("comments");
+const usersdb = client.db("atma_bank").collection("users");
+const commentsdb = client.db("atma_bank").collection("comments");
+
+app.post("/sendLoginData", (req, res) => {
+  sendLoginData(req, res, usersdb);
+})
+
+app.post("/sendGoogleToken", (req, res) => {
+  sendGoogleToken(req, res);
+})
 
 app.post("/getComments", (req, res) => {
-  getComments(req, res, db);
+  getComments(req, res, commentsdb);
 });
 
 app.post("/addComment", (req, res) => {
-  addComment(req, res, db);
+  addComment(req, res, commentsdb);
 });
 
 
 app.post("/addCommentsAnswer", (req, res) => {
-  addCommentsAnswer(req, res, db);
+  addCommentsAnswer(req, res, commentsdb);
 });
+
+app.post("/removeComment", (req, res) => {
+  removeComment(req, res, commentsdb);
+})
 
 app.post("/sendContactForm", (req, res) => {
   sendContactForm(req, res);

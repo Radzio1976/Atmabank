@@ -8,6 +8,13 @@ const initialState = {
     currentPostSlug: "", 
     postID: "", 
     lastFiveComments: [],
+    login: "",
+    password: "",
+    isAuthFirstStep: false,
+    isAuthSecondStep: false,
+    isLoggedIn: false,
+    ascii: "",
+    googleToken: "",
     name: "",
     nameError: "Pole imię musi zawierać conajmniej 5 znaków",
     email: "",
@@ -37,6 +44,14 @@ const AppState = () => {
     const [postID, setPostID] = useGlobalState("postID");
 
     const [lastFiveComments, setLastFiveComments] = useGlobalState("lastFiveComments");
+
+    const [login, setLogin] = useGlobalState("login");
+    const [password, setPassword] = useGlobalState("password");
+    const [isAuthFirstStep, setIsAuthFirstStep] = useGlobalState("isAuthFirstStep");
+    const [isAuthSecondStep, setIsAuthSecondStep] = useGlobalState("isAuthSecondStep");
+    const [ascii, setAscii] = useGlobalState("ascii");
+    const [googleToken, setGoogleToken] = useGlobalState("googleToken");
+    const [isLoggedIn, setIsLoggedIn] = useGlobalState("isLoggedIn");
 
     const [name, setName] = useGlobalState("name");
     const [nameError] = useGlobalState("nameError");
@@ -73,6 +88,20 @@ const AppState = () => {
         setPostID, 
         lastFiveComments, 
         setLastFiveComments,
+        login, 
+        setLogin,
+        password, 
+        setPassword,
+        isAuthFirstStep, 
+        setIsAuthFirstStep,
+        isAuthSecondStep, 
+        setIsAuthSecondStep,
+        ascii, 
+        setAscii,
+        googleToken, 
+        setGoogleToken,
+        isLoggedIn, 
+        setIsLoggedIn,
         name,
         setName,
         nameError,

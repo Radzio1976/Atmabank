@@ -1,6 +1,6 @@
-module.exports = async function addComment(req, res, db) {
+module.exports = async function addComment(req, res, commentsdb) {
     const comment = req.body;
-    await db.insertOne({
+    await commentsdb.insertOne({
       postID: comment.postID,
       name: comment.name,
       email: comment.email,
@@ -13,7 +13,7 @@ module.exports = async function addComment(req, res, db) {
       if (error) {
         res.send({info: "Nie udało się dodać komentarza", error});
       } else {
-            db.find({}).toArray((error, result) => {
+        commentsdb.find({}).toArray((error, result) => {
                 if (error) {
                     res.send({error});
                 } else {

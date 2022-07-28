@@ -32,6 +32,8 @@
     "mongodb": "^4.7.0",
     "mongoose": "^6.4.1",
     "nodemailer": "^6.7.5",
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.18",
+    "qrcode": "^1.5.1",
+    "speakeasy": "^2.0.0"
   }
 }

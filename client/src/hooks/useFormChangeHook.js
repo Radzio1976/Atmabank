@@ -1,7 +1,13 @@
 import AppState from "./AppState";
 
 const useFormChangeHook = () => {
-    const {setName, nameError, setEmail, emailError, setSubject, subjectError, setText, textError} = AppState();
+    const {setLogin, setPassword, setAscii, setGoogleToken, setName, nameError, setEmail, emailError, setSubject, subjectError, setText, textError} = AppState();
+
+    const loginChange = (loginValue) => setLogin(loginValue);
+
+    const passwordChange = (passwordValue) => setPassword(passwordValue);
+
+    const googleTokenChange = (googleTokenValue) => setGoogleToken(googleTokenValue);
 
     const nameChange = (nameValue) => setName(nameValue);
 
@@ -19,7 +25,7 @@ const useFormChangeHook = () => {
 
     const textErrorChange = () => setText(textError);
 
-    return {nameChange, nameErrorChange, emailChange, emailErrorChange, subjectChange, subjectErrorChange, textChange, textErrorChange};
+    return {loginChange, passwordChange, googleTokenChange, nameChange, nameErrorChange, emailChange, emailErrorChange, subjectChange, subjectErrorChange, textChange, textErrorChange};
 };
 
 export default useFormChangeHook;

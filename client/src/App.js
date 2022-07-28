@@ -11,6 +11,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import BlogPost from './components/BlogPost';
 import Footer from './components/Footer/Footer';
+import Login from './components/Login';
 
 import usePostsHook from './hooks/usePostsHook';
 
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/blog" exact component={Blog} />
                 <Route path="/kontakt" component={Contact} />
                 <Route path="/blog/:slug" component={BlogPost} />
+                <Route path="/administrator" component={Login} />
               </Switch>
             <Footer />
           </BrowserRouter>

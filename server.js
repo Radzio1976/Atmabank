@@ -4,8 +4,6 @@ const cors = require('cors');
 const path = require("path");
 const {MongoClient} = require('mongodb');
 require("dotenv/config");
-const speakeasy = require('speakeasy');
-const qrcode = require('qrcode');
 const uri = process.env.MONGODB_URI;
 
 const sendLoginData = require('./httpRequests/SendLoginData');

@@ -17,10 +17,6 @@ const useSendCommentsAnswerHook = () => {
 
     const sendCommentsAnswer = (parentCommentID) => {
         if (getFormValidation({name, email, text}) === true) {
-            let mainComment = currentPostComments.filter(comment => {
-                return comment._id === parentCommentID;
-            })
-            console.log(mainComment[0]._id)
             let commentAnswer = {
                 parentCommentID,
                 postID, 

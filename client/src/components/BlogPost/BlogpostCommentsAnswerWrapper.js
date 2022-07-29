@@ -13,7 +13,6 @@ const BlogpostCommentsAnswerWrapper = (props) => {
     const index = props.index;
     const parentCommentIndex = props.parentCommentIndex;
     const currentPostSlug = props.currentPostSlug;
-    console.log(comment._id);
     
     return(
         <div id={`${currentPostSlug}-${index + 1}-answer-of-${parentCommentIndex + 1}-comment`} className="blogpost-comments-answer-wrapper" key={index}>

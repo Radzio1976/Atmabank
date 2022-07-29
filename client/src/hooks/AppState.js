@@ -15,6 +15,8 @@ const initialState = {
     isLoggedIn: false,
     ascii: "",
     googleToken: "",
+    userName: "",
+    userType: "",
     name: "",
     nameError: "Pole imię musi zawierać conajmniej 5 znaków",
     email: "",
@@ -52,6 +54,8 @@ const AppState = () => {
     const [ascii, setAscii] = useGlobalState("ascii");
     const [googleToken, setGoogleToken] = useGlobalState("googleToken");
     const [isLoggedIn, setIsLoggedIn] = useGlobalState("isLoggedIn");
+    const [userName, setUserName] = useGlobalState("userName");
+    const [userType, setUserType] = useGlobalState("userType");
 
     const [name, setName] = useGlobalState("name");
     const [nameError] = useGlobalState("nameError");
@@ -102,6 +106,10 @@ const AppState = () => {
         setGoogleToken,
         isLoggedIn, 
         setIsLoggedIn,
+        userName, 
+        setUserName,
+        userType, 
+        setUserType,
         name,
         setName,
         nameError,

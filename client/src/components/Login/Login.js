@@ -13,17 +13,17 @@ const Login = () => {
         <div id="Login">
             <div className="login-container">
                 {!isAuthFirstStep ? <form className="name-and-password-form">
-                    <h3>Logowanie</h3>
-                    <input type="text" name="login" value={login} onChange={(e) => loginChange(e.target.value)} />
-                    <input type="password" name="password" value={password} onChange={(e) => passwordChange(e.target.value)} />
+                    <h5>Logowanie</h5>
+                    <input type="text" name="login" value={login} onChange={(e) => loginChange(e.target.value)} placeholder="Login" />
+                    <input type="password" name="password" value={password} onChange={(e) => passwordChange(e.target.value)} placeholder="Hasło" />
                     <p onClick={sendLoginData}>Wyślij</p>
                 </form> : null}
                     {isAuthFirstStep && !isAuthSecondStep ? <form className="google-token-form">
-                        <h3>Google Authentificator</h3>
+                        <h5>Google Authentificator</h5>
                     <input type="text" name="googleToken" value={googleToken} onChange={(e) => googleTokenChange(e.target.value)} />
                     <p onClick={sendGoogleToken}>Wyślij</p>
                 </form> : null} 
-                {isAuthFirstStep && isAuthSecondStep ? <h3>Zalogowano pomyślnie</h3> : null}            
+                {isAuthFirstStep && isAuthSecondStep ? <h5>Zalogowano pomyślnie</h5> : null}            
             </div>
         </div>
     )

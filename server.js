@@ -12,7 +12,7 @@ const getComments = require('./httpRequests/GetComments');
 const addComment = require('./httpRequests/AddComment');
 const addCommentsAnswer = require('./httpRequests/AddCommentsAnswer');
 const removeComment = require('./httpRequests/RemoveComment');
-const removeCommentsAnswer = require('./httpRequests/removeCommentsAnswer');
+const removeCommentsAnswer = require('./httpRequests/RemoveCommentsAnswer');
 const sendContactForm = require('./httpRequests/SendContactForm');
 
 const app=express();
